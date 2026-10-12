@@ -1,18 +1,42 @@
 {% extends "base.html" %}
+{% block title %}Relics · nightreign.build{% endblock %}
 {% block content %}
-<h1>Relics</h1>
-{% if user.is_authenticated %}<p><a class="button" href="{% url 'relic-create' %}">Add a relic</a></p>{% endif %}
-<div class="grid">
-{% for relic in relic_list %}
-  <div class="card">
-    <h3><span class="dot c-{{ relic.colour }}"></span> {{ relic.name }}</h3>
-    {% if relic.is_deep %}<div class="muted">Deep of Night</div>{% endif %}
-    <ul>{% for effect in relic.effects.all %}<li>{{ effect.name }}</li>{% endfor %}</ul>
-  </div>
-{% empty %}<p class="muted">No relics yet.</p>{% endfor %}
+<div class="page-head">
+    <div>
+        <h1>Relics</h1>
+        <p>Every relic the community has catalogued.</p>
+    </div>
+    {% if user.is_authenticated %}<a class="button" href="{% url 'relic-create' %}">Add a relic</a>{% endif %}
 </div>
-{% if is_paginated %}<p>
-  {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">← Previous</a>{% endif %}
-  {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">Next →</a>{% endif %}
-</p>{% endif %}
+<nav class="filters" aria-label="Filter by colour">
+    <a class="pill{% if not selected %} active{% endif %}" href="?">All</a>
+    {% for value, label in colours %}
+        <a class="pill{% if selected == value %} active{% endif %}" href="?colour={{ value }}"><span class="gem {{ value }}"></span>&nbsp; {{ label }}</a>
+    {% endfor %}
+</nav>
+{% if relic_list %}
+<ul class="grid">
+{% for relic in relic_list %}
+    <li class="card">
+        <span class="badge{% if relic.is_deep %} gold{% endif %}">{% if relic.is_deep %}Deep of Night{% else %}Relic{% endif %}</span>
+        <h3><span class="gem {{ relic.colour }}"></span>&nbsp; {{ relic.name }}</h3>
+        {% with effects=relic.effects.all %}{% if effects %}
+        <div class="slot" style="border:0;background:none;padding:0"><ul>{% for effect in effects %}<li{% if effect.is_curse %} class="curse"{% endif %}>{{ effect.name }}</li>{% endfor %}</ul></div>
+        {% else %}<p class="meta">No effects listed.</p>{% endif %}{% endwith %}
+    </li>
+{% endfor %}
+</ul>
+{% else %}
+<div class="empty-state">
+    <p>No relics catalogued yet.</p>
+    {% if user.is_authenticated %}<a class="button" href="{% url 'relic-create' %}">Add the first</a>{% endif %}
+</div>
+{% endif %}
+{% if is_paginated %}
+<nav class="pagination" aria-label="Pages">
+    {% if page_obj.has_previous %}<a class="button button-ghost button-sm" href="?page={{ page_obj.previous_page_number }}{% if selected %}&colour={{ selected }}{% endif %}">← Previous</a>{% endif %}
+    <span>Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
+    {% if page_obj.has_next %}<a class="button button-ghost button-sm" href="?page={{ page_obj.next_page_number }}{% if selected %}&colour={{ selected }}{% endif %}">Next →</a>{% endif %}
+</nav>
+{% endif %}
 {% endblock %}

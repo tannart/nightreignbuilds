@@ -1,14 +1,34 @@
 {% extends "base.html" %}
+{% load static %}
+{% block title %}{% if object %}Edit {{ object.name }}{% else %}New {{ form.nightfarer }} build{% endif %} · nightreign.build{% endblock %}
+{% block container_class %} narrow{% endblock %}
 {% block content %}
-<h1>{% if object %}Edit {{ object.name }}{% else %}New {{ form.nightfarer }} build{% endif %}</h1>
-<form method="post">{% csrf_token %}
-  {{ form.non_field_errors }}
-  {% for field in form.visible_fields|slice:":3" %}<p>{{ field.label_tag }}{{ field }}{{ field.errors }}</p>{% endfor %}
-  <p class="muted">White slots accept a relic of any colour. Don't see your relic? <a href="{% url 'relic-create' %}" target="_blank">Add it</a> and reload.</p>
-  <h2>Relics</h2>
-  {% for field in form.slot_fields %}<p>{{ field.label_tag }}{{ field }}{{ field.errors }}</p>{% endfor %}
-  <h2>Deep of Night</h2>
-  {% for field in form.deep_slot_fields %}<p>{{ field.label_tag }}{{ field }}{{ field.errors }}</p>{% endfor %}
-  <button>Save build</button>
+<div class="page-head">
+    <div>
+        <span class="badge">{{ form.nightfarer }}</span>
+        <h1>{% if object %}Edit build{% else %}New build{% endif %}</h1>
+    </div>
+</div>
+<form method="post" class="stacked-form">{% csrf_token %}
+    {% if form.non_field_errors %}<ul class="errorlist nonfield">{% for e in form.non_field_errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+    <section class="panel">
+        {% include "builds/_field.html" with field=form.name %}
+        {% include "builds/_field.html" with field=form.vessel %}
+        {% include "builds/_field.html" with field=form.description %}
+    </section>
+    <section class="panel">
+        <h2 class="eyebrow">Relics</h2>
+        <p class="form-hint">Pick a vessel first. Relics that don't fit a slot's colour are greyed out, and white slots take any colour. Missing one? <a href="{% url 'relic-create' %}" target="_blank" rel="noopener">Add a relic</a>, then reload.</p>
+        <div class="slot-fields">{% for field in form.slot_fields %}{% include "builds/_field.html" with gem=True %}{% endfor %}</div>
+    </section>
+    <section class="panel">
+        <h2 class="eyebrow">Deep of Night</h2>
+        <div class="slot-fields">{% for field in form.deep_slot_fields %}{% include "builds/_field.html" with gem=True %}{% endfor %}</div>
+    </section>
+    <div class="actions">
+        <button type="submit">{% if object %}Save changes{% else %}Publish build{% endif %}</button>
+        <a class="button button-ghost" href="{% if object %}{{ object.get_absolute_url }}{% else %}{% url 'build-choose' %}{% endif %}">Cancel</a>
+    </div>
 </form>
 {% endblock %}
+{% block scripts %}<script src="{% static 'js/build-form.js' %}"></script>{% endblock %}

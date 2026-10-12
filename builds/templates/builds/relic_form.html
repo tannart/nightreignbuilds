@@ -1,5 +1,12 @@
 {% extends "base.html" %}
+{% block title %}Add a relic · nightreign.build{% endblock %}
+{% block container_class %} narrow{% endblock %}
 {% block content %}
-<h1>Add a relic</h1>
-<form method="post">{% csrf_token %}{{ form.as_p }}<button>Save relic</button></form>
+<div class="page-head"><div><h1>Add a relic</h1><p>Record a relic you've found so it can be used in builds.</p></div></div>
+<form method="post" class="stacked-form">{% csrf_token %}
+    <section class="panel">
+        {% for field in form %}{% include "builds/_field.html" %}{% endfor %}
+    </section>
+    <div class="actions"><button type="submit">Save relic</button><a class="button button-ghost" href="{% url 'relic-list' %}">Cancel</a></div>
+</form>
 {% endblock %}

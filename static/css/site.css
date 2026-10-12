@@ -1,41 +1,702 @@
+/* ---------------------------------------------------------------------------
+   nightreign.build — house style.
+
+   Palette lifted from the Nightreign cover: a near-black midnight sky, an
+   indigo-to-violet storm, electric blue lightning, pale lavender where the
+   bolt is brightest, and the gold of the Elden Ring wordmark.
+--------------------------------------------------------------------------- */
+
 :root {
-  --bg: #0e0d12; --panel: #18161f; --line: #2c2836; --text: #e8e2d4;
-  --muted: #9a93a6; --accent: #c9a45c;
-  --red: #c4473a; --blue: #4a7bd0; --yellow: #d8b440; --green: #5aa35a; --white: #e6e6e6;
+    --bg: #05060f;
+    --bg-soft: #0c1028;
+    --ink: #eceaf8;
+    --muted: #9c98c2;
+
+    --indigo: #121e44;
+    --storm: #605991;
+    --violet: #837ab2;
+    --bolt: #4d75bc;
+    --bolt-hi: #7c98cd;
+    --lightning: #bfbedc;
+    --gold: #d9b56a;
+
+    --accent: var(--bolt-hi);
+    --accent-2: var(--violet);
+
+    /* Relic colours, tuned to sit in the palette rather than fight it. */
+    --relic-red: #e2564d;
+    --relic-blue: #4f8ff0;
+    --relic-yellow: #e9c35c;
+    --relic-green: #5ccb8d;
+    --relic-white: #e8e6f7;
+
+    --card: rgba(160, 170, 255, .045);
+    --card-hi: rgba(160, 170, 255, .085);
+    --line: rgba(191, 190, 220, .12);
+    --glow: 0 0 32px -6px var(--accent);
+
+    --radius: 16px;
+    --sans: "Avenir Next", "Segoe UI Variable", system-ui, -apple-system, sans-serif;
+    --display: "Cinzel", "Trajan Pro", Georgia, serif;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
 }
+
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--text);
-  font: 16px/1.5 Georgia, "Times New Roman", serif; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- the storm backdrop ------------------------------------------------- */
+
+/* Slow-drifting storm clouds: indigo, violet and a cold blue flash. */
+.storm {
+    position: fixed;
+    inset: -30vmax;
+    z-index: -3;
+    pointer-events: none;
+    background:
+        radial-gradient(40vmax 34vmax at 50% 18%, color-mix(in oklab, var(--violet) 55%, transparent), transparent 64%),
+        radial-gradient(36vmax 36vmax at 16% 30%, color-mix(in oklab, var(--bolt) 45%, transparent), transparent 62%),
+        radial-gradient(44vmax 40vmax at 85% 70%, color-mix(in oklab, var(--indigo) 90%, transparent), transparent 60%),
+        radial-gradient(30vmax 30vmax at 30% 92%, color-mix(in oklab, var(--storm) 40%, transparent), transparent 62%);
+    filter: blur(30px) saturate(130%);
+    opacity: .55;
+    animation: drift 30s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+    0%   { transform: translate3d(-3%, -2%, 0) scale(1);    }
+    50%  { transform: translate3d(3%, 3%, 0)   scale(1.1);  }
+    100% { transform: translate3d(-2%, 4%, 0)  scale(1.04); }
+}
+
+/* Falling rain, as on the cover. Two layers at different speeds. */
+.rain {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    opacity: .14;
+    background-image:
+        repeating-linear-gradient(105deg, transparent 0 46px, rgba(191, 190, 220, .5) 46px 47px, transparent 47px 120px),
+        repeating-linear-gradient(102deg, transparent 0 80px, rgba(124, 152, 205, .45) 80px 81px, transparent 81px 190px);
+    background-size: 100% 260px, 100% 340px;
+    animation: rain 1.4s linear infinite;
+    mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+}
+
+@keyframes rain {
+    to { background-position: -60px 260px, -70px 340px; }
+}
+
+/* Film grain over the gradients — stops the big washes from banding. */
+.grain {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .14;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- header ------------------------------------------------------------- */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .75rem 1.5rem;
+    padding: .9rem 1.5rem;
+    background: color-mix(in oklab, var(--bg) 70%, transparent);
+    backdrop-filter: blur(14px) saturate(160%);
+    border-bottom: 1px solid var(--line);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: .06em;
+    text-decoration: none;
+    color: var(--ink);
+}
+
+.brand-glow {
+    background: linear-gradient(92deg, var(--bolt-hi), var(--lightning) 40%, var(--violet) 70%, var(--bolt-hi));
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 8s linear infinite;
+}
+
+@keyframes shimmer {
+    to { background-position: 220% 0; }
+}
+
+/* The Night's Tide: a ring that slowly closes, like the circle in a run. */
+.tide {
+    position: relative;
+    width: 1.35em;
+    height: 1.35em;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--bolt-hi), var(--violet), var(--indigo), var(--bolt-hi));
+    animation: spin 6s linear infinite;
+    box-shadow: 0 0 14px -2px var(--bolt);
+}
+.tide::after {
+    content: "";
+    position: absolute;
+    inset: 22%;
+    border-radius: 50%;
+    background: var(--bg);
+    box-shadow: inset 0 0 6px var(--bolt);
+    animation: breathe 4s ease-in-out infinite alternate;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes breathe { to { inset: 30%; } }
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    font-size: .92rem;
+}
+nav a, .linkish {
+    position: relative;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .18s ease;
+}
+nav a:not(.button)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 1.5px;
+    border-radius: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .22s ease;
+}
+nav a:not(.button):hover, nav a[aria-current="page"] { color: var(--ink); }
+nav a:not(.button):hover::after,
+nav a[aria-current="page"]::after { transform: scaleX(1); transform-origin: left; }
+
+.inline-form { display: inline-flex; margin: 0; }
+.linkish { background: none; border: 0; cursor: pointer; font: inherit; padding: 0; }
+.linkish:hover { color: var(--ink); }
+
+/* --- layout ------------------------------------------------------------- */
+
+.container {
+    flex: 1;
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+}
+.container.narrow { max-width: 640px; }
+
+.site-footer {
+    text-align: center;
+    color: var(--muted);
+    padding: 2rem 1rem 3rem;
+    font-size: .82rem;
+    border-top: 1px solid var(--line);
+}
+.site-footer p { margin: .2rem 0; }
+
+h1, h2, h3 { line-height: 1.15; }
+h1 {
+    font-family: var(--display);
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    font-weight: 700;
+    letter-spacing: .02em;
+    margin: 0 0 .5rem;
+}
+h2.eyebrow {
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: var(--muted);
+    font-weight: 700;
+    margin: 3rem 0 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+h2.eyebrow::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--line), transparent);
+}
+h3 { letter-spacing: -.01em; }
+
 a { color: var(--accent); }
-header { border-bottom: 1px solid var(--line); padding: 12px 16px; display: flex;
-  gap: 16px; align-items: center; flex-wrap: wrap; }
-header .brand { font-size: 1.3rem; text-decoration: none; letter-spacing: .05em; }
-header nav { margin-left: auto; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
-main { max-width: 1000px; margin: 0 auto; padding: 24px 16px; }
-h1, h2 { font-weight: normal; letter-spacing: .03em; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
-.card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 14px; }
-.card h3 { margin: 0 0 6px; }
-.muted { color: var(--muted); font-size: .9rem; }
-.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
-.pill { padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; }
-.pill.active { background: var(--accent); color: var(--bg); }
-.dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%;
-  vertical-align: middle; border: 1px solid #0006; }
-.c-red { background: var(--red); } .c-blue { background: var(--blue); }
-.c-yellow { background: var(--yellow); } .c-green { background: var(--green); }
-.c-white { background: var(--white); }
-.slots { display: grid; gap: 10px; }
-.slot { display: flex; gap: 12px; align-items: flex-start; }
-.slot .dot { width: 18px; height: 18px; margin-top: 3px; flex: none; }
-.slot ul { margin: 4px 0 0; padding-left: 18px; }
-form p { margin: 0 0 14px; }
-label { display: block; margin-bottom: 4px; color: var(--muted); }
-input[type=text], input[type=password], textarea, select { width: 100%; padding: 8px;
-  background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 4px; font: inherit; }
-button, .button { background: var(--accent); color: var(--bg); border: 0; padding: 8px 16px;
-  border-radius: 4px; font: inherit; cursor: pointer; text-decoration: none; display: inline-block; }
-button.link { background: none; color: var(--accent); padding: 0; text-decoration: underline; }
-.errorlist { color: var(--red); margin: 4px 0; padding-left: 18px; }
-.helptext { color: var(--muted); font-size: .85rem; }
-.inline { display: inline; }
+
+.muted { color: var(--muted); }
+.gold { color: var(--gold); }
+
+.messages { list-style: none; padding: 0; margin: 0 0 1.5rem; font-size: .9rem; }
+.messages li {
+    padding: .7rem 1rem;
+    border-radius: 12px;
+    border: 1px solid color-mix(in oklab, var(--bolt) 45%, transparent);
+    background: var(--card);
+}
+.messages .error { border-color: var(--relic-red); }
+
+/* --- buttons ------------------------------------------------------------ */
+
+.button, button[type="submit"]:not(.linkish) {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    background: linear-gradient(100deg, var(--bolt), var(--violet));
+    color: #fff;
+    border: 0;
+    padding: .65rem 1.35rem;
+    border-radius: 999px;
+    font: inherit;
+    font-weight: 650;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: var(--glow);
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.button:hover, button[type="submit"]:not(.linkish):hover {
+    transform: translateY(-2px);
+    filter: brightness(1.12);
+    box-shadow: 0 0 40px -4px var(--bolt-hi);
+}
+.button:active, button[type="submit"]:not(.linkish):active { transform: translateY(0); }
+.button-sm { padding: .38rem .95rem; font-size: .88rem; }
+
+.button-ghost {
+    background: var(--card-hi);
+    color: var(--ink);
+    box-shadow: none;
+    border: 1px solid var(--line);
+}
+.button-ghost:hover { box-shadow: none; border-color: var(--accent); }
+
+button.button-danger, .button-danger {
+    background: linear-gradient(100deg, #b8403a, var(--relic-red));
+    box-shadow: 0 0 30px -8px var(--relic-red);
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-top: 1.5rem; }
+
+/* --- hero --------------------------------------------------------------- */
+
+.hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 2rem;
+    padding: 2.5rem 0 1rem;
+}
+.hero .kicker {
+    font-family: var(--display);
+    color: var(--gold);
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    font-size: .8rem;
+    margin: 0 0 .75rem;
+}
+.hero h1, .page-head h1 {
+    background: linear-gradient(100deg, var(--ink) 10%, var(--lightning) 35%, var(--bolt-hi) 65%, var(--violet));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.hero p.lede { color: var(--muted); font-size: 1.1rem; max-width: 44ch; margin: 0 0 1.75rem; }
+.cta-group { display: flex; flex-wrap: wrap; gap: .85rem; }
+
+/* The storm eye from the cover, drawn in CSS: a swirling vortex with a
+   bright core and a bolt striking down from it. */
+.vortex {
+    position: relative;
+    justify-self: center;
+    width: min(340px, 80vw);
+    aspect-ratio: 1;
+}
+.vortex .swirl {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 50% 50%, var(--lightning) 0 6%, color-mix(in oklab, var(--bolt-hi) 70%, transparent) 14%, transparent 42%),
+        repeating-conic-gradient(from 0deg, color-mix(in oklab, var(--violet) 55%, transparent) 0 14deg, transparent 14deg 32deg, color-mix(in oklab, var(--bolt) 45%, transparent) 32deg 40deg, transparent 40deg 60deg);
+    mask-image: radial-gradient(circle, #000 30%, transparent 70%);
+    filter: blur(2px);
+    animation: spin 40s linear infinite;
+}
+.vortex .swirl.two {
+    inset: 10%;
+    animation-duration: 24s;
+    animation-direction: reverse;
+    opacity: .7;
+}
+.vortex .bolt {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 6px;
+    height: 52%;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, var(--lightning), color-mix(in oklab, var(--bolt-hi) 50%, transparent) 70%, transparent);
+    clip-path: polygon(40% 0, 100% 0, 60% 30%, 100% 30%, 20% 100%, 45% 45%, 0 45%);
+    filter: drop-shadow(0 0 8px var(--bolt-hi));
+    animation: flash 5s ease-in-out infinite;
+}
+
+@keyframes flash {
+    0%, 82%, 100% { opacity: .35; }
+    84% { opacity: 1; }
+    86% { opacity: .5; }
+    88% { opacity: 1; }
+}
+
+.page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.page-head p { margin: 0; color: var(--muted); }
+
+/* --- filters ------------------------------------------------------------ */
+
+.filters {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    margin: 0 0 1.5rem;
+}
+.pill {
+    padding: .35rem .9rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: .88rem;
+    text-decoration: none;
+    background: var(--card);
+    transition: color .18s ease, border-color .18s ease, background .18s ease;
+}
+.pill:hover { color: var(--ink); border-color: var(--accent); }
+.pill.active {
+    color: #fff;
+    border-color: transparent;
+    background: linear-gradient(100deg, var(--bolt), var(--violet));
+    box-shadow: 0 0 20px -6px var(--bolt-hi);
+}
+
+/* --- cards -------------------------------------------------------------- */
+
+.grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.1rem;
+}
+.grid.tight { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+
+.card {
+    position: relative;
+    display: block;
+    padding: 1.25rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--ink);
+    text-decoration: none;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+a.card:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--bolt-hi) 60%, transparent);
+    background: var(--card-hi);
+    box-shadow: 0 14px 40px -18px var(--bolt), var(--glow);
+}
+.card h3 { margin: 0 0 .35rem; font-size: 1.12rem; }
+.card .meta { color: var(--muted); font-size: .84rem; margin: 0; }
+.card .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+    margin-top: 1rem;
+    padding-top: .85rem;
+    border-top: 1px solid var(--line);
+}
+
+.badge {
+    display: inline-block;
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    background: color-mix(in oklab, var(--bolt) 22%, transparent);
+    border: 1px solid color-mix(in oklab, var(--bolt-hi) 45%, transparent);
+    color: var(--bolt-hi);
+    padding: .15rem .6rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+.badge.gold {
+    background: color-mix(in oklab, var(--gold) 16%, transparent);
+    border-color: color-mix(in oklab, var(--gold) 45%, transparent);
+    color: var(--gold);
+}
+.card .badge { margin-bottom: .75rem; }
+
+/* Nightfarer tiles: a big serif monogram glowing out of the storm. */
+.farer {
+    text-align: center;
+    padding: 1.75rem 1rem 1.25rem;
+    overflow: hidden;
+}
+.farer .monogram {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto .9rem;
+    border-radius: 50%;
+    font-family: var(--display);
+    font-size: 1.9rem;
+    color: var(--lightning);
+    background: radial-gradient(circle at 50% 35%, color-mix(in oklab, var(--bolt) 55%, transparent), var(--indigo) 70%);
+    border: 1px solid color-mix(in oklab, var(--bolt-hi) 40%, transparent);
+    box-shadow: 0 0 26px -8px var(--bolt-hi);
+}
+.farer h3 { font-family: var(--display); letter-spacing: .05em; }
+
+/* --- relic gems --------------------------------------------------------- */
+
+/* A relic slot, drawn as a faceted gem in its colour. */
+.gem {
+    --c: var(--relic-white);
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    transform: rotate(45deg);
+    border-radius: 3px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, .7), transparent 45%),
+        radial-gradient(circle at 60% 60%, var(--c), color-mix(in oklab, var(--c) 40%, #000));
+    box-shadow: 0 0 10px -1px var(--c);
+    vertical-align: middle;
+    flex: none;
+}
+.gem.lg { width: 26px; height: 26px; border-radius: 5px; }
+.gem.empty { background: transparent; border: 1.5px dashed var(--c); box-shadow: none; opacity: .7; }
+.gem.red { --c: var(--relic-red); }
+.gem.blue { --c: var(--relic-blue); }
+.gem.yellow { --c: var(--relic-yellow); }
+.gem.green { --c: var(--relic-green); }
+.gem.white { --c: var(--relic-white); }
+
+.gems { display: inline-flex; gap: .55rem; align-items: center; padding: 0 3px; }
+.gems .sep { width: 1px; height: 14px; background: var(--line); margin: 0 .15rem; }
+
+/* --- build detail ------------------------------------------------------- */
+
+.build-hero {
+    position: relative;
+    padding: 2rem;
+    border-radius: calc(var(--radius) + 8px);
+    border: 1px solid var(--line);
+    background:
+        radial-gradient(60% 120% at 100% 0%, color-mix(in oklab, var(--violet) 30%, transparent), transparent 70%),
+        var(--card);
+    overflow: hidden;
+}
+.build-hero h1 { margin: .5rem 0 .4rem; }
+.build-hero .byline { color: var(--muted); margin: 0; }
+.build-hero .byline a { color: var(--ink); text-decoration: none; font-weight: 600; }
+.build-hero .byline a:hover { color: var(--accent); }
+.build-hero .vessel-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .75rem 1.25rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+    font-size: .92rem;
+}
+.build-hero .vessel-line strong { font-family: var(--display); letter-spacing: .04em; }
+
+.prose { color: color-mix(in oklab, var(--ink) 85%, transparent); max-width: 70ch; }
+.prose p:first-child { margin-top: 0; }
+
+.slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.slot {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.15rem 1.25rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--card);
+    transition: border-color .2s ease, background .2s ease;
+}
+.slot:hover { background: var(--card-hi); }
+.slot .gem { margin: .3rem .35rem 0; }
+.slot h3 { margin: 0 0 .1rem; font-size: 1rem; }
+.slot .slot-label { color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; }
+.slot ul { margin: .5rem 0 0; padding: 0; list-style: none; font-size: .88rem; color: color-mix(in oklab, var(--ink) 80%, transparent); }
+.slot li { padding-left: 1rem; position: relative; margin: .2rem 0; }
+.slot li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .6em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--bolt-hi);
+}
+.slot li.curse { color: #f0a29c; }
+.slot li.curse::before { background: var(--relic-red); }
+.slot.empty { border-style: dashed; background: transparent; }
+.slot.empty h3 { color: var(--muted); font-weight: 500; }
+.slots.deep .slot {
+    background:
+        linear-gradient(160deg, color-mix(in oklab, var(--indigo) 70%, transparent), transparent),
+        var(--card);
+    border-color: color-mix(in oklab, var(--violet) 35%, transparent);
+}
+
+/* --- forms -------------------------------------------------------------- */
+
+.panel {
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--card);
+    margin-bottom: 1.25rem;
+}
+.panel > h2 { margin-top: 0; }
+
+.stacked-form p { display: flex; flex-direction: column; margin: 0 0 1.1rem; }
+.stacked-form p:last-child { margin-bottom: 0; }
+.stacked-form label {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    font-size: .82rem;
+    color: var(--muted);
+    margin-bottom: .4rem;
+}
+.stacked-form input:not([type="checkbox"]), .stacked-form textarea, .stacked-form select {
+    width: 100%;
+    padding: .7rem .9rem;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(5, 6, 15, .55);
+    color: var(--ink);
+    font: inherit;
+    color-scheme: dark;
+    transition: border-color .18s ease, box-shadow .18s ease;
+}
+.stacked-form select[multiple] { padding: .4rem; }
+.stacked-form select option:disabled { color: #5c5a78; }
+.stacked-form input:focus, .stacked-form textarea:focus, .stacked-form select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--bolt) 30%, transparent);
+}
+.stacked-form p.check { flex-direction: row-reverse; justify-content: flex-end; align-items: center; gap: .6rem; }
+.stacked-form p.check label { margin: 0; color: var(--ink); font-size: .95rem; }
+.stacked-form input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--bolt); }
+.stacked-form .helptext { font-size: .76rem; color: var(--muted); margin-top: .35rem; }
+.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: .35rem 0 0;
+    color: #ff9a92;
+    font-size: .82rem;
+}
+.errorlist.nonfield { margin-bottom: 1rem; }
+
+.slot-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0 1rem; }
+.form-hint { color: var(--muted); font-size: .85rem; margin: -.25rem 0 1.25rem; }
+
+.auth-card { max-width: 420px; margin: 2rem auto 0; }
+.auth-card h1 { font-size: 2rem; text-align: center; }
+.auth-card .switch { text-align: center; color: var(--muted); font-size: .9rem; margin: 1.25rem 0 0; }
+.auth-card button[type="submit"] { width: 100%; justify-content: center; margin-top: .5rem; }
+
+/* --- empty / pagination ------------------------------------------------- */
+
+.empty-state {
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    color: var(--muted);
+}
+.empty-state p { margin: 0 0 1.25rem; }
+
+.pagination { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 2rem; color: var(--muted); font-size: .9rem; }
+
+/* --- motion --------------------------------------------------------------
+   All of the above is decoration; none of it should move for someone who has
+   asked their system not to animate. */
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+    }
+    .rain { display: none; }
+}
+
+@media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding-top: 1rem; }
+    .vortex { order: -1; width: min(220px, 60vw); }
+}
+
+@media (max-width: 560px) {
+    .site-header { padding: .8rem 1rem; }
+    nav { gap: .9rem; }
+    .container { padding: 1.5rem 1rem 3rem; }
+    .build-hero, .panel { padding: 1.25rem; }
+    .cta-group .button { flex: 1; justify-content: center; }
+}

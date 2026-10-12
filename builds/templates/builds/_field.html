@@ -1,0 +1,6 @@
+<p{% if field.widget_type == 'checkbox' %} class="check"{% endif %}>
+    <label for="{{ field.id_for_label }}">{% if gem %}<span class="gem white empty" data-gem-for="{{ field.id_for_label }}"></span>{% endif %}{{ field.label }}</label>
+    {{ field }}
+    {% if field.help_text %}<span class="helptext">{{ field.help_text }}</span>{% endif %}
+    {{ field.errors }}
+</p>

@@ -1,0 +1,12 @@
+{% load humanize %}
+<li>
+    <a class="card" href="{{ build.get_absolute_url }}">
+        <span class="badge">{{ build.nightfarer }}</span>
+        <h3>{{ build.name }}</h3>
+        <p class="meta">{{ build.vessel }}</p>
+        <div class="footer">
+            {% include "builds/_gems.html" with vessel=build.vessel %}
+            <span class="meta">{{ build.author }} · {{ build.created_at|naturaltime }}</span>
+        </div>
+    </a>
+</li>

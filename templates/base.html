@@ -1,27 +1,56 @@
-{% load static %}<!doctype html>
+{% load static %}<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Nightreign Builds{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#05060f">
+    <meta name="description" content="{% block description %}Share and discover Elden Ring Nightreign builds: nightfarers, vessels and relics.{% endblock %}">
+    <title>{% block title %}nightreign.build · share your Nightreign builds{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌩️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap">
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
+    {% block head %}{% endblock %}
 </head>
 <body>
-<header>
-  <a class="brand" href="{% url 'build-list' %}">nightreign.build</a>
-  <nav>
-    <a href="{% url 'build-list' %}">Builds</a>
-    <a href="{% url 'relic-list' %}">Relics</a>
-    {% if user.is_authenticated %}
-      <a class="button" href="{% url 'build-choose' %}">New build</a>
-      <a href="{% url 'build-list' %}?author={{ user.username|urlencode }}">My builds</a>
-      <form class="inline" method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="link">Log out</button></form>
-    {% else %}
-      <a href="{% url 'login' %}">Log in</a>
-      <a href="{% url 'signup' %}">Sign up</a>
-    {% endif %}
-  </nav>
-</header>
-<main>{% block content %}{% endblock %}</main>
+    <div class="storm" aria-hidden="true"></div>
+    <div class="rain" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    {% with url_name=request.resolver_match.url_name %}
+    <header class="site-header">
+        <a class="brand" href="{% url 'build-list' %}">
+            <span class="tide" aria-hidden="true"></span><span>nightreign<span class="brand-glow">.build</span></span>
+        </a>
+        <nav>
+            <a href="{% url 'build-list' %}"{% if url_name == 'build-list' and not request.GET.author %} aria-current="page"{% endif %}>Builds</a>
+            <a href="{% url 'relic-list' %}"{% if url_name == 'relic-list' %} aria-current="page"{% endif %}>Relics</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'build-list' %}?author={{ user.username|urlencode }}"{% if request.GET.author == user.username %} aria-current="page"{% endif %}>My builds</a>
+                <form class="inline-form" method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="linkish">Log out</button></form>
+                <a class="button button-sm" href="{% url 'build-choose' %}">New build</a>
+            {% else %}
+                <a href="{% url 'login' %}"{% if url_name == 'login' %} aria-current="page"{% endif %}>Log in</a>
+                <a class="button button-sm" href="{% url 'signup' %}">Sign up</a>
+            {% endif %}
+        </nav>
+    </header>
+    {% endwith %}
+
+    <main class="container{% block container_class %}{% endblock %}">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}<li class="{{ message.tags }}">{{ message }}</li>{% endfor %}
+            </ul>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <p>Builds shared by the Nightfarers of the Roundtable Hold.</p>
+        <p>A fan site, not affiliated with FromSoftware or Bandai Namco.</p>
+    </footer>
+    {% block scripts %}{% endblock %}
 </body>
 </html>

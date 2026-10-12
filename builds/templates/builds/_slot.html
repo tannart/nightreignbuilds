@@ -1,9 +1,14 @@
-<div class="slot card">
-  <span class="dot c-{{ colour }}" title="{{ colour }} slot"></span>
-  <div>
-    {% if relic %}
-      <strong>{{ relic.name }}</strong> <span class="dot c-{{ relic.colour }}"></span>
-      <ul>{% for effect in relic.effects.all %}<li>{{ effect.name }}</li>{% endfor %}</ul>
-    {% else %}<span class="muted">Empty</span>{% endif %}
-  </div>
+<div class="slot{% if not relic %} empty{% endif %}">
+    <span class="gem lg {{ colour }}{% if not relic %} empty{% endif %}" title="{{ colour|title }} slot"></span>
+    <div>
+        <span class="slot-label">{{ colour }} slot</span>
+        {% if relic %}
+            <h3>{{ relic.name }}</h3>
+            {% with effects=relic.effects.all %}{% if effects %}
+            <ul>{% for effect in effects %}<li{% if effect.is_curse %} class="curse"{% endif %}{% if effect.description %} title="{{ effect.description }}"{% endif %}>{{ effect.name }}</li>{% endfor %}</ul>
+            {% endif %}{% endwith %}
+        {% else %}
+            <h3>Empty</h3>
+        {% endif %}
+    </div>
 </div>

@@ -1,9 +1,21 @@
 {% extends "base.html" %}
+{% block title %}Choose a Nightfarer · nightreign.build{% endblock %}
 {% block content %}
-<h1>Choose a nightfarer</h1>
-<div class="grid">
-{% for n in nightfarer_list %}
-  <a class="card" href="{% url 'build-create' n.slug %}"><h3>{{ n.name }}</h3></a>
-{% endfor %}
+<div class="page-head">
+    <div>
+        <h1>Choose your Nightfarer</h1>
+        <p>Who are you taking into the night?</p>
+    </div>
 </div>
+<ul class="grid tight">
+{% for n in nightfarer_list %}
+    <li>
+        <a class="card farer" href="{% url 'build-create' n.slug %}">
+            <span class="monogram" aria-hidden="true">{{ n.name|first }}</span>
+            <h3>{{ n.name }}</h3>
+            <p class="meta">{{ n.build_count }} build{{ n.build_count|pluralize }}</p>
+        </a>
+    </li>
+{% endfor %}
+</ul>
 {% endblock %}

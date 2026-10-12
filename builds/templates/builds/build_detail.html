@@ -1,17 +1,34 @@
 {% extends "base.html" %}
-{% block title %}{{ build.name }} · Nightreign Builds{% endblock %}
+{% load humanize %}
+{% block title %}{{ build.name }} · {{ build.nightfarer }} build · nightreign.build{% endblock %}
+{% block description %}{{ build.nightfarer }} build using {{ build.vessel }}{% if build.description %}: {{ build.description|truncatechars:140 }}{% endif %}{% endblock %}
 {% block content %}
-<h1>{{ build.name }}</h1>
-<p class="muted">{{ build.nightfarer }} · {{ build.vessel }} · by <a href="{% url 'build-list' %}?author={{ build.author.username|urlencode }}">{{ build.author }}</a> · {{ build.created_at|date:"j M Y" }}</p>
-{% if build.description %}<div class="card">{{ build.description|linebreaks }}</div>{% endif %}
-<h2>Relics</h2>
+<section class="build-hero">
+    <a class="badge" href="{% url 'build-list' %}?nightfarer={{ build.nightfarer.slug }}">{{ build.nightfarer }}</a>
+    <h1>{{ build.name }}</h1>
+    <p class="byline">by <a href="{% url 'build-list' %}?author={{ build.author.username|urlencode }}">{{ build.author }}</a> · {{ build.created_at|naturaltime }}{% if build.updated_at|date:"U" != build.created_at|date:"U" %} · updated {{ build.updated_at|naturaltime }}{% endif %}</p>
+    <div class="vessel-line">
+        <span class="muted">Vessel</span>
+        <strong>{{ build.vessel }}</strong>
+        {% include "builds/_gems.html" with vessel=build.vessel deep=True %}
+    </div>
+</section>
+
+{% if build.description %}
+    <h2 class="eyebrow">Notes</h2>
+    <div class="prose">{{ build.description|linebreaks }}</div>
+{% endif %}
+
+<h2 class="eyebrow">Relics</h2>
 <div class="slots">{% for colour, relic in standard_slots %}{% include "builds/_slot.html" %}{% endfor %}</div>
-<h2>Deep of Night</h2>
-<div class="slots">{% for colour, relic in deep_slots %}{% include "builds/_slot.html" %}{% endfor %}</div>
+
+<h2 class="eyebrow">Deep of Night</h2>
+<div class="slots deep">{% for colour, relic in deep_slots %}{% include "builds/_slot.html" %}{% endfor %}</div>
+
 {% if user == build.author %}
-<p style="margin-top:24px">
-  <a class="button" href="{% url 'build-update' build.pk %}">Edit</a>
-  <a href="{% url 'build-delete' build.pk %}">Delete</a>
-</p>
+<div class="actions">
+    <a class="button" href="{% url 'build-update' build.pk %}">Edit build</a>
+    <a class="button button-ghost" href="{% url 'build-delete' build.pk %}">Delete</a>
+</div>
 {% endif %}
 {% endblock %}

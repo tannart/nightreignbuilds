@@ -1,10 +1,14 @@
 {% extends "base.html" %}
-{% block title %}Log in{% endblock %}
+{% block title %}Log in · nightreign.build{% endblock %}
 {% block content %}
-<h1>Log in</h1>
-<form method="post">{% csrf_token %}{{ form.as_p }}
-  <input type="hidden" name="next" value="{{ next }}">
-  <button>Log in</button>
-</form>
-<p class="muted">No account? <a href="{% url 'signup' %}">Sign up</a>.</p>
+<div class="auth-card">
+    <h1>Welcome back</h1>
+    <form method="post" class="panel stacked-form">{% csrf_token %}
+        {% if form.non_field_errors %}<ul class="errorlist nonfield">{% for e in form.non_field_errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+        {% for field in form %}<p><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{{ field.errors }}</p>{% endfor %}
+        <input type="hidden" name="next" value="{{ next }}">
+        <button type="submit">Log in</button>
+    </form>
+    <p class="switch">New here? <a href="{% url 'signup' %}">Create an account</a></p>
+</div>
 {% endblock %}

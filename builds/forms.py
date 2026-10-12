@@ -1,3 +1,4 @@
+from collections.abc import Callable
 from typing import Any
 
 from django import forms
@@ -51,7 +52,38 @@ class RelicForm(forms.ModelForm[Relic]):
         return cleaned
 
 
+class InstanceDataSelect(forms.Select):
+    """A select whose options carry data-* attributes taken from the model
+    instance, so the build form can colour slots without another request."""
+
+    def __init__(
+        self, *args: Any, data: Callable[[Any], dict[str, str]], **kwargs: Any
+    ):
+        super().__init__(*args, **kwargs)
+        self.data = data
+
+    def create_option(self, *args: Any, **kwargs: Any) -> dict[str, Any]:
+        option = super().create_option(*args, **kwargs)
+        instance = getattr(option["value"], "instance", None)
+        if instance is not None:
+            option["attrs"].update(
+                {f"data-{key}": value for key, value in self.data(instance).items()}
+            )
+        return option
+
+
+def vessel_data(vessel: Vessel) -> dict[str, str]:
+    slots = STANDARD_SLOTS + DEEP_SLOTS
+    return {"slots": ",".join(vessel.slot_colour(n) for n in slots)}
+
+
+def relic_data(relic: Relic) -> dict[str, str]:
+    return {"colour": relic.colour}
+
+
 class VesselChoiceField(forms.ModelChoiceField[Vessel]):
+    widget = InstanceDataSelect(data=vessel_data)
+
     def label_from_instance(self, obj: Vessel) -> str:
         return f"{obj.name} ({obj.slot_summary()})"
 
@@ -65,7 +97,11 @@ class BuildForm(forms.ModelForm[Build]):
         model = Build
         fields = ["name", "vessel", "description"]
         field_classes = {"vessel": VesselChoiceField}
-        widgets = {"description": forms.Textarea(attrs={"rows": 6})}
+        widgets = {
+            "description": forms.Textarea(
+                attrs={"rows": 6, "placeholder": "How does it play? What's it for?"}
+            )
+        }
 
     def __init__(self, *args: Any, nightfarer: Nightfarer, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
@@ -85,6 +121,10 @@ class BuildForm(forms.ModelForm[Build]):
                 required=False,
                 label=label,
                 initial=current.get(slot),
+                empty_label="Empty",
+                widget=InstanceDataSelect(
+                    data=relic_data, attrs={"data-slot": str(slot)}
+                ),
             )
 
     def slot_fields(self) -> list[forms.BoundField]:

@@ -1,27 +1,60 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Builds</h1>
-<div class="filters">
-  <a class="pill{% if not selected %} active{% endif %}" href="{% url 'build-list' %}">All</a>
-  {% for n in nightfarers %}
-    <a class="pill{% if selected == n.slug %} active{% endif %}" href="?nightfarer={{ n.slug }}">{{ n.name }}</a>
-  {% endfor %}
-</div>
-<div class="grid">
-{% for build in build_list %}
-  <a class="card" href="{{ build.get_absolute_url }}" style="text-decoration:none;color:inherit">
-    <h3>{{ build.name }}</h3>
-    <div>{{ build.nightfarer }} · {% include "builds/_swatches.html" with vessel=build.vessel %}</div>
-    <div class="muted">{{ build.vessel }} — by {{ build.author }}</div>
-  </a>
-{% empty %}
-  <p class="muted">No builds yet.{% if user.is_authenticated %} <a href="{% url 'build-choose' %}">Share the first one</a>.{% endif %}</p>
-{% endfor %}
-</div>
+{% if author %}
+    <div class="page-head">
+        <div>
+            <h1>{% if author == user.username %}My builds{% else %}{{ author }}’s builds{% endif %}</h1>
+            <p>{{ paginator.count }} build{{ paginator.count|pluralize }}</p>
+        </div>
+        {% if author == user.username %}<a class="button" href="{% url 'build-choose' %}">New build</a>{% endif %}
+    </div>
+{% else %}
+    <section class="hero">
+        <div>
+            <p class="kicker">Elden Ring · Nightreign</p>
+            <h1>Every night, a new build.</h1>
+            <p class="lede">Share your relic loadouts, steal the ones that beat the Night Lord, and find the vessel that makes your Nightfarer sing.</p>
+            <div class="cta-group">
+                {% if user.is_authenticated %}
+                    <a class="button" href="{% url 'build-choose' %}">Share a build</a>
+                {% else %}
+                    <a class="button" href="{% url 'signup' %}">Share a build</a>
+                {% endif %}
+                <a class="button button-ghost" href="{% url 'relic-list' %}">Browse relics</a>
+            </div>
+        </div>
+        <div class="vortex" aria-hidden="true">
+            <div class="swirl"></div>
+            <div class="swirl two"></div>
+            <div class="bolt"></div>
+        </div>
+    </section>
+    <h2 class="eyebrow">Latest builds</h2>
+{% endif %}
+
+<nav class="filters" aria-label="Filter by nightfarer">
+    <a class="pill{% if not selected %} active{% endif %}" href="?{% if author %}author={{ author|urlencode }}{% endif %}">All</a>
+    {% for n in nightfarers %}
+        <a class="pill{% if selected == n.slug %} active{% endif %}" href="?nightfarer={{ n.slug }}{% if author %}&author={{ author|urlencode }}{% endif %}">{{ n.name }}</a>
+    {% endfor %}
+</nav>
+
+{% if build_list %}
+    <ul class="grid">
+        {% for build in build_list %}{% include "builds/_build_card.html" %}{% endfor %}
+    </ul>
+{% else %}
+    <div class="empty-state">
+        <p>No builds here yet. The night is young.</p>
+        {% if user.is_authenticated %}<a class="button" href="{% url 'build-choose' %}">Share the first one</a>{% else %}<a class="button" href="{% url 'signup' %}">Sign up to share one</a>{% endif %}
+    </div>
+{% endif %}
+
 {% if is_paginated %}
-<p>
-  {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}{% if selected %}&nightfarer={{ selected }}{% endif %}">← Newer</a>{% endif %}
-  {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}{% if selected %}&nightfarer={{ selected }}{% endif %}">Older →</a>{% endif %}
-</p>
+<nav class="pagination" aria-label="Pages">
+    {% if page_obj.has_previous %}<a class="button button-ghost button-sm" href="?page={{ page_obj.previous_page_number }}{% if selected %}&nightfarer={{ selected }}{% endif %}{% if author %}&author={{ author|urlencode }}{% endif %}">← Newer</a>{% endif %}
+    <span>Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
+    {% if page_obj.has_next %}<a class="button button-ghost button-sm" href="?page={{ page_obj.next_page_number }}{% if selected %}&nightfarer={{ selected }}{% endif %}{% if author %}&author={{ author|urlencode }}{% endif %}">Older →</a>{% endif %}
+</nav>
 {% endif %}
 {% endblock %}

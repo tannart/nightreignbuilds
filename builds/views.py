@@ -1,16 +1,18 @@
 from typing import Any
 
+from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-from django.db.models import QuerySet
+from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models import Count, QuerySet
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 
 from .forms import BuildForm, RelicForm, SignUpForm
-from .models import Build, Nightfarer, Relic
+from .models import Build, Colour, Nightfarer, Relic
 
 
 class BuildListView(generic.ListView[Build]):
@@ -29,6 +31,7 @@ class BuildListView(generic.ListView[Build]):
         context = super().get_context_data(**kwargs)
         context["nightfarers"] = Nightfarer.objects.all()
         context["selected"] = self.request.GET.get("nightfarer", "")
+        context["author"] = self.request.GET.get("author", "")
         return context
 
 
@@ -54,12 +57,17 @@ class BuildDetailView(generic.DetailView[Build]):
 
 
 class ChooseNightfarerView(LoginRequiredMixin, generic.ListView[Nightfarer]):
-    model = Nightfarer
+    queryset = Nightfarer.objects.annotate(build_count=Count("builds"))
     template_name = "builds/choose_nightfarer.html"
 
 
-class BuildCreateView(LoginRequiredMixin, generic.CreateView[Build, BuildForm]):
+class BuildCreateView(
+    LoginRequiredMixin,
+    SuccessMessageMixin[BuildForm],
+    generic.CreateView[Build, BuildForm],
+):
     model = Build
+    success_message = "Build “%(name)s” published."
     form_class = BuildForm
 
     def get_form_kwargs(self) -> dict[str, Any]:
@@ -81,9 +89,13 @@ class AuthorRequiredMixin(UserPassesTestMixin):
 
 
 class BuildUpdateView(
-    LoginRequiredMixin, AuthorRequiredMixin, generic.UpdateView[Build, BuildForm]
+    LoginRequiredMixin,
+    AuthorRequiredMixin,
+    SuccessMessageMixin[BuildForm],
+    generic.UpdateView[Build, BuildForm],
 ):
     model = Build
+    success_message = "Build saved."
     form_class = BuildForm
 
     def get_form_kwargs(self) -> dict[str, Any]:
@@ -98,9 +110,18 @@ class BuildDeleteView(
     model = Build
     success_url = reverse_lazy("build-list")
 
+    def form_valid(self, form: Any) -> HttpResponse:
+        messages.success(self.request, f"Deleted “{self.object.name}”.")
+        return super().form_valid(form)
 
-class RelicCreateView(LoginRequiredMixin, generic.CreateView[Relic, RelicForm]):
+
+class RelicCreateView(
+    LoginRequiredMixin,
+    SuccessMessageMixin[RelicForm],
+    generic.CreateView[Relic, RelicForm],
+):
     model = Relic
+    success_message = "Relic “%(name)s” added."
     form_class = RelicForm
     success_url = reverse_lazy("relic-list")
 
@@ -111,7 +132,19 @@ class RelicCreateView(LoginRequiredMixin, generic.CreateView[Relic, RelicForm]):
 
 class RelicListView(generic.ListView[Relic]):
     queryset = Relic.objects.prefetch_related("effects")
-    paginate_by = 50
+    paginate_by = 48
+
+    def get_queryset(self) -> QuerySet[Relic]:
+        qs = super().get_queryset()
+        if colour := self.request.GET.get("colour"):
+            qs = qs.filter(colour=colour)
+        return qs
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["colours"] = Colour.choices
+        context["selected"] = self.request.GET.get("colour", "")
+        return context
 
 
 class SignUpView(generic.CreateView[User, SignUpForm]):
