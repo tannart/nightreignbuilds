@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ build.name }} · Nightreign Builds{% endblock %}
+{% block content %}
+<h1>{{ build.name }}</h1>
+<p class="muted">{{ build.nightfarer }} · {{ build.vessel }} · by <a href="{% url 'build-list' %}?author={{ build.author.username|urlencode }}">{{ build.author }}</a> · {{ build.created_at|date:"j M Y" }}</p>
+{% if build.description %}<div class="card">{{ build.description|linebreaks }}</div>{% endif %}
+<h2>Relics</h2>
+<div class="slots">{% for colour, relic in standard_slots %}{% include "builds/_slot.html" %}{% endfor %}</div>
+<h2>Deep of Night</h2>
+<div class="slots">{% for colour, relic in deep_slots %}{% include "builds/_slot.html" %}{% endfor %}</div>
+{% if user == build.author %}
+<p style="margin-top:24px">
+  <a class="button" href="{% url 'build-update' build.pk %}">Edit</a>
+  <a href="{% url 'build-delete' build.pk %}">Delete</a>
+</p>
+{% endif %}
+{% endblock %}

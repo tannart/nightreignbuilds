@@ -1,0 +1,27 @@
+{% load static %}<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Nightreign Builds{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body>
+<header>
+  <a class="brand" href="{% url 'build-list' %}">nightreign.build</a>
+  <nav>
+    <a href="{% url 'build-list' %}">Builds</a>
+    <a href="{% url 'relic-list' %}">Relics</a>
+    {% if user.is_authenticated %}
+      <a class="button" href="{% url 'build-choose' %}">New build</a>
+      <a href="{% url 'build-list' %}?author={{ user.username|urlencode }}">My builds</a>
+      <form class="inline" method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="link">Log out</button></form>
+    {% else %}
+      <a href="{% url 'login' %}">Log in</a>
+      <a href="{% url 'signup' %}">Sign up</a>
+    {% endif %}
+  </nav>
+</header>
+<main>{% block content %}{% endblock %}</main>
+</body>
+</html>

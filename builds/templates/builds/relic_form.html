@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Add a relic</h1>
+<form method="post">{% csrf_token %}{{ form.as_p }}<button>Save relic</button></form>
+{% endblock %}

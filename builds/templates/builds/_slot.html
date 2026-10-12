@@ -1,0 +1,9 @@
+<div class="slot card">
+  <span class="dot c-{{ colour }}" title="{{ colour }} slot"></span>
+  <div>
+    {% if relic %}
+      <strong>{{ relic.name }}</strong> <span class="dot c-{{ relic.colour }}"></span>
+      <ul>{% for effect in relic.effects.all %}<li>{{ effect.name }}</li>{% endfor %}</ul>
+    {% else %}<span class="muted">Empty</span>{% endif %}
+  </div>
+</div>

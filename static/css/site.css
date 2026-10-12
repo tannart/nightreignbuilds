@@ -1,0 +1,41 @@
+:root {
+  --bg: #0e0d12; --panel: #18161f; --line: #2c2836; --text: #e8e2d4;
+  --muted: #9a93a6; --accent: #c9a45c;
+  --red: #c4473a; --blue: #4a7bd0; --yellow: #d8b440; --green: #5aa35a; --white: #e6e6e6;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.5 Georgia, "Times New Roman", serif; }
+a { color: var(--accent); }
+header { border-bottom: 1px solid var(--line); padding: 12px 16px; display: flex;
+  gap: 16px; align-items: center; flex-wrap: wrap; }
+header .brand { font-size: 1.3rem; text-decoration: none; letter-spacing: .05em; }
+header nav { margin-left: auto; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+main { max-width: 1000px; margin: 0 auto; padding: 24px 16px; }
+h1, h2 { font-weight: normal; letter-spacing: .03em; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 14px; }
+.card h3 { margin: 0 0 6px; }
+.muted { color: var(--muted); font-size: .9rem; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.pill { padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; }
+.pill.active { background: var(--accent); color: var(--bg); }
+.dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%;
+  vertical-align: middle; border: 1px solid #0006; }
+.c-red { background: var(--red); } .c-blue { background: var(--blue); }
+.c-yellow { background: var(--yellow); } .c-green { background: var(--green); }
+.c-white { background: var(--white); }
+.slots { display: grid; gap: 10px; }
+.slot { display: flex; gap: 12px; align-items: flex-start; }
+.slot .dot { width: 18px; height: 18px; margin-top: 3px; flex: none; }
+.slot ul { margin: 4px 0 0; padding-left: 18px; }
+form p { margin: 0 0 14px; }
+label { display: block; margin-bottom: 4px; color: var(--muted); }
+input[type=text], input[type=password], textarea, select { width: 100%; padding: 8px;
+  background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 4px; font: inherit; }
+button, .button { background: var(--accent); color: var(--bg); border: 0; padding: 8px 16px;
+  border-radius: 4px; font: inherit; cursor: pointer; text-decoration: none; display: inline-block; }
+button.link { background: none; color: var(--accent); padding: 0; text-decoration: underline; }
+.errorlist { color: var(--red); margin: 4px 0; padding-left: 18px; }
+.helptext { color: var(--muted); font-size: .85rem; }
+.inline { display: inline; }

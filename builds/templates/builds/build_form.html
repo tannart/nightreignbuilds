@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{% if object %}Edit {{ object.name }}{% else %}New {{ form.nightfarer }} build{% endif %}</h1>
+<form method="post">{% csrf_token %}
+  {{ form.non_field_errors }}
+  {% for field in form.visible_fields|slice:":3" %}<p>{{ field.label_tag }}{{ field }}{{ field.errors }}</p>{% endfor %}
+  <p class="muted">White slots accept a relic of any colour. Don't see your relic? <a href="{% url 'relic-create' %}" target="_blank">Add it</a> and reload.</p>
+  <h2>Relics</h2>
+  {% for field in form.slot_fields %}<p>{{ field.label_tag }}{{ field }}{{ field.errors }}</p>{% endfor %}
+  <h2>Deep of Night</h2>
+  {% for field in form.deep_slot_fields %}<p>{{ field.label_tag }}{{ field }}{{ field.errors }}</p>{% endfor %}
+  <button>Save build</button>
+</form>
+{% endblock %}

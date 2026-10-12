@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Builds</h1>
+<div class="filters">
+  <a class="pill{% if not selected %} active{% endif %}" href="{% url 'build-list' %}">All</a>
+  {% for n in nightfarers %}
+    <a class="pill{% if selected == n.slug %} active{% endif %}" href="?nightfarer={{ n.slug }}">{{ n.name }}</a>
+  {% endfor %}
+</div>
+<div class="grid">
+{% for build in build_list %}
+  <a class="card" href="{{ build.get_absolute_url }}" style="text-decoration:none;color:inherit">
+    <h3>{{ build.name }}</h3>
+    <div>{{ build.nightfarer }} · {% include "builds/_swatches.html" with vessel=build.vessel %}</div>
+    <div class="muted">{{ build.vessel }} — by {{ build.author }}</div>
+  </a>
+{% empty %}
+  <p class="muted">No builds yet.{% if user.is_authenticated %} <a href="{% url 'build-choose' %}">Share the first one</a>.{% endif %}</p>
+{% endfor %}
+</div>
+{% if is_paginated %}
+<p>
+  {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}{% if selected %}&nightfarer={{ selected }}{% endif %}">← Newer</a>{% endif %}
+  {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}{% if selected %}&nightfarer={{ selected }}{% endif %}">Older →</a>{% endif %}
+</p>
+{% endif %}
+{% endblock %}

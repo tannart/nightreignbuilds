@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Choose a nightfarer</h1>
+<div class="grid">
+{% for n in nightfarer_list %}
+  <a class="card" href="{% url 'build-create' n.slug %}"><h3>{{ n.name }}</h3></a>
+{% endfor %}
+</div>
+{% endblock %}

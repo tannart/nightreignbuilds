@@ -1,0 +1,60 @@
+[project]
+name = "nightreign-builds"
+version = "0.1.0"
+description = "Share Elden Ring Nightreign builds"
+requires-python = ">=3.13"
+dependencies = [
+    "dj-database-url>=3.1.2",
+    "django>=6.1.2",
+    "django-stubs-ext>=6.1.2",
+    "gunicorn>=26.2.0",
+    "psycopg[binary]>=3.3.6",
+    "whitenoise>=6.12.0",
+]
+
+[tool.uv]
+# Stop uv from inheriting ~/uv.toml (private index); use PyPI only.
+index-url = "https://pypi.org/simple"
+
+[dependency-groups]
+dev = [
+    "black>=26.10.1",
+    "django-stubs>=6.1.2",
+    "factory-boy>=3.3.3",
+    "mypy>=2.4.0",
+    "pre-commit>=4.6.2",
+    "pytest>=9.1.1",
+    "pytest-django>=4.14.0",
+    "ruff>=0.17.0",
+]
+
+[tool.black]
+line-length = 88
+
+[tool.ruff]
+line-length = 88
+extend-exclude = ["*/migrations/*"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "DJ"]
+
+[tool.ruff.lint.per-file-ignores]
+"builds/data/game_data.py" = ["E501"]
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+plugins = ["mypy_django_plugin.main"]
+exclude = ["migrations/", "tests/", "manage.py"]
+
+[[tool.mypy.overrides]]
+module = ["dj_database_url", "factory.*"]
+ignore_missing_imports = true
+
+[tool.django-stubs]
+django_settings_module = "config.settings"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["test_*.py"]
+filterwarnings = ["ignore:No directory at:UserWarning"]

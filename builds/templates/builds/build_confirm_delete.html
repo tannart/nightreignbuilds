@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Delete {{ object.name }}?</h1>
+<form method="post">{% csrf_token %}<button>Delete</button> <a href="{{ object.get_absolute_url }}">Cancel</a></form>
+{% endblock %}
