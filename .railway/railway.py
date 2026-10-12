@@ -14,7 +14,7 @@ def main(ctx=None):
             "python manage.py collectstatic --noinput"
             " && gunicorn config.wsgi --bind 0.0.0.0:$PORT --workers 2"
         ),
-        healthcheck="/",
+        healthcheck="/healthz/",
         preDeploy=(
             "python manage.py migrate --noinput && python manage.py seed_game_data"
         ),

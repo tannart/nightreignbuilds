@@ -54,3 +54,11 @@ def test_signup_logs_user_in(client, db):
         },
     )
     assert client.get(reverse("build-list")).context["user"].username == "newbie"
+
+
+@pytest.mark.parametrize("debug", [True, False])
+def test_healthz_is_not_redirected(client, settings, debug):
+    settings.DEBUG = debug
+    settings.SECURE_SSL_REDIRECT = not debug
+    settings.SECURE_REDIRECT_EXEMPT = [r"^healthz/$"]
+    assert client.get("/healthz/").status_code == 200

@@ -12,7 +12,8 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-dev-only-key")
 DEBUG = os.environ.get("DJANGO_DEBUG", "true").lower() == "true"
 
 ALLOWED_HOSTS = os.environ.get(
-    "DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,.railway.app,nightreign.build"
+    "DJANGO_ALLOWED_HOSTS",
+    "localhost,127.0.0.1,.railway.app,healthcheck.railway.app,nightreign.build",
 ).split(",")
 CSRF_TRUSTED_ORIGINS = os.environ.get(
     "DJANGO_CSRF_TRUSTED_ORIGINS",
@@ -97,5 +98,6 @@ LOGOUT_REDIRECT_URL = "build-list"
 if not DEBUG:
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SECURE_SSL_REDIRECT = True
+    SECURE_REDIRECT_EXEMPT = [r"^healthz/$"]
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
