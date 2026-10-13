@@ -29,9 +29,11 @@ from .models import (
 )
 
 
-class BuildListView(generic.ListView[Build]):
+class BuildListView(LiveSearchMixin, generic.ListView[Build]):
     model = Build
     paginate_by = 24
+    live_results_template = "builds/_build_results.html"
+    live_noun = "build"
 
     def get_queryset(self) -> QuerySet[Build]:
         qs = Build.objects.select_related("author", "nightfarer", "vessel")
@@ -43,6 +45,17 @@ class BuildListView(generic.ListView[Build]):
             qs = qs.filter(author__username=author)
         if nightfarer := self.request.GET.get("nightfarer"):
             qs = qs.filter(nightfarer__slug=nightfarer)
+        if query := self.request.GET.get("q", "").strip():
+            # Builds whose own text, relics or weapons match. The id lookup
+            # avoids duplicate rows from the joins without needing DISTINCT
+            # on every column.
+            matching = Build.objects.filter(
+                Q(name__icontains=query)
+                | Q(description__icontains=query)
+                | Q(slots__relic__name__icontains=query)
+                | Q(weapons__name__icontains=query)
+            ).values("pk")
+            qs = qs.filter(pk__in=matching)
         return qs
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:

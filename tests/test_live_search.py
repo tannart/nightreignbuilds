@@ -3,16 +3,17 @@ from django.template import Context, Template
 from django.test import RequestFactory
 from django.urls import reverse
 
-from tests.factories import RelicFactory, WeaponFactory
+from tests.factories import BuildFactory, RelicFactory, WeaponFactory
 
 
 @pytest.fixture
 def searchables(db):
     RelicFactory(name="Silver Tear")
     WeaponFactory(name="Silver Sword")
+    BuildFactory(name="Silver Wylder")
 
 
-@pytest.mark.parametrize("name", ["relic-list", "weapon-list"])
+@pytest.mark.parametrize("name", ["build-list", "relic-list", "weapon-list"])
 def test_live_search_returns_only_results(client, searchables, name):
     response = client.get(reverse(name), {"q": "silver"}, HTTP_X_LIVE_SEARCH="1")
     assert ("<html" in response.text, "Silver" in response.text) == (False, True)
@@ -20,7 +21,11 @@ def test_live_search_returns_only_results(client, searchables, name):
 
 @pytest.mark.parametrize(
     ("name", "count"),
-    [("relic-list", "1 relic matching"), ("weapon-list", "1 weapon matching")],
+    [
+        ("build-list", "1 build matching"),
+        ("relic-list", "1 relic matching"),
+        ("weapon-list", "1 weapon matching"),
+    ],
 )
 def test_live_search_sends_result_count(client, searchables, name, count):
     response = client.get(reverse(name), {"q": "silver"}, HTTP_X_LIVE_SEARCH="1")
@@ -28,7 +33,7 @@ def test_live_search_sends_result_count(client, searchables, name, count):
 
 
 @pytest.mark.django_db
-@pytest.mark.parametrize("name", ["relic-list", "weapon-list"])
+@pytest.mark.parametrize("name", ["build-list", "relic-list", "weapon-list"])
 def test_live_search_pages_vary_on_header(client, name):
     assert "X-Live-Search" in client.get(reverse(name))["Vary"]
 
@@ -36,7 +41,11 @@ def test_live_search_pages_vary_on_header(client, name):
 @pytest.mark.django_db
 @pytest.mark.parametrize(
     ("name", "target"),
-    [("relic-list", "relic-results"), ("weapon-list", "weapon-results")],
+    [
+        ("build-list", "build-results"),
+        ("relic-list", "relic-results"),
+        ("weapon-list", "weapon-results"),
+    ],
 )
 def test_search_form_points_at_results(client, name, target):
     response = client.get(reverse(name))

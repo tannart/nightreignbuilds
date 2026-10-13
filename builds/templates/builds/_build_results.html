@@ -1,0 +1,30 @@
+<nav class="filters" aria-label="Filter by nightfarer">
+    <a class="pill{% if not selected %} active{% endif %}" href="{% querystring nightfarer=None page=None %}">All</a>
+    {% for n in nightfarers %}
+        <a class="pill{% if selected == n.slug %} active{% endif %}" href="{% querystring nightfarer=n.slug page=None %}">{{ n.name }}</a>
+    {% endfor %}
+</nav>
+
+{% if build_list %}
+    <ul class="grid">
+        {% for build in build_list %}{% include "builds/_build_card.html" %}{% endfor %}
+    </ul>
+{% elif query or selected %}
+    <div class="empty-state">
+        <p>No builds match that.</p>
+        <a class="button button-ghost" href="{% url 'build-list' %}{% if author %}?author={{ author|urlencode }}{% endif %}">Clear filters</a>
+    </div>
+{% else %}
+    <div class="empty-state">
+        <p>No builds here yet. The night is young.</p>
+        <a class="button" href="{% url 'builder' %}">Make the first one</a>
+    </div>
+{% endif %}
+
+{% if is_paginated %}
+<nav class="pagination" aria-label="Pages">
+    {% if page_obj.has_previous %}<a class="button button-ghost button-sm" href="{% querystring page=page_obj.previous_page_number %}">← Newer</a>{% endif %}
+    <span>Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
+    {% if page_obj.has_next %}<a class="button button-ghost button-sm" href="{% querystring page=page_obj.next_page_number %}">Older →</a>{% endif %}
+</nav>
+{% endif %}

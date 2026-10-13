@@ -254,3 +254,33 @@ def test_deep_column_only_on_deep_builds(client, deep, expected):
     build = BuildFactory(deep_of_night=deep)
     response = client.get(build.get_absolute_url())
     assert ('class="rite-column deep"' in response.text) is expected
+
+
+@pytest.fixture
+def bleed_build(db):
+    build = BuildFactory(name="Bleed Wylder", description="Stack hemorrhage")
+    BuildRelicFactory(build=build, slot=1, relic=RelicFactory(name="Silver Tear"))
+    BuildRelicFactory(build=build, slot=2, relic=RelicFactory(name="Silver Scene"))
+    build.weapons.add(WeaponFactory(name="Uchigatana"))
+    BuildFactory(name="Frost Guardian")
+    return build
+
+
+@pytest.mark.parametrize("query", ["bleed", "hemorrhage", "silver tear", "uchigatana"])
+def test_build_search_matches_name_description_relics_and_weapons(
+    client, bleed_build, query
+):
+    response = client.get(reverse("build-list"), {"q": query})
+    assert list(response.context["build_list"]) == [bleed_build]
+
+
+def test_build_search_lists_each_build_once(client, bleed_build):
+    response = client.get(reverse("build-list"), {"q": "silver"})
+    assert list(response.context["build_list"]) == [bleed_build]
+
+
+@pytest.mark.django_db
+def test_build_search_skips_share_links(client):
+    BuildFactory(name="Secret Bleed", is_listed=False)
+    response = client.get(reverse("build-list"), {"q": "bleed"})
+    assert list(response.context["build_list"]) == []

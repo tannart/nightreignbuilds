@@ -1,10 +1,10 @@
 {% extends "base.html" %}
+{% load live_search %}
 {% block content %}
 {% if author %}
     <div class="page-head">
         <div>
             <h1>{% if author == user.username %}My builds{% else %}{{ author }}’s builds{% endif %}</h1>
-            <p>{{ paginator.count }} build{{ paginator.count|pluralize }}</p>
         </div>
         {% if author == user.username %}<a class="button" href="{% url 'builder' %}">New build</a>{% endif %}
     </div>
@@ -15,11 +15,7 @@
             <h1>Every night, a new build.</h1>
             <p class="lede">Share your relic loadouts, steal the ones that beat the Night Lord, and find the vessel that makes your Nightfarer sing.</p>
             <div class="cta-group">
-                {% if user.is_authenticated %}
-                    <a class="button" href="{% url 'builder' %}">Open the builder</a>
-                {% else %}
-                    <a class="button" href="{% url 'builder' %}">Open the builder</a>
-                {% endif %}
+                <a class="button" href="{% url 'builder' %}">Open the builder</a>
                 <a class="button button-ghost" href="{% url 'relic-list' %}">Browse relics</a>
             </div>
         </div>
@@ -32,29 +28,7 @@
     <h2 class="eyebrow">Latest builds</h2>
 {% endif %}
 
-<nav class="filters" aria-label="Filter by nightfarer">
-    <a class="pill{% if not selected %} active{% endif %}" href="?{% if author %}author={{ author|urlencode }}{% endif %}">All</a>
-    {% for n in nightfarers %}
-        <a class="pill{% if selected == n.slug %} active{% endif %}" href="?nightfarer={{ n.slug }}{% if author %}&author={{ author|urlencode }}{% endif %}">{{ n.name }}</a>
-    {% endfor %}
-</nav>
+{% livesearch placeholder="Search builds, relics or weapons, e.g. “bleed”, “Silver Tear”" label="Search builds" keep="nightfarer author" %}{% endlivesearch %}
 
-{% if build_list %}
-    <ul class="grid">
-        {% for build in build_list %}{% include "builds/_build_card.html" %}{% endfor %}
-    </ul>
-{% else %}
-    <div class="empty-state">
-        <p>No builds here yet. The night is young.</p>
-        {% if user.is_authenticated %}<a class="button" href="{% url 'builder' %}">Share the first one</a>{% else %}<a class="button" href="{% url 'builder' %}">Make one</a>{% endif %}
-    </div>
-{% endif %}
-
-{% if is_paginated %}
-<nav class="pagination" aria-label="Pages">
-    {% if page_obj.has_previous %}<a class="button button-ghost button-sm" href="?page={{ page_obj.previous_page_number }}{% if selected %}&nightfarer={{ selected }}{% endif %}{% if author %}&author={{ author|urlencode }}{% endif %}">← Newer</a>{% endif %}
-    <span>Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
-    {% if page_obj.has_next %}<a class="button button-ghost button-sm" href="?page={{ page_obj.next_page_number }}{% if selected %}&nightfarer={{ selected }}{% endif %}{% if author %}&author={{ author|urlencode }}{% endif %}">Older →</a>{% endif %}
-</nav>
-{% endif %}
+{% include "components/live_results.html" %}
 {% endblock %}
