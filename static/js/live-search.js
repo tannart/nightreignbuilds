@@ -1,21 +1,31 @@
-// Live search: as you type, fetch just the results for the current query and
-// swap them in, keeping focus in the box and the URL shareable. Without
-// JavaScript the form still submits normally.
+// Live search component. Any <form data-live-search="<results id>"> (rendered
+// by the {% livesearch %} tag) refreshes the matching results region as you
+// type, or straight away when a filter <select> changes. The view (using
+// LiveSearchMixin) returns just the results fragment when asked with the
+// X-Live-Search header. Without JavaScript the form submits normally.
 (function () {
-    document.querySelectorAll("form[data-live-search]").forEach((form) => {
-        const target = document.getElementById(form.dataset.liveSearch);
-        const input = form.querySelector('input[type="search"]');
-        const status = document.querySelector("p[data-live-status]");
-        if (!target || !input) return;
+    const DELAY = 200;
+
+    function liveSearch(form) {
+        const targetId = form.dataset.liveSearch;
+        const target = document.getElementById(targetId);
+        const status = document.querySelector(`[data-live-status="${targetId}"]`);
+        if (!target) return;
 
         let timer = null;
         let controller = null;
-        let last = new URLSearchParams(new FormData(form)).toString();
+        let last = queryString();
 
-        async function search() {
+        function queryString() {
             const params = new URLSearchParams(new FormData(form));
-            if (!params.get("q")) params.delete("q");
-            const query = params.toString();
+            for (const [key, value] of [...params]) {
+                if (!value) params.delete(key);
+            }
+            return params.toString();
+        }
+
+        async function refresh() {
+            const query = queryString();
             if (query === last) return;
             last = query;
 
@@ -29,9 +39,14 @@
                     signal: controller.signal,
                 });
                 if (!response.ok) throw new Error(response.statusText);
-                target.innerHTML = await response.text();
-                const count = target.querySelector("template[data-live-status]");
-                if (status && count) status.textContent = count.content.textContent.trim();
+                const fragment = document.createElement("template");
+                fragment.innerHTML = await response.text();
+                const count = fragment.content.querySelector("template[data-live-count]");
+                if (count) {
+                    if (status) status.textContent = count.content.textContent.trim();
+                    count.remove();
+                }
+                target.replaceChildren(fragment.content);
                 history.replaceState(null, "", url);
             } catch (error) {
                 if (error.name !== "AbortError") form.submit();
@@ -40,14 +55,22 @@
             }
         }
 
-        input.addEventListener("input", () => {
+        form.addEventListener("input", (event) => {
+            if (event.target.tagName === "SELECT") return;
             clearTimeout(timer);
-            timer = setTimeout(search, 200);
+            timer = setTimeout(refresh, DELAY);
+        });
+        form.addEventListener("change", (event) => {
+            if (event.target.tagName !== "SELECT") return;
+            clearTimeout(timer);
+            refresh();
         });
         form.addEventListener("submit", (event) => {
             event.preventDefault();
             clearTimeout(timer);
-            search();
+            refresh();
         });
-    });
+    }
+
+    document.querySelectorAll("form[data-live-search]").forEach(liveSearch);
 })();

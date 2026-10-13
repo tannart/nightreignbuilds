@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load live_search %}
 {% block title %}Relics · nightreignbuilds.fyi{% endblock %}
 {% block content %}
 <div class="page-head">
@@ -10,16 +10,7 @@
     {% if user.is_authenticated %}<a class="button" href="{% url 'relic-create' %}">Add a relic</a>{% endif %}
 </div>
 
-<form class="search" method="get" role="search" data-live-search="relic-results">
-    {% if selected %}<input type="hidden" name="colour" value="{{ selected }}">{% endif %}
-    {% if kind %}<input type="hidden" name="kind" value="{{ kind }}">{% endif %}
-    <input type="search" name="q" autocomplete="off" value="{{ query }}" placeholder="Search relics or effects, e.g. “Night of the”, “Arcane”" aria-label="Search relics">
-    <button type="submit" class="button-sm">Search</button>
-</form>
+{% livesearch placeholder="Search relics or effects, e.g. “Night of the”, “Arcane”" label="Search relics" keep="colour kind" %}{% endlivesearch %}
 
-<p class="result-count muted" role="status" data-live-status>{% include "builds/_relic_count.html" %}</p>
-<div id="relic-results">
-{% include "builds/_relic_results.html" %}
-</div>
+{% include "components/live_results.html" %}
 {% endblock %}
-{% block scripts %}<script src="{% static 'js/live-search.js' %}"></script>{% endblock %}

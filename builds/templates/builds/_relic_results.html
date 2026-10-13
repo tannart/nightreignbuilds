@@ -1,5 +1,4 @@
 {% load static %}
-<template data-live-status>{% include "builds/_relic_count.html" %}</template>
 <nav class="filters" aria-label="Filter by colour">
     <a class="pill{% if not selected %} active{% endif %}" href="{% querystring colour=None page=None %}">All colours</a>
     {% for value, label in colours %}

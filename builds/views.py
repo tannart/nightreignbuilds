@@ -11,10 +11,10 @@ from django.db.models import Q, QuerySet
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
-from django.utils.cache import patch_vary_headers
 from django.views import View, generic
 
 from .forms import BuilderForm, RelicForm, SignUpForm, SlotChoices, SlotForm
+from .live_search import LiveSearchMixin
 from .models import (
     DEEP_SLOTS,
     STANDARD_SLOTS,
@@ -27,8 +27,6 @@ from .models import (
     Vessel,
     Weapon,
 )
-
-LIVE_SEARCH_HEADER = "X-Live-Search"
 
 
 class BuildListView(generic.ListView[Build]):
@@ -296,21 +294,10 @@ class RelicCreateView(
         return super().form_valid(form)
 
 
-class RelicListView(generic.ListView[Relic]):
+class RelicListView(LiveSearchMixin, generic.ListView[Relic]):
     paginate_by = 48
-
-    def get_template_names(self) -> list[str]:
-        # The live search asks for just the results to swap into the page.
-        if self.request.headers.get(LIVE_SEARCH_HEADER):
-            return ["builds/_relic_results.html"]
-        return super().get_template_names()
-
-    def render_to_response(
-        self, context: dict[str, Any], **kwargs: Any
-    ) -> HttpResponse:
-        response = super().render_to_response(context, **kwargs)
-        patch_vary_headers(response, [LIVE_SEARCH_HEADER])
-        return response
+    live_results_template = "builds/_relic_results.html"
+    live_noun = "relic"
 
     def get_queryset(self) -> QuerySet[Relic]:
         # Custom relics are private: you only see your own.
@@ -337,12 +324,13 @@ class RelicListView(generic.ListView[Relic]):
         context["selected"] = self.request.GET.get("colour", "")
         context["kinds"] = kinds
         context["kind"] = self.request.GET.get("kind", "")
-        context["query"] = self.request.GET.get("q", "")
         return context
 
 
-class WeaponListView(generic.ListView[Weapon]):
+class WeaponListView(LiveSearchMixin, generic.ListView[Weapon]):
     paginate_by = 60
+    live_results_template = "builds/_weapon_results.html"
+    live_noun = "weapon"
 
     def get_queryset(self) -> QuerySet[Weapon]:
         qs = Weapon.objects.all()
@@ -360,7 +348,6 @@ class WeaponListView(generic.ListView[Weapon]):
             .distinct()
         )
         context["category"] = self.request.GET.get("category", "")
-        context["query"] = self.request.GET.get("q", "")
         return context
 
 

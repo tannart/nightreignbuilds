@@ -1,0 +1,12 @@
+{% if weapon_list %}
+<ul class="grid tight">{% for weapon in weapon_list %}{% include "builds/_weapon.html" %}{% endfor %}</ul>
+{% else %}
+<div class="empty-state"><p>No weapons match that.</p><a class="button button-ghost" href="{% url 'weapon-list' %}">Clear filters</a></div>
+{% endif %}
+{% if is_paginated %}
+<nav class="pagination" aria-label="Pages">
+    {% if page_obj.has_previous %}<a class="button button-ghost button-sm" href="{% querystring page=page_obj.previous_page_number %}">← Previous</a>{% endif %}
+    <span>Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
+    {% if page_obj.has_next %}<a class="button button-ghost button-sm" href="{% querystring page=page_obj.next_page_number %}">Next →</a>{% endif %}
+</nav>
+{% endif %}

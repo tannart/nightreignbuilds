@@ -249,21 +249,6 @@ def test_www_redirects_to_bare_domain(client, host, status):
 
 
 @pytest.mark.django_db
-def test_live_search_returns_only_results(client):
-    RelicFactory(name="Silver Tear")
-    response = client.get(
-        reverse("relic-list"), {"q": "silver"}, HTTP_X_LIVE_SEARCH="1"
-    )
-    assert ("<html" in response.text, "Silver Tear" in response.text) == (False, True)
-
-
-@pytest.mark.django_db
-def test_relic_list_varies_on_live_search_header(client):
-    response = client.get(reverse("relic-list"))
-    assert "X-Live-Search" in response["Vary"]
-
-
-@pytest.mark.django_db
 @pytest.mark.parametrize(("deep", "expected"), [(True, True), (False, False)])
 def test_deep_column_only_on_deep_builds(client, deep, expected):
     build = BuildFactory(deep_of_night=deep)

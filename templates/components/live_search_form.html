@@ -1,0 +1,6 @@
+<form class="search" method="get" role="search" data-live-search="{{ live.target }}">
+    {% for name, value in hidden %}<input type="hidden" name="{{ name }}" value="{{ value }}">{% endfor %}
+    {{ extra }}
+    <input type="search" name="q" value="{{ query }}" placeholder="{{ placeholder }}" aria-label="{{ label }}" autocomplete="off">
+    <button type="submit" class="button-sm">Search</button>
+</form>
