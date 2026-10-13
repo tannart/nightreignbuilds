@@ -163,7 +163,7 @@ class BuilderForm(forms.ModelForm[Build]):
 
 class GroupedRelicSelect(forms.Select):
     """Relic picker grouped into sections, with each option carrying its
-    colour so the page can grey out relics that won't fit the slot."""
+    colour so the page can hide relics that won't fit the slot."""
 
     def __init__(self, *args: Any, colours: dict[str, str], **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)

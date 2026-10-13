@@ -10,7 +10,7 @@ slot in relics and weapons, then save the build or grab a share link.
 - **Builder.** Choose a Nightfarer and vessel, toggle Deep of Night (three or
   six relic slots), and fill each slot with a guaranteed relic, one of your
   saved relics, or a custom relic described on the spot. Relics that don't
-  fit a slot's colour are greyed out, and the server checks them too.
+  fit a slot's colour are hidden, and the server checks them too.
 - **Save or share.** Saving lists a build under your name. A share link
   works without an account: it makes an unlisted build at a random URL such
   as `/b/ETrBueHi/`. Any build can be remixed.
