@@ -11,6 +11,7 @@ from django.db.models import Q, QuerySet
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
+from django.utils.cache import patch_vary_headers
 from django.views import View, generic
 
 from .forms import BuilderForm, RelicForm, SignUpForm, SlotChoices, SlotForm
@@ -26,6 +27,8 @@ from .models import (
     Vessel,
     Weapon,
 )
+
+LIVE_SEARCH_HEADER = "X-Live-Search"
 
 
 class BuildListView(generic.ListView[Build]):
@@ -295,6 +298,19 @@ class RelicCreateView(
 
 class RelicListView(generic.ListView[Relic]):
     paginate_by = 48
+
+    def get_template_names(self) -> list[str]:
+        # The live search asks for just the results to swap into the page.
+        if self.request.headers.get(LIVE_SEARCH_HEADER):
+            return ["builds/_relic_results.html"]
+        return super().get_template_names()
+
+    def render_to_response(
+        self, context: dict[str, Any], **kwargs: Any
+    ) -> HttpResponse:
+        response = super().render_to_response(context, **kwargs)
+        patch_vary_headers(response, [LIVE_SEARCH_HEADER])
+        return response
 
     def get_queryset(self) -> QuerySet[Relic]:
         # Custom relics are private: you only see your own.

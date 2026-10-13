@@ -979,3 +979,7 @@ a.card:hover {
     .action-bar button { flex: 1; justify-content: center; }
     .share-row { flex-direction: column; }
 }
+
+/* Fade results slightly while a live search is in flight. */
+[aria-busy="true"] { opacity: .55; transition: opacity .15s ease; }
+.result-count { font-size: .85rem; margin: -.5rem 0 1rem; }

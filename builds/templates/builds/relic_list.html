@@ -10,55 +10,16 @@
     {% if user.is_authenticated %}<a class="button" href="{% url 'relic-create' %}">Add a relic</a>{% endif %}
 </div>
 
-<form class="search" method="get" role="search">
+<form class="search" method="get" role="search" data-live-search="relic-results">
     {% if selected %}<input type="hidden" name="colour" value="{{ selected }}">{% endif %}
     {% if kind %}<input type="hidden" name="kind" value="{{ kind }}">{% endif %}
-    <input type="search" name="q" value="{{ query }}" placeholder="Search relics or effects, e.g. “Night of the”, “Arcane”" aria-label="Search relics">
+    <input type="search" name="q" autocomplete="off" value="{{ query }}" placeholder="Search relics or effects, e.g. “Night of the”, “Arcane”" aria-label="Search relics">
     <button type="submit" class="button-sm">Search</button>
 </form>
 
-<nav class="filters" aria-label="Filter by colour">
-    <a class="pill{% if not selected %} active{% endif %}" href="{% querystring colour=None page=None %}">All colours</a>
-    {% for value, label in colours %}
-        <a class="pill{% if selected == value %} active{% endif %}" href="{% querystring colour=value page=None %}"><span class="gem {{ value }}"></span>&nbsp; {{ label }}</a>
-    {% endfor %}
-</nav>
-<nav class="filters" aria-label="Filter by type">
-    <a class="pill{% if not kind %} active{% endif %}" href="{% querystring kind=None page=None %}">All types</a>
-    {% for value, label in kinds %}
-        <a class="pill{% if kind == value %} active{% endif %}" href="{% querystring kind=value page=None %}">{{ label }}</a>
-    {% endfor %}
-</nav>
-
-{% if relic_list %}
-<ul class="grid">
-{% for relic in relic_list %}
-    <li class="card relic-card">
-        <div class="relic-head">
-            {% if relic.icon %}<img class="relic-icon {{ relic.colour }}" src="{% static relic.icon %}" alt="" width="64" height="64" loading="lazy">{% else %}<span class="relic-icon {{ relic.colour }} placeholder"><span class="gem lg {{ relic.colour }}"></span></span>{% endif %}
-            <div>
-                <h3>{{ relic.name }}</h3>
-                <span class="meta"><span class="gem {{ relic.colour }}"></span>&nbsp; {{ relic.get_colour_display }} · {% if relic.is_deep %}Deep of Night{% elif relic.is_remembrance %}Remembrance{% elif relic.kind == 'custom' %}Yours{% else %}{{ relic.get_kind_display }}{% endif %}</span>
-            </div>
-        </div>
-        {% with effects=relic.effects.all %}{% if effects %}
-        <ul class="effects">{% for effect in effects %}<li{% if effect.is_curse %} class="curse"{% endif %}>{{ effect.name }}</li>{% endfor %}</ul>
-        {% else %}<p class="meta">No effects listed.</p>{% endif %}{% endwith %}
-        {% if relic.acquisition %}<p class="acquisition">{{ relic.acquisition }}</p>{% endif %}
-    </li>
-{% endfor %}
-</ul>
-{% else %}
-<div class="empty-state">
-    <p>No relics match that.</p>
-    <a class="button button-ghost" href="{% url 'relic-list' %}">Clear filters</a>
+<p class="result-count muted" role="status" data-live-status>{% include "builds/_relic_count.html" %}</p>
+<div id="relic-results">
+{% include "builds/_relic_results.html" %}
 </div>
-{% endif %}
-{% if is_paginated %}
-<nav class="pagination" aria-label="Pages">
-    {% if page_obj.has_previous %}<a class="button button-ghost button-sm" href="{% querystring page=page_obj.previous_page_number %}">← Previous</a>{% endif %}
-    <span>Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
-    {% if page_obj.has_next %}<a class="button button-ghost button-sm" href="{% querystring page=page_obj.next_page_number %}">Next →</a>{% endif %}
-</nav>
-{% endif %}
 {% endblock %}
+{% block scripts %}<script src="{% static 'js/live-search.js' %}"></script>{% endblock %}
