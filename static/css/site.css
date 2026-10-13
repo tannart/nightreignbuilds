@@ -983,3 +983,40 @@ a.card:hover {
 /* Fade results slightly while a live search is in flight. */
 [aria-busy="true"] { opacity: .55; transition: opacity .15s ease; }
 .result-count { font-size: .85rem; margin: -.5rem 0 1rem; }
+
+/* --- relic rites (build page) -------------------------------------------
+   Mirrors the game: relics stacked in a column, Deep of Night relics in a
+   second column. Subgrid keeps each row the same height across columns, so
+   slot 1 sits beside deep slot 1 even when their effect lists differ. */
+
+.relic-rites {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto repeat(3, auto);
+    gap: .85rem 1.5rem;
+    max-width: 560px;
+}
+.relic-rites.with-deep {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: none;
+}
+.rite-column {
+    display: grid;
+    grid-row: 1 / span 4;
+    grid-template-rows: subgrid;
+    gap: .85rem;
+}
+.rite-column .eyebrow { margin: 3rem 0 .25rem; }
+.rite-column.deep .slot {
+    background:
+        linear-gradient(160deg, color-mix(in oklab, var(--indigo) 70%, transparent), transparent),
+        var(--card);
+    border-color: color-mix(in oklab, var(--violet) 35%, transparent);
+}
+.rite-column.deep .eyebrow { color: color-mix(in oklab, var(--violet) 70%, var(--ink)); }
+
+@media (max-width: 720px) {
+    .relic-rites.with-deep { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+    .relic-rites .rite-column { grid-row: auto; grid-template-rows: none; }
+    .relic-rites .rite-column.deep .eyebrow { margin-top: 1.5rem; }
+}

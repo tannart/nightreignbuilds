@@ -70,3 +70,14 @@ def test_seeded_weapon_icons_exist(settings):
 def test_seed_loads_weapons():
     call_command("seed_game_data")
     assert Weapon.objects.get(slug="wylder-s-greatsword").category == "Greatsword"
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    ("shop", "currency"),
+    [("Small Jar Bazaar", "Murk"), ("Signboard", "Sovereign Sigil")],
+)
+def test_shop_prices_name_their_currency(shop, currency):
+    call_command("seed_game_data")
+    priced = Relic.objects.filter(acquisition__contains=shop)
+    assert all(currency in r.acquisition for r in priced)

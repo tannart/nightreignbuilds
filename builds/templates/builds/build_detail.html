@@ -42,13 +42,20 @@
     <div class="prose">{{ build.description|linebreaks }}</div>
 {% endif %}
 
-<h2 class="eyebrow">Relics</h2>
-<div class="slots">{% for slot in standard_slots %}{% include "builds/_slot.html" with colour=slot.colour relic=slot.relic shown=slot.shown %}{% endfor %}</div>
-
-{% if build.deep_of_night %}
-<h2 class="eyebrow">Deep of Night</h2>
-<div class="slots deep">{% for slot in deep_slots %}{% include "builds/_slot.html" with colour=slot.colour relic=slot.relic shown=slot.shown %}{% endfor %}</div>
-{% endif %}
+{% comment %}Laid out like the in-game Relic Rites screen: the three relics in
+one column, the three Deep of Night relics in a column beside them.{% endcomment %}
+<section class="relic-rites{% if build.deep_of_night %} with-deep{% endif %}" aria-label="Relics">
+    <div class="rite-column">
+        <h2 class="eyebrow">Relics</h2>
+        {% for slot in standard_slots %}{% include "builds/_slot.html" with colour=slot.colour relic=slot.relic shown=slot.shown %}{% endfor %}
+    </div>
+    {% if build.deep_of_night %}
+    <div class="rite-column deep">
+        <h2 class="eyebrow">Deep of Night</h2>
+        {% for slot in deep_slots %}{% include "builds/_slot.html" with colour=slot.colour relic=slot.relic shown=slot.shown %}{% endfor %}
+    </div>
+    {% endif %}
+</section>
 
 {% with weapons=build.weapons.all %}{% if weapons %}
 <h2 class="eyebrow">Weapons</h2>

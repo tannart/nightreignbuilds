@@ -261,3 +261,11 @@ def test_live_search_returns_only_results(client):
 def test_relic_list_varies_on_live_search_header(client):
     response = client.get(reverse("relic-list"))
     assert "X-Live-Search" in response["Vary"]
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(("deep", "expected"), [(True, True), (False, False)])
+def test_deep_column_only_on_deep_builds(client, deep, expected):
+    build = BuildFactory(deep_of_night=deep)
+    response = client.get(build.get_absolute_url())
+    assert ('class="rite-column deep"' in response.text) is expected
