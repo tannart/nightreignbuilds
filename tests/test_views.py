@@ -238,3 +238,11 @@ def test_weapon_list_filters(client, params, expected):
     WeaponFactory(name="Zweihander", category="Colossal Sword")
     response = client.get(reverse("weapon-list"), params)
     assert [w.name for w in response.context["weapon_list"]] == expected
+
+
+@pytest.mark.parametrize(
+    ("host", "status"),
+    [("www.nightreignbuilds.fyi", 301), ("nightreignbuilds.fyi", 200)],
+)
+def test_www_redirects_to_bare_domain(client, host, status):
+    assert client.get("/healthz/", HTTP_HOST=host).status_code == status

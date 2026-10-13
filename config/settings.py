@@ -13,11 +13,14 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "true").lower() == "true"
 
 ALLOWED_HOSTS = os.environ.get(
     "DJANGO_ALLOWED_HOSTS",
-    "localhost,127.0.0.1,.railway.app,healthcheck.railway.app,nightreign.build",
+    "localhost,127.0.0.1,.railway.app,healthcheck.railway.app,"
+    "nightreignbuilds.fyi,www.nightreignbuilds.fyi",
 ).split(",")
+CANONICAL_HOST = os.environ.get("DJANGO_CANONICAL_HOST", "nightreignbuilds.fyi")
 CSRF_TRUSTED_ORIGINS = os.environ.get(
     "DJANGO_CSRF_TRUSTED_ORIGINS",
-    "https://nightreign.build,https://*.railway.app",
+    "https://nightreignbuilds.fyi,https://www.nightreignbuilds.fyi,"
+    "https://*.railway.app",
 ).split(",")
 
 INSTALLED_APPS = [
@@ -33,6 +36,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "config.middleware.canonical_host",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",

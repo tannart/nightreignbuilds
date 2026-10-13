@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load humanize static %}
-{% block title %}{{ build.name }} · {{ build.nightfarer }} build · nightreign.build{% endblock %}
+{% block title %}{{ build.name }} · {{ build.nightfarer }} build · nightreignbuilds.fyi{% endblock %}
 {% block description %}{{ build.nightfarer }} build{% if build.vessel %} using {{ build.vessel }}{% endif %}{% if build.description %}: {{ build.description|truncatechars:140 }}{% endif %}{% endblock %}
 {% block head %}{% if not build.is_listed %}<meta name="robots" content="noindex">{% endif %}{% endblock %}
 {% block content %}
