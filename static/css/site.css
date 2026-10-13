@@ -566,6 +566,16 @@ a.card:hover {
     font-size: .92rem;
 }
 .build-hero .vessel-line strong { font-family: var(--display); letter-spacing: .04em; }
+.vessel-icon {
+    width: 64px;
+    height: 64px;
+    flex: none;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: radial-gradient(circle at 50% 60%, color-mix(in oklab, var(--accent) 14%, transparent), var(--bg-soft) 75%);
+}
+.vessel-icon.sm { width: 28px; height: 28px; border-radius: 6px; vertical-align: middle; margin-right: .4rem; }
 
 .prose { color: color-mix(in oklab, var(--ink) 85%, transparent); max-width: 70ch; }
 .prose p:first-child { margin-top: 0; }

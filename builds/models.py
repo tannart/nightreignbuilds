@@ -61,6 +61,9 @@ class Vessel(models.Model):
     deep_slot_1 = models.CharField(max_length=10, choices=SlotColour.choices)
     deep_slot_2 = models.CharField(max_length=10, choices=SlotColour.choices)
     deep_slot_3 = models.CharField(max_length=10, choices=SlotColour.choices)
+    icon = models.CharField(
+        max_length=200, blank=True, help_text="Path under static/, e.g. vessels/x.webp"
+    )
 
     class Meta:
         ordering = ["nightfarer__name", "name"]

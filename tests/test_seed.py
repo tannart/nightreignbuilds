@@ -87,3 +87,26 @@ def test_shop_prices_name_their_currency(shop, currency):
 def test_collector_signboard_spelled_as_in_game():
     call_command("seed_game_data")
     assert not Relic.objects.filter(acquisition__contains="Collector's").exists()
+
+
+@pytest.mark.django_db
+def test_seeded_vessel_icons_exist(settings):
+    call_command("seed_game_data")
+    static = settings.BASE_DIR / "static"
+    icons = Vessel.objects.exclude(icon="").values_list("icon", flat=True)
+    assert [i for i in icons if not (static / i).exists()] == []
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    "slug, icon",
+    [
+        ("wylders-goblet", "vessels/wylders-goblet.webp"),
+        ("duchess-chalice", "vessels/duchess-chalice.webp"),
+        ("scadutree-grail", "vessels/scadutree-grail.webp"),
+        ("sealed-wylders-urn", ""),
+    ],
+)
+def test_seed_sets_vessel_icon(slug, icon):
+    call_command("seed_game_data")
+    assert Vessel.objects.get(slug=slug).icon == icon

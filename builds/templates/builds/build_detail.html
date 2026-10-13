@@ -29,6 +29,7 @@
     <div class="vessel-line">
         <span class="muted">Vessel</span>
         {% if build.vessel %}
+            {% if build.vessel.icon %}<img class="vessel-icon" src="{% static build.vessel.icon %}" alt="" width="64" height="64">{% endif %}
             <strong>{{ build.vessel }}</strong>
             {% include "builds/_gems.html" with vessel=build.vessel deep=build.deep_of_night %}
         {% else %}

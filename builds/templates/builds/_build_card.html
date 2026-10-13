@@ -1,9 +1,9 @@
-{% load humanize %}
+{% load humanize static %}
 <li>
     <a class="card" href="{{ build.get_absolute_url }}">
         <span class="badge">{{ build.nightfarer }}</span>{% if not build.is_listed %} <span class="badge gold">Link only</span>{% endif %}
         <h3>{{ build.name }}</h3>
-        <p class="meta">{% if build.vessel %}{{ build.vessel }}{% else %}Any vessel{% endif %}{% if build.deep_of_night %} · Deep of Night{% endif %}</p>
+        <p class="meta">{% if build.vessel %}{% if build.vessel.icon %}<img class="vessel-icon sm" src="{% static build.vessel.icon %}" alt="" width="28" height="28" loading="lazy">{% endif %}{{ build.vessel }}{% else %}Any vessel{% endif %}{% if build.deep_of_night %} · Deep of Night{% endif %}</p>
         <div class="footer">
             {% if build.vessel %}{% include "builds/_gems.html" with vessel=build.vessel %}{% else %}<span></span>{% endif %}
             <span class="meta">{{ build.author|default:'Anonymous' }} · {{ build.created_at|naturaltime }}</span>

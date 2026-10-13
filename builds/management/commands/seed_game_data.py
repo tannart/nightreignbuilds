@@ -3,6 +3,7 @@ import re
 from pathlib import Path
 from typing import Any
 
+from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils.text import slugify
@@ -37,6 +38,13 @@ COLOUR_CODES = {
 }
 
 
+def vessel_icon(slug: str) -> str:
+    """The wiki has no icons for the Soot-Covered, Sealed, Decrepit and
+    Forgotten vessels, so only some vessels get one."""
+    icon = f"vessels/{slug}.webp"
+    return icon if (settings.BASE_DIR / "static" / icon).exists() else ""
+
+
 def slot_fields(standard: str, deep: str) -> dict[str, str]:
     colours = [COLOUR_CODES[c] for c in standard + deep]
     names = ["slot_1", "slot_2", "slot_3", "deep_slot_1", "deep_slot_2", "deep_slot_3"]
@@ -61,6 +69,7 @@ class Command(BaseCommand):
                     defaults={
                         "name": vessel_name,
                         "nightfarer": nightfarer,
+                        "icon": vessel_icon(slugify(vessel_name)),
                         **slot_fields(standard, deep),
                     },
                 )
@@ -70,6 +79,7 @@ class Command(BaseCommand):
                 defaults={
                     "name": vessel_name,
                     "nightfarer": None,
+                    "icon": vessel_icon(slugify(vessel_name)),
                     **slot_fields(standard, deep),
                 },
             )
