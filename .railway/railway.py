@@ -1,4 +1,4 @@
-from railway_sdk import define_railway, project, service
+from railway_sdk import define_railway, github, project, service
 
 # This repository manages only its own resources in the environment. Other
 # repositories export their own partial name.
@@ -10,6 +10,8 @@ PARTIAL = "web"
 def main(ctx=None):
     web = service(
         "web",
+        # Every push to master deploys.
+        source=github("tannart/nightreignbuilds", branch="master"),
         start=(
             "python manage.py collectstatic --noinput"
             " && gunicorn config.wsgi --bind 0.0.0.0:$PORT --workers 2"
