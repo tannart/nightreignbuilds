@@ -477,7 +477,7 @@
       "Taking attacks improves attack power",
       "Fire Attack Power Up +2"
     ],
-    "acquisition": "Defeat Everdark Sovereign Gladius, then purchase from the Collector's Signboard for 12 Sovereign Sigils.",
+    "acquisition": "Defeat Everdark Sovereign Gladius, then purchase from the Collector Signboard for 12 Sovereign Sigils.",
     "icon": "relics/night-of-the-beast.webp"
   },
   {
@@ -490,7 +490,7 @@
       "Improved Critical Hits",
       "Critical Hits Earn Runes"
     ],
-    "acquisition": "Defeat Everdark Sovereign Adel, then purchase from the Collector's Signboard for 12 Sovereign Sigils.",
+    "acquisition": "Defeat Everdark Sovereign Adel, then purchase from the Collector Signboard for 12 Sovereign Sigils.",
     "icon": "relics/night-of-the-baron.webp"
   },
   {
@@ -503,7 +503,7 @@
       "FP Restoration upon Successive Attacks",
       "Max FP increased for each Sorcerer's Rise unlocked"
     ],
-    "acquisition": "Defeat Everdark Sovereign Gnoster, then purchase from the Collector's Signboard for 12 Sovereign Sigils.",
+    "acquisition": "Defeat Everdark Sovereign Gnoster, then purchase from the Collector Signboard for 12 Sovereign Sigils.",
     "icon": "relics/night-of-the-wise.webp"
   },
   {
@@ -516,7 +516,7 @@
       "Continuous HP Recovery",
       "Slowly restore HP for self and nearby allies when HP is low"
     ],
-    "acquisition": "Defeat Everdark Sovereign Maris, then purchase from the Collector's Signboard for 12 Sovereign Sigils.",
+    "acquisition": "Defeat Everdark Sovereign Maris, then purchase from the Collector Signboard for 12 Sovereign Sigils.",
     "icon": "relics/night-of-the-fathom.webp"
   },
   {
@@ -529,7 +529,7 @@
       "Gesture \"Crossed Legs\" Builds Up Madness",
       "Madness Continually Recovers FP"
     ],
-    "acquisition": "Defeat Everdark Sovereign Libra, then purchase from the Collector's Signboard for 12 Sovereign Sigils.",
+    "acquisition": "Defeat Everdark Sovereign Libra, then purchase from the Collector Signboard for 12 Sovereign Sigils.",
     "icon": "relics/night-of-the-demon.webp"
   },
   {
@@ -542,7 +542,7 @@
       "Boosts Attack Power of Added Affinity Attacks",
       "Defeating enemies fills more of the Art gauge"
     ],
-    "acquisition": "Defeat Everdark Sovereign Fulghor, then purchase from the Collector's Signboard for 12 Sovereign Sigils.",
+    "acquisition": "Defeat Everdark Sovereign Fulghor, then purchase from the Collector Signboard for 12 Sovereign Sigils.",
     "icon": "relics/night-of-the-champion.webp"
   },
   {
@@ -555,7 +555,7 @@
       "Starting armament inflicts frost",
       "Improved Physical Damage Negation"
     ],
-    "acquisition": "Defeat Everdark Sovereign Caligo, then purchase from the Collector's Signboard for 12 Sovereign Sigils.",
+    "acquisition": "Defeat Everdark Sovereign Caligo, then purchase from the Collector Signboard for 12 Sovereign Sigils.",
     "icon": "relics/night-of-the-miasma.webp"
   },
   {
@@ -568,7 +568,7 @@
       "Improved Skill Attack Power",
       "Occasionally Nullify Attacks When Damage Negation is Lowered"
     ],
-    "acquisition": "Defeat the Salvation's Standard-Bearers, then purchase from the Collector's Signboard for 12 Sovereign Sigils.",
+    "acquisition": "Defeat the Salvation's Standard-Bearers, then purchase from the Collector Signboard for 12 Sovereign Sigils.",
     "icon": "relics/the-will-of-the-balancers.webp"
   },
   {

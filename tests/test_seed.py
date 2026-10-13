@@ -81,3 +81,9 @@ def test_shop_prices_name_their_currency(shop, currency):
     call_command("seed_game_data")
     priced = Relic.objects.filter(acquisition__contains=shop)
     assert all(currency in r.acquisition for r in priced)
+
+
+@pytest.mark.django_db
+def test_collector_signboard_spelled_as_in_game():
+    call_command("seed_game_data")
+    assert not Relic.objects.filter(acquisition__contains="Collector's").exists()
