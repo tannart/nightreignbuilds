@@ -816,15 +816,11 @@ a.card:hover {
 .stacked-form .farer-option { margin: 0; color: var(--ink); font-size: .9rem; }
 .farer-option:hover { border-color: color-mix(in oklab, var(--bolt-hi) 50%, transparent); transform: translateY(-2px); }
 .farer-option input { position: absolute; opacity: 0; pointer-events: none; }
-.farer-option .monogram {
-    display: grid;
-    place-items: center;
+.farer-option .portrait {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    font-family: var(--display);
-    font-size: 1.35rem;
-    color: var(--lightning);
+    object-fit: cover;
     background: radial-gradient(circle at 50% 35%, color-mix(in oklab, var(--bolt) 40%, transparent), var(--indigo) 70%);
     border: 1px solid color-mix(in oklab, var(--bolt-hi) 30%, transparent);
 }
@@ -834,7 +830,7 @@ a.card:hover {
     background: color-mix(in oklab, var(--bolt) 18%, transparent);
     box-shadow: 0 0 26px -10px var(--bolt-hi);
 }
-.farer-option:has(input:checked) .monogram { box-shadow: 0 0 20px -4px var(--bolt-hi); color: #fff; }
+.farer-option:has(input:checked) .portrait { box-shadow: 0 0 20px -4px var(--bolt-hi); }
 .farer-option:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 .vessel-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.25rem; align-items: start; }

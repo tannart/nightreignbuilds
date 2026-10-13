@@ -110,3 +110,11 @@ def test_seeded_vessel_icons_exist(settings):
 def test_seed_sets_vessel_icon(slug, icon):
     call_command("seed_game_data")
     assert Vessel.objects.get(slug=slug).icon == icon
+
+
+@pytest.mark.django_db
+def test_seeded_nightfarer_icons_exist(settings):
+    call_command("seed_game_data")
+    static = settings.BASE_DIR / "static"
+    icons = [n.icon for n in Nightfarer.objects.all()]
+    assert [i for i in icons if not (static / i).exists()] == []

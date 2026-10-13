@@ -1,5 +1,5 @@
-<label class="farer-option"{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %}>
+{% load static %}<label class="farer-option"{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %}>
     <input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>
-    <span class="monogram" aria-hidden="true">{{ widget.label|first }}</span>
+    <img class="portrait" src="{% static widget.value.instance.icon %}" alt="" width="48" height="48">
     <span class="farer-name">{{ widget.label }}</span>
 </label>

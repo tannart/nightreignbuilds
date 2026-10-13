@@ -36,6 +36,10 @@ class Nightfarer(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    @property
+    def icon(self) -> str:
+        return f"nightfarers/{self.slug}.webp"
+
     def available_vessels(self) -> models.QuerySet["Vessel"]:
         return Vessel.objects.filter(
             models.Q(nightfarer=self) | models.Q(nightfarer__isnull=True)
