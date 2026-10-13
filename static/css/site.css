@@ -654,7 +654,7 @@ a.card:hover {
 .errorlist.nonfield { margin-bottom: 1rem; }
 
 .slot-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0 1rem; }
-.form-hint { color: var(--muted); font-size: .85rem; margin: -.25rem 0 1.25rem; }
+.stacked-form p.form-hint { display: block; color: var(--muted); font-size: .85rem; margin: -.25rem 0 1.25rem; }
 
 .auth-card { max-width: 420px; margin: 2rem auto 0; }
 .auth-card h1 { font-size: 2rem; text-align: center; }
@@ -700,3 +700,76 @@ a.card:hover {
     .build-hero, .panel { padding: 1.25rem; }
     .cta-group .button { flex: 1; justify-content: center; }
 }
+
+/* --- relics ------------------------------------------------------------- */
+
+.search { display: flex; gap: .6rem; margin: 0 0 1.25rem; }
+.search input {
+    flex: 1;
+    min-width: 0;
+    padding: .65rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(5, 6, 15, .55);
+    color: var(--ink);
+    font: inherit;
+    color-scheme: dark;
+}
+.search input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--bolt) 30%, transparent);
+}
+.filters + .filters { margin-top: -.75rem; }
+
+/* Icons get a soft halo in the relic's own colour. */
+.relic-icon {
+    --c: var(--relic-white);
+    width: 64px;
+    height: 64px;
+    flex: none;
+    border-radius: 12px;
+    border: 1px solid color-mix(in oklab, var(--c) 45%, transparent);
+    background: radial-gradient(circle at 50% 60%, color-mix(in oklab, var(--c) 22%, transparent), var(--bg-soft) 75%);
+    box-shadow: 0 0 22px -10px var(--c);
+    object-fit: cover;
+}
+.relic-icon.placeholder { display: grid; place-items: center; }
+.relic-icon.red { --c: var(--relic-red); }
+.relic-icon.blue { --c: var(--relic-blue); }
+.relic-icon.yellow { --c: var(--relic-yellow); }
+.relic-icon.green { --c: var(--relic-green); }
+
+.relic-card { display: flex; flex-direction: column; }
+.relic-head { display: flex; gap: .9rem; align-items: center; margin-bottom: .85rem; }
+.relic-head h3 { margin: 0 0 .15rem; font-size: 1.02rem; }
+.relic-card .effects {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: .88rem;
+    color: color-mix(in oklab, var(--ink) 82%, transparent);
+}
+.relic-card .effects li { position: relative; padding-left: 1rem; margin: .25rem 0; }
+.relic-card .effects li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .6em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--bolt-hi);
+}
+.acquisition {
+    margin: auto 0 0;
+    padding-top: .85rem;
+    margin-top: .9rem;
+    border-top: 1px solid var(--line);
+    font-size: .8rem;
+    color: var(--muted);
+}
+
+.slot-icon { position: relative; flex: none; }
+.slot-icon .relic-icon { width: 56px; height: 56px; }
+.slot-icon .gem { position: absolute; right: -4px; bottom: -4px; }

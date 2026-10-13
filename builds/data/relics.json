@@ -1,0 +1,1492 @@
+[
+  {
+    "slug": "fell-omen-fetish",
+    "name": "Fell Omen Fetish",
+    "kind": "unique",
+    "colour": "blue",
+    "effects": [
+      "Switching Weapons Boosts Attack Power",
+      "Improved Throwing Knife Damage",
+      "Vigor +1"
+    ],
+    "acquisition": "Defeat the Fell Omen during the tutorial.",
+    "icon": "relics/fell-omen-fetish.webp"
+  },
+  {
+    "slug": "old-pocketwatch",
+    "name": "Old Pocketwatch",
+    "kind": "unique",
+    "colour": "green",
+    "effects": [
+      "FP Restoration upon Successive Attacks",
+      "Dexterity +3"
+    ],
+    "acquisition": "Obtain randomly from a failed expedition, or defeat Gladius, Beast of Night for the first time.",
+    "icon": "relics/old-pocketwatch.webp"
+  },
+  {
+    "slug": "besmirched-frame",
+    "name": "Besmirched Frame",
+    "kind": "unique",
+    "colour": "blue",
+    "effects": [
+      "Taking attacks improves attack power",
+      "Faith +3"
+    ],
+    "acquisition": "Purchase from the Small Jar Bazaar for 1500 Murk.",
+    "icon": "relics/besmirched-frame.webp"
+  },
+  {
+    "slug": "slate-whetstone",
+    "name": "Slate Whetstone",
+    "kind": "unique",
+    "colour": "red",
+    "effects": [
+      "[Wylder] Standard attacks enhanced with fiery follow-ups when using Character Skill (greatsword only)",
+      "Physical Attack Up"
+    ],
+    "acquisition": "Complete the Wylder's first Remembrance Quest.",
+    "icon": "relics/slate-whetstone.webp"
+  },
+  {
+    "slug": "silver-tear",
+    "name": "Silver Tear",
+    "kind": "unique",
+    "colour": "red",
+    "effects": [
+      "[Wylder] Art gauge greatly filled when ability is activated",
+      "Ultimate Art Auto Charge +3",
+      "Arcane +3"
+    ],
+    "acquisition": "Complete the Wylder's third Remembrance Quest.",
+    "icon": "relics/silver-tear.webp"
+  },
+  {
+    "slug": "the-wylder-s-earring",
+    "name": "The Wylder's Earring",
+    "kind": "unique",
+    "colour": "red",
+    "effects": [
+      "[Wylder] Art activation spreads fire in area",
+      "[Wylder] +1 additional Character Skill use",
+      "Stamina Recovery upon Landing Attacks"
+    ],
+    "acquisition": "Defeat the Night Aspect as Wylder while equipping the Silver Tear and watch his unique ending.",
+    "icon": "relics/ern-icon-key-item-the-wylder-27s-earring.webp"
+  },
+  {
+    "slug": "stone-stake",
+    "name": "Stone Stake",
+    "kind": "unique",
+    "colour": "red",
+    "effects": [
+      "[Guardian] Increased duration for Character Skill",
+      "Character Skill Cooldown Reduction +3"
+    ],
+    "acquisition": "Complete the Guardian's first Remembrance Quest.",
+    "icon": "relics/stone-stake.webp"
+  },
+  {
+    "slug": "third-volume",
+    "name": "Third Volume",
+    "kind": "unique",
+    "colour": "red",
+    "effects": [
+      "[Guardian] Creates whirlwind when charging halberd attacks",
+      "HP Restoration upon Halberd Attacks"
+    ],
+    "acquisition": "Complete the Guardian's third Remembrance Quest.",
+    "icon": "relics/third-volume.webp"
+  },
+  {
+    "slug": "cracked-witch-s-brooch",
+    "name": "Cracked Witch's Brooch",
+    "kind": "unique",
+    "colour": "blue",
+    "effects": [
+      "[Guardian] Slowly restores nearby allies' HP while Art is active",
+      "[Guardian] Successful guard sends out shockwaves while ability is active",
+      "Vigor +3"
+    ],
+    "acquisition": "Complete the Guardian's fourth Remembrance Quest, and choose to punish the Recluse.",
+    "icon": "relics/cracked-witch-27s-brooch.webp"
+  },
+  {
+    "slug": "witch-s-brooch",
+    "name": "Witch's Brooch",
+    "kind": "unique",
+    "colour": "blue",
+    "effects": [
+      "[Guardian] Slowly restores nearby allies' HP while Art is active",
+      "[Guardian] Successful guard sends out shockwaves while ability is active",
+      "Vigor +3"
+    ],
+    "acquisition": "Complete the Guardian's fourth Remembrance Quest, and choose to forgive the Recluse.",
+    "icon": "relics/witch-27s-brooch.webp"
+  },
+  {
+    "slug": "cracked-sealing-wax",
+    "name": "Cracked Sealing Wax",
+    "kind": "unique",
+    "colour": "yellow",
+    "effects": [
+      "[Ironeye] Extends duration of weak point",
+      "Critical Hits Earn Runes"
+    ],
+    "acquisition": "Complete the Ironeye's first Remembrance Quest.",
+    "icon": "relics/cracked-sealing-wax.webp"
+  },
+  {
+    "slug": "edge-of-order",
+    "name": "Edge of Order",
+    "kind": "unique",
+    "colour": "yellow",
+    "effects": [
+      "[Ironeye] Boosts thrusting counterattacks after executing Art",
+      "Starting armament deals holy damage",
+      "Improved Bow Attack Power"
+    ],
+    "acquisition": "Complete the Ironeye's second Remembrance Quest.",
+    "icon": "relics/edge-of-order.webp"
+  },
+  {
+    "slug": "golden-dew",
+    "name": "Golden Dew",
+    "kind": "unique",
+    "colour": "yellow",
+    "effects": [
+      "[Duchess] Improved Character Skill Attack Power",
+      "Boosts Attack Power of Added Affinity Attacks"
+    ],
+    "acquisition": "Complete the Duchess' first Remembrance Quest.",
+    "icon": "relics/golden-dew.webp"
+  },
+  {
+    "slug": "crown-medal",
+    "name": "Crown Medal",
+    "kind": "unique",
+    "colour": "green",
+    "effects": [
+      "[Duchess] Successive dagger attack reprises event upon nearby enemies",
+      "Improved Dagger Attack Power"
+    ],
+    "acquisition": "Complete the Duchess' third Remembrance Quest.",
+    "icon": "relics/crown-medal.webp"
+  },
+  {
+    "slug": "blessed-iron-coin",
+    "name": "Blessed Iron Coin",
+    "kind": "unique",
+    "colour": "green",
+    "effects": [
+      "[Duchess] Defeating enemies while Art is active ups attack power",
+      "Continuous HP Recovery",
+      "Vigor +3"
+    ],
+    "acquisition": "Complete the Duchess' fourth Remembrance Quest.",
+    "icon": "relics/blessed-iron-coin.webp"
+  },
+  {
+    "slug": "torn-braided-cord",
+    "name": "Torn Braided Cord",
+    "kind": "unique",
+    "colour": "blue",
+    "effects": [
+      "[Raider] Damage taken while using Character Skill improves attack power and stamina",
+      "Strength +3"
+    ],
+    "acquisition": "Complete the Raider's first Remembrance Quest.",
+    "icon": "relics/torn-braided-cord.webp"
+  },
+  {
+    "slug": "black-claw-necklace",
+    "name": "Black Claw Necklace",
+    "kind": "unique",
+    "colour": "yellow",
+    "effects": [
+      "Defeating enemies near Totem Stela restores HP",
+      "Defeating enemies fills more of the Art gauge",
+      "Poise +3"
+    ],
+    "acquisition": "Complete the Raider's third Remembrance Quest.",
+    "icon": "relics/black-claw-necklace.webp"
+  },
+  {
+    "slug": "small-makeup-brush",
+    "name": "Small Makeup Brush",
+    "kind": "unique",
+    "colour": "blue",
+    "effects": [
+      "[Revenant] Power up while fighting alongside family",
+      "Increased rune acquisition for self and allies"
+    ],
+    "acquisition": "Complete the Revenant's first Remembrance Quest.",
+    "icon": "relics/small-makeup-brush.webp"
+  },
+  {
+    "slug": "old-portrait",
+    "name": "Old Portrait",
+    "kind": "unique",
+    "colour": "blue",
+    "effects": [
+      "[Revenant] Trigger ghostflame explosion during Ultimate Art activation",
+      "[Revenant] Expend own HP to fully heal nearby allies when activating Art",
+      "Defeating enemies fills more of the Art gauge"
+    ],
+    "acquisition": "Complete the Revenant's third Remembrance Quest.",
+    "icon": "relics/old-portrait.webp"
+  },
+  {
+    "slug": "vestige-of-night",
+    "name": "Vestige of Night",
+    "kind": "unique",
+    "colour": "green",
+    "effects": [
+      "[Recluse] Collecting affinity residue activates Terra Magica",
+      "Magic Attack Power Up +2"
+    ],
+    "acquisition": "Complete the Recluse's first Remembrance Quest.",
+    "icon": "relics/vestige-of-night.webp"
+  },
+  {
+    "slug": "bone-like-stone",
+    "name": "Bone-Like Stone",
+    "kind": "unique",
+    "colour": "green",
+    "effects": [
+      "[Recluse] Activating Ultimate Art raises Max HP",
+      "[Recluse] Suffer blood loss and increase attack power upon Art activation",
+      "Intelligence +3"
+    ],
+    "acquisition": "Complete the Recluse's third Remembrance Quest.",
+    "icon": "relics/bone-like-stone.webp"
+  },
+  {
+    "slug": "blessed-flowers",
+    "name": "Blessed Flowers",
+    "kind": "unique",
+    "colour": "green",
+    "effects": [
+      "[Executor] While Character Skill is active, unlocking use of cursed sword restores HP",
+      "Dexterity +3"
+    ],
+    "acquisition": "Complete the Executor's first Remembrance Quest.",
+    "icon": "relics/blessed-flowers.webp"
+  },
+  {
+    "slug": "golden-sprout",
+    "name": "Golden Sprout",
+    "kind": "unique",
+    "colour": "red",
+    "effects": [
+      "[Executor] Roaring restores HP while Art is active",
+      "HP Recovery From Successful Guarding",
+      "Slowly restore HP for self and nearby allies when HP is low"
+    ],
+    "acquisition": "Complete the Executor's second Remembrance Quest.",
+    "icon": "relics/golden-sprout.webp"
+  },
+  {
+    "slug": "cleansing-tear",
+    "name": "Cleansing Tear",
+    "kind": "unique",
+    "colour": "red",
+    "effects": [
+      "[Scholar] Continuous damage inflicted on targets threaded by Ultimate Art",
+      "Improved Affinity Damage Negation",
+      "Defeating enemies fills more of the Art gauge"
+    ],
+    "acquisition": "Complete the Scholar's second Remembrance Quest.",
+    "icon": "relics/cleansing-tear.webp"
+  },
+  {
+    "slug": "note-my-dear-successor",
+    "name": "Note \"My Dear Successor\"",
+    "kind": "unique",
+    "colour": "yellow",
+    "effects": [
+      "[Scholar] Allies targeted by Character Skill gain boosted attack",
+      "[Scholar] Prevent slowing of Character Skill progress",
+      "Character Skill Cooldown Reduction +3"
+    ],
+    "acquisition": "Complete the Scholar's third Remembrance Quest.",
+    "icon": "relics/note-22my-dear-successor-22.webp"
+  },
+  {
+    "slug": "leather-monocle-case",
+    "name": "Leather Monocle Case",
+    "kind": "unique",
+    "colour": "blue",
+    "effects": [
+      "[Undertaker] Physical attacks boosted while assist effect from incantation is active for self.",
+      "Extended Spell Duration",
+      "Physical Attack Up +2"
+    ],
+    "acquisition": "Complete the Undertaker's first Remembrance Quest.",
+    "icon": "relics/leather-monocle-case.webp"
+  },
+  {
+    "slug": "glass-necklace",
+    "name": "Glass Necklace",
+    "kind": "unique",
+    "colour": "green",
+    "effects": [
+      "[Undertaker] Activating Ultimate Art increases attack power",
+      "Successive Attacks Boost Attack Power",
+      "Ultimate Art Auto Charge +3"
+    ],
+    "acquisition": "Complete the Undertaker's third Remembrance Quest.",
+    "icon": "relics/glass-necklace.webp"
+  },
+  {
+    "slug": "night-of-the-beast",
+    "name": "Night of the Beast",
+    "kind": "unique",
+    "colour": "green",
+    "effects": [
+      "Stamina Recovery upon Landing Attacks +1",
+      "Starting armament deals fire damage"
+    ],
+    "acquisition": "Defeat Gladius, Beast of Night for the first time.",
+    "icon": "relics/night-of-the-beast.webp"
+  },
+  {
+    "slug": "night-of-the-baron",
+    "name": "Night of the Baron",
+    "kind": "unique",
+    "colour": "blue",
+    "effects": [
+      "Improved Critical Hits +1",
+      "Art gauge fills moderately upon critical hit",
+      "Critical Hit Boosts Stamina Recovery Speed"
+    ],
+    "acquisition": "Defeat Adel, Baron of Night for the first time.",
+    "icon": "relics/night-of-the-baron.webp"
+  },
+  {
+    "slug": "night-of-the-wise",
+    "name": "Night of the Wise",
+    "kind": "unique",
+    "colour": "yellow",
+    "effects": [
+      "Increased Maximum FP",
+      "Starting armament inflicts poison",
+      "Poison & Rot in Vicinity Increases Attack Power"
+    ],
+    "acquisition": "Defeat Gnoster, Wisdom of Night for the first time.",
+    "icon": "relics/night-of-the-wise.webp"
+  },
+  {
+    "slug": "night-of-the-fathom",
+    "name": "Night of the Fathom",
+    "kind": "unique",
+    "colour": "red",
+    "effects": [
+      "Increased Maximum HP",
+      "Flask Also Heals Allies",
+      "Items confer effect to all nearby allies"
+    ],
+    "acquisition": "Defeat Maris, Fathom of Night for the first time.",
+    "icon": "relics/night-of-the-fathom.webp"
+  },
+  {
+    "slug": "night-of-the-demon",
+    "name": "Night of the Demon",
+    "kind": "unique",
+    "colour": "red",
+    "effects": [
+      "Huge rune discount for shop purchases while on expedition",
+      "Gesture \"Crossed Legs\" Builds Up Madness",
+      "Madness Continually Recovers FP"
+    ],
+    "acquisition": "Defeat Libra, Creature of Night for the first time.",
+    "icon": "relics/night-of-the-demon.webp"
+  },
+  {
+    "slug": "night-of-the-champion",
+    "name": "Night of the Champion",
+    "kind": "unique",
+    "colour": "green",
+    "effects": [
+      "Increased Maximum Stamina",
+      "Guard counter is given a boost based on current HP",
+      "HP Restoration upon Thrusting Counterattack"
+    ],
+    "acquisition": "Defeat Fulghor, Champion of Nightglow for the first time.",
+    "icon": "relics/night-of-the-champion.webp"
+  },
+  {
+    "slug": "night-of-the-miasma",
+    "name": "Night of the Miasma",
+    "kind": "unique",
+    "colour": "yellow",
+    "effects": [
+      "Frostbite in Vicinity Conceals Self",
+      "Changes compatible armament's skill to Chilling Mist at start of expedition",
+      "Attack power up when facing frostbite-afflicted enemy"
+    ],
+    "acquisition": "Defeat Caligo, Miasma of Night for the first time.",
+    "icon": "relics/night-of-the-miasma.webp"
+  },
+  {
+    "slug": "night-of-the-lord",
+    "name": "Night of the Lord",
+    "kind": "unique",
+    "colour": "blue",
+    "effects": [
+      "Switching Weapons Adds an Affinity Attack",
+      "Boosts Attack Power of Added Affinity Attacks",
+      "Switching Weapons Boosts Attack Power"
+    ],
+    "acquisition": "Defeat Heolstor the Nightlord for the first time.",
+    "icon": "relics/night-of-the-lord.webp"
+  },
+  {
+    "slug": "the-will-of-the-balancers",
+    "name": "The Will of the Balancers",
+    "kind": "unique",
+    "colour": "blue",
+    "effects": [
+      "Improved Melee Attack Power",
+      "Improved Skill Attack Power",
+      "Continuous FP Recovery"
+    ],
+    "acquisition": "Defeat Weapon-Bequeathed Harmonia for the first time.",
+    "icon": "relics/the-will-of-the-balancers.webp"
+  },
+  {
+    "slug": "the-night-of-dregs",
+    "name": "The Night of Dregs",
+    "kind": "unique",
+    "colour": "red",
+    "effects": [
+      "Status Ailment Gauges Slowly Increase Attack Power",
+      "Attacks Inflict Rot when Damage is Taken",
+      "Rot in Vicinity Causes Continuous HP Recovery"
+    ],
+    "acquisition": "Defeat Traitorous Straghess for the first time.",
+    "icon": "relics/the-night-of-dregs.webp"
+  },
+  {
+    "slug": "dark-night-of-the-beast",
+    "name": "Dark Night of the Beast",
+    "kind": "unique",
+    "colour": "yellow",
+    "effects": [
+      "Stamina Recovery upon Landing Attacks +1",
+      "Taking attacks improves attack power",
+      "Fire Attack Power Up +2"
+    ],
+    "acquisition": "Defeat Everdark Sovereign Gladius, then purchase from the Collector's Signboard for 12.",
+    "icon": "relics/night-of-the-beast.webp"
+  },
+  {
+    "slug": "dark-night-of-the-baron",
+    "name": "Dark Night of the Baron",
+    "kind": "unique",
+    "colour": "red",
+    "effects": [
+      "Improved Critical Hits +1",
+      "Improved Critical Hits",
+      "Critical Hits Earn Runes"
+    ],
+    "acquisition": "Defeat Everdark Sovereign Adel, then purchase from the Collector's Signboard for 12.",
+    "icon": "relics/night-of-the-baron.webp"
+  },
+  {
+    "slug": "dark-night-of-the-wise",
+    "name": "Dark Night of the Wise",
+    "kind": "unique",
+    "colour": "green",
+    "effects": [
+      "Increased Maximum FP",
+      "FP Restoration upon Successive Attacks",
+      "Max FP increased for each Sorcerer's Rise unlocked"
+    ],
+    "acquisition": "Defeat Everdark Sovereign Gnoster, then purchase from the Collector's Signboard for 12.",
+    "icon": "relics/night-of-the-wise.webp"
+  },
+  {
+    "slug": "dark-night-of-the-fathom",
+    "name": "Dark Night of the Fathom",
+    "kind": "unique",
+    "colour": "blue",
+    "effects": [
+      "Increased Maximum HP",
+      "Continuous HP Recovery",
+      "Slowly restore HP for self and nearby allies when HP is low"
+    ],
+    "acquisition": "Defeat Everdark Sovereign Maris, then purchase from the Collector's Signboard for 12.",
+    "icon": "relics/night-of-the-fathom.webp"
+  },
+  {
+    "slug": "dark-night-of-the-demon",
+    "name": "Dark Night of the Demon",
+    "kind": "unique",
+    "colour": "blue",
+    "effects": [
+      "Taking attacks improves attack power",
+      "Gesture \"Crossed Legs\" Builds Up Madness",
+      "Madness Continually Recovers FP"
+    ],
+    "acquisition": "Defeat Everdark Sovereign Libra, then purchase from the Collector's Signboard for 12.",
+    "icon": "relics/night-of-the-demon.webp"
+  },
+  {
+    "slug": "dark-night-of-the-champion",
+    "name": "Dark Night of the Champion",
+    "kind": "unique",
+    "colour": "yellow",
+    "effects": [
+      "Increased Maximum Stamina",
+      "Boosts Attack Power of Added Affinity Attacks",
+      "Defeating enemies fills more of the Art gauge"
+    ],
+    "acquisition": "Defeat Everdark Sovereign Fulghor, then purchase from the Collector's Signboard for 12.",
+    "icon": "relics/night-of-the-champion.webp"
+  },
+  {
+    "slug": "dark-night-of-the-miasma",
+    "name": "Dark Night of the Miasma",
+    "kind": "unique",
+    "colour": "green",
+    "effects": [
+      "Frostbite in Vicinity Conceals Self",
+      "Starting armament inflicts frost",
+      "Improved Physical Damage Negation"
+    ],
+    "acquisition": "Defeat Everdark Sovereign Caligo, then purchase from the Collector's Signboard for 12.",
+    "icon": "relics/night-of-the-miasma.webp"
+  },
+  {
+    "slug": "the-will-of-balance",
+    "name": "The Will of Balance",
+    "kind": "unique",
+    "colour": "red",
+    "effects": [
+      "Improved Melee Attack Power",
+      "Improved Skill Attack Power",
+      "Occasionally Nullify Attacks When Damage Negation is Lowered"
+    ],
+    "acquisition": "Defeat the Salvation's Standard-Bearers, then purchase from the Collector's Signboard for 12.",
+    "icon": "relics/the-will-of-the-balancers.webp"
+  },
+  {
+    "slug": "grand-burning-scene-888f11",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "Increased rune acquisition for self and allies",
+      "Stonesword Key in possession at start of expedition",
+      "Rune discount for shop purchases while on expedition"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 1000 after defeating all eight Nightlords.",
+    "icon": "relics/grand-burning-scene-2.webp"
+  },
+  {
+    "slug": "grand-tranquil-scene-9c0721",
+    "name": "Grand Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "Partial HP Restoration upon Post-Damage Attacks",
+      "Vigor +2",
+      "Poise +2"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 1000 after defeating all eight Nightlords.",
+    "icon": "relics/grand-tranquil-scene-3.webp"
+  },
+  {
+    "slug": "grand-burning-scene-7224b2",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "[Wylder] Art activation spreads fire in area",
+      "Strength +2",
+      "Dexterity +2"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 1000 after defeating four different Nightlords.",
+    "icon": "relics/grand-burning-scene-1.webp"
+  },
+  {
+    "slug": "grand-drizzly-scene-3eaf1a",
+    "name": "Grand Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "[Guardian] Successful guards send out shockwaves while ability is active",
+      "Vigor +2",
+      "Endurance +2"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 1000 after defeating four different Nightlords.",
+    "icon": "relics/grand-drizzly-scene-2.webp"
+  },
+  {
+    "slug": "grand-tranquil-scene-56a4a6",
+    "name": "Grand Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "[Duchess] Improved Character Skill Attack Power",
+      "Dexterity +2",
+      "Intelligence +2"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 1000 after defeating four different Nightlords.",
+    "icon": "relics/grand-tranquil-scene-2.webp"
+  },
+  {
+    "slug": "grand-tranquil-scene-cc7bd9",
+    "name": "Grand Tranquil Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "[Recluse] Suffer blood loss and increase attack power upon Art activation",
+      "Mind +2",
+      "Intelligence +2"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 1000 after defeating four different Nightlords. (Curiously referred to as \"Tranquil\", despite using Luminous relic icon and only fitting in yellow slots)",
+    "icon": "relics/grand-luminous-scene-3.webp"
+  },
+  {
+    "slug": "grand-luminous-scene-dcf781",
+    "name": "Grand Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "[Ironeye] Extends duration of weak point",
+      "Endurance +2",
+      "Dexterity +2"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 1000 after defeating four different Nightlords.",
+    "icon": "relics/grand-luminous-scene-1.webp"
+  },
+  {
+    "slug": "grand-drizzly-scene-ef4cb6",
+    "name": "Grand Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "Improved Poise Neat Totem Stela",
+      "Vigor +2",
+      "Strength +2"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 1000 after defeating four different Nightlords.",
+    "icon": "relics/grand-drizzly-scene-3.webp"
+  },
+  {
+    "slug": "grand-drizzly-scene-bbe04a",
+    "name": "Grand Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "[Revenant] Trigger ghostflame explosion during Ultimate Art activation",
+      "Faith +2",
+      "Arcane +2"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 1000 after defeating four different Nightlords.",
+    "icon": "relics/grand-drizzly-scene-2.webp"
+  },
+  {
+    "slug": "grand-burning-scene-3c736e",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "[Executor] Roaring restores HP while Art is Active",
+      "Dexterity +2",
+      "Arcane +2"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 1000 after defeating four different Nightlords.",
+    "icon": "relics/grand-burning-scene-1.webp"
+  },
+  {
+    "slug": "grand-burning-scene-0e499c",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "[Scholar] Prevents Slowing of Character Skill Progress",
+      "Intelligence +2",
+      "Arcane +2"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 1000, after defeating the Balancers.",
+    "icon": "relics/grand-burning-scene-3.webp"
+  },
+  {
+    "slug": "grand-tranquil-scene-28557c",
+    "name": "Grand Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "[Undertaker] Attack Power increased by landing the final blow of a chain attack",
+      "Strength +2",
+      "Faith +2"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 1000, after defeating the Balancers.",
+    "icon": "relics/grand-tranquil-scene-1.webp"
+  },
+  {
+    "slug": "polished-burning-scene-a0d705",
+    "name": "Polished Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "Improved Glintstone and Gravity Stone Damage",
+      "Small Pouch in possession at start of expedition"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 700 after defeating two different Nightlords.",
+    "icon": "relics/polished-burning-scene-1.webp"
+  },
+  {
+    "slug": "polished-tranquil-scene-351754",
+    "name": "Polished Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "Flask Also Heals Allies",
+      "Defeating enemies restores HP for allies but not for self"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 700 after defeating two different Nightlords.",
+    "icon": "relics/polished-tranquil-scene-2.webp"
+  },
+  {
+    "slug": "polished-luminous-scene-f5975b",
+    "name": "Polished Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "Improved Poison Resistance",
+      "Improved Rot Resistance"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 700 after defeating three different Nightlords.",
+    "icon": "relics/polished-luminous-scene-1.webp"
+  },
+  {
+    "slug": "polished-luminous-scene-30a0d6",
+    "name": "Polished Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "Improved Blood Loss Resistance",
+      "Improved Frost Resistance"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 700 after defeating three different Nightlords.",
+    "icon": "relics/polished-luminous-scene-2.webp"
+  },
+  {
+    "slug": "polished-drizzly-scene-7863b7",
+    "name": "Polished Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "Improved Sleep Resistance",
+      "Improved Madness Resistance"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 700 after defeating three different Nightlords.",
+    "icon": "relics/polished-drizzly-scene-1.webp"
+  },
+  {
+    "slug": "polished-drizzly-scene-0787a0",
+    "name": "Polished Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "Mind +3",
+      "Improved Death Blight Resistance"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 700 after defeating three different Nightlords.",
+    "icon": "relics/polished-drizzly-scene-2.webp"
+  },
+  {
+    "slug": "polished-tranquil-scene-842f16",
+    "name": "Polished Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "Physical attack power increases after using grease item",
+      "Endurance +3"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 700 after defeating two different Nightlords.",
+    "icon": "relics/polished-tranquil-scene-3.webp"
+  },
+  {
+    "slug": "polished-drizzly-scene-45e693",
+    "name": "Polished Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "Draw enemy attention while guarding",
+      "Vigor +3"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 700 after defeating two different Nightlords.",
+    "icon": "relics/polished-drizzly-scene-2.webp"
+  },
+  {
+    "slug": "polished-burning-scene-e7abc8",
+    "name": "Polished Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "Ultimate Art Auto Charge +2",
+      "Magic Damage Negation Up"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 700 after defeating two different Nightlords.",
+    "icon": "relics/polished-burning-scene-2.webp"
+  },
+  {
+    "slug": "polished-tranquil-scene-f776a7",
+    "name": "Polished Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "Character Skill Cooldown Reduction +2",
+      "Fire Damage Negation Up"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 700 after defeating two different Nightlords.",
+    "icon": "relics/polished-tranquil-scene-1.webp"
+  },
+  {
+    "slug": "polished-tranquil-scene-8e6788",
+    "name": "Polished Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "Character Skill Cooldown Reduction +2",
+      "Lightning Damage Negation Up"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 700 after defeating two different Nightlords.",
+    "icon": "relics/polished-tranquil-scene-2.webp"
+  },
+  {
+    "slug": "polished-burning-scene-405bed",
+    "name": "Polished Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "Ultimate Art Auto Charge +2",
+      "Holy Damage Negation Up"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 700 after defeating two different Nightlords.",
+    "icon": "relics/polished-burning-scene-3.webp"
+  },
+  {
+    "slug": "delicate-burning-scene-fe8a9e",
+    "name": "Delicate Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "Fire Pots in possession at start of expedition"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 500.",
+    "icon": "relics/delicate-burning-scene-1.webp"
+  },
+  {
+    "slug": "delicate-drizzly-scene-7433b6",
+    "name": "Delicate Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "Starting armament deals magic damage"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 500.",
+    "icon": "relics/delicate-drizzly-scene-2.webp"
+  },
+  {
+    "slug": "delicate-luminous-scene-d2b245",
+    "name": "Delicate Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "Lightning Grease in possession at start of expedition"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 500.",
+    "icon": "relics/delicate-luminous-scene-1.webp"
+  },
+  {
+    "slug": "delicate-tranquil-scene-da2e24",
+    "name": "Delicate Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "Changes compatible armament's skill to Sacred Blade at start of expedition"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 500.",
+    "icon": "relics/delicate-tranquil-scene-3.webp"
+  },
+  {
+    "slug": "polished-burning-scene-618b5f",
+    "name": "Polished Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "Improved Throwing Pot Damage",
+      "Improved Throwing Knife Damage"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 500.",
+    "icon": "relics/polished-burning-scene-1.webp"
+  },
+  {
+    "slug": "delicate-luminous-scene-eb9189",
+    "name": "Delicate Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "Improved Critical Hits"
+    ],
+    "acquisition": "Purchase from Small Jar Bazaar for 500.",
+    "icon": "relics/delicate-luminous-scene-2.webp"
+  },
+  {
+    "slug": "delicate-luminous-scene-33906c",
+    "name": "Delicate Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "Endurance +1"
+    ],
+    "acquisition": "Purchase from the Wandering Merchant for 1000. (Note: Can only be acquired from the Guardian's second Remembrance quest, found in his Journal Chapter 6.)",
+    "icon": "relics/delicate-luminous-scene-1.webp"
+  },
+  {
+    "slug": "delicate-drizzly-scene-1ece3e",
+    "name": "Delicate Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "Strength +1"
+    ],
+    "acquisition": "Purchase from the Wandering Merchant for 1400. (Note: Can only be acquired from the Guardian's second Remembrance quest, found in his Journal Chapter 6.)",
+    "icon": "relics/delicate-drizzly-scene-1.webp"
+  },
+  {
+    "slug": "delicate-drizzly-scene-fe974b",
+    "name": "Delicate Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "Intelligence +1"
+    ],
+    "acquisition": "Purchase from the Wandering Merchant for 1800. (Note: Can only be acquired from the Guardian's second Remembrance quest, found in his Journal Chapter 6.)",
+    "icon": "relics/delicate-drizzly-scene-1.webp"
+  },
+  {
+    "slug": "delicate-tranquil-scene-66f204",
+    "name": "Delicate Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "Arcane +1"
+    ],
+    "acquisition": "Purchase from the Wandering Merchant for 2000. (Note: Can only be acquired from the Guardian's second Remembrance quest, found in his Journal Chapter 6.)",
+    "icon": "relics/delicate-tranquil-scene-1.webp"
+  },
+  {
+    "slug": "grand-drizzly-scene-c9a98c",
+    "name": "Grand Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "[Wylder] Art activation spreads fire in area",
+      "Changes compatible armament's skill to Flaming Strike at start of expedition",
+      "Fire Attack Power Up +2"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3.",
+    "icon": "relics/grand-drizzly-scene-2.webp"
+  },
+  {
+    "slug": "grand-burning-scene-b14b27",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "[Wylder] Improved Mind, Reduced Vigor",
+      "Vigor +3",
+      "Mind +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-burning-scene-3.webp"
+  },
+  {
+    "slug": "grand-drizzly-scene-f95035",
+    "name": "Grand Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "[Wylder] Improved Intelligence and Faith, Reduced Strength and Dexterity",
+      "Intelligence +3",
+      "Faith +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-drizzly-scene-3.webp"
+  },
+  {
+    "slug": "grand-burning-scene-9dbc7b",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "[Guardian] Successful guards send out shockwaves while ability is active",
+      "Art gauge charged from successful guarding",
+      "Endurance +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3.",
+    "icon": "relics/grand-burning-scene-1.webp"
+  },
+  {
+    "slug": "grand-burning-scene-f618a1",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "[Guardian] Improved Strength and Dexterity, Reduced Vigor",
+      "Strength +3",
+      "Dexterity +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-burning-scene-2.webp"
+  },
+  {
+    "slug": "grand-luminous-scene-46f5db",
+    "name": "Grand Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "[Guardian] Improved Mind and Faith, Reduced Vigor",
+      "Mind +3",
+      "Faith +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-luminous-scene-2.webp"
+  },
+  {
+    "slug": "grand-tranquil-scene-0fd004",
+    "name": "Grand Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "[Duchess] Become difficult to spot and silence footsteps after landing critical from behind",
+      "Improved Critical Hits",
+      "Character Skill Cooldown Reduction +2"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3.",
+    "icon": "relics/grand-tranquil-scene-2.webp"
+  },
+  {
+    "slug": "grand-burning-scene-3b72a3",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "[Duchess] Improved Vigor and Strength, Reduced Mind",
+      "Vigor +3",
+      "Strength +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-burning-scene-3.webp"
+  },
+  {
+    "slug": "grand-drizzly-scene-2b05bf",
+    "name": "Grand Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "[Duchess] Improved Mind and Faith, Reduced Intelligence",
+      "Mind +3",
+      "Faith +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-drizzly-scene-1.webp"
+  },
+  {
+    "slug": "grand-tranquil-scene-4c0b37",
+    "name": "Grand Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "Max FP Up with 3+ Staves Equipped",
+      "Max FP increased for each Sorcerer's Rise unlocked",
+      "Magic Attack Power Up"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3.",
+    "icon": "relics/grand-tranquil-scene-2.webp"
+  },
+  {
+    "slug": "grand-drizzly-scene-253cc9",
+    "name": "Grand Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "[Recluse] Improved Vigor, Endurance, and Dexterity, Reduced Intelligence and Faith",
+      "Vigor +3",
+      "Endurance +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-drizzly-scene-3.webp"
+  },
+  {
+    "slug": "grand-tranquil-scene-32d631",
+    "name": "Grand Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "[Recluse] Improved Intelligence and Faith, Reduced Mind",
+      "Intelligence +3",
+      "Faith +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-tranquil-scene-3.webp"
+  },
+  {
+    "slug": "grand-burning-scene-9df24b",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "[Ironeye] Art Charge Activation Adds Poison Effect",
+      "Attack power up when facing poison-afflicted enemy",
+      "Ultimate Art Auto Charge +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3.",
+    "icon": "relics/grand-burning-scene-1.webp"
+  },
+  {
+    "slug": "grand-luminous-scene-3f528c",
+    "name": "Grand Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "[Ironeye] Improved Vigor and Strength, Reduced Dexterity",
+      "Vigor +3",
+      "Strength +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-luminous-scene-3.webp"
+  },
+  {
+    "slug": "grand-tranquil-scene-2b7ced",
+    "name": "Grand Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "[Ironeye] Improved Arcane, Reduced Dexterity",
+      "Dexterity +3",
+      "Arcane +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-tranquil-scene-3.webp"
+  },
+  {
+    "slug": "grand-luminous-scene-358eb1",
+    "name": "Grand Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "[Raider] Duration of Ultimate Art extended",
+      "Improved Colossal Weapon Attack Power",
+      "Endurance +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3.",
+    "icon": "relics/grand-luminous-scene-3.webp"
+  },
+  {
+    "slug": "grand-burning-scene-f9bfe9",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "[Raider] Improved Mind and Intelligence, Reduced Vigor",
+      "Mind +3",
+      "Intelligence +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-burning-scene-2.webp"
+  },
+  {
+    "slug": "grand-tranquil-scene-ec32fa",
+    "name": "Grand Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "[Raider] Improved Arcane, Reduced Vigor",
+      "Vigor +3",
+      "Arcane +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-tranquil-scene-1.webp"
+  },
+  {
+    "slug": "grand-drizzly-scene-f144a8",
+    "name": "Grand Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "[Revenant] Strengthens family and allies when Ultimate Art is activated",
+      "Items confer effect to all nearby allies",
+      "Starlight Shards in possession at start of expedition"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3.",
+    "icon": "relics/grand-drizzly-scene-2.webp"
+  },
+  {
+    "slug": "grand-drizzly-scene-5f6064",
+    "name": "Grand Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "[Revenant] Improved Vigor and Endurance, Reduced Mind",
+      "Vigor +3",
+      "Endurance +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-drizzly-scene-2.webp"
+  },
+  {
+    "slug": "grand-luminous-scene-f68e77",
+    "name": "Grand Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "[Revenant] Improved Strength, Reduced Faith",
+      "Strength +3",
+      "Faith +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-luminous-scene-1.webp"
+  },
+  {
+    "slug": "grand-luminous-scene-097b30",
+    "name": "Grand Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "[Executor] Character Skill Boosts Attack but Lowers Damage Negation While Attacking",
+      "HP Recovery From Successful Guarding",
+      "Art gauge charged from successful guarding"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3.",
+    "icon": "relics/grand-luminous-scene-3.webp"
+  },
+  {
+    "slug": "grand-burning-scene-aa33f3",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "[Executor] Improved Vigor and Endurance, Reduced Arcane",
+      "Vigor +3",
+      "Endurance +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-burning-scene-3.webp"
+  },
+  {
+    "slug": "grand-luminous-scene-159baf",
+    "name": "Grand Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "[Executor] Improved Dexterity and Arcane, Reduced Vigor",
+      "Dexterity +3",
+      "Arcane +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-luminous-scene-1.webp"
+  },
+  {
+    "slug": "grand-luminous-scene-baa68d",
+    "name": "Grand Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "[Scholar] Earn runes for each additional specimen acquired with Character Skill",
+      "Small Pouch in possession at start of expedition",
+      "Small Pouch in possession at start of expedition"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating any Everdark Sovereign while playing as Scholar.",
+    "icon": "relics/grand-luminous-scene-2.webp"
+  },
+  {
+    "slug": "grand-burning-scene-cf32fe",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "[Scholar] Improved Mind, Reduced Vigor",
+      "Vigor +3",
+      "Mind +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-burning-scene-1.webp"
+  },
+  {
+    "slug": "grand-luminous-scene-68fbd0",
+    "name": "Grand Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "[Scholar] Improved Endurance and Dexterity, Reduced Intelligence and Arcane",
+      "Endurance +3",
+      "Dexterity +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-luminous-scene-3.webp"
+  },
+  {
+    "slug": "grand-drizzly-scene-967e15",
+    "name": "Grand Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "[Undertaker] Contact with allies restores their HP when Ultimate Art is activated",
+      "Partial HP Restoration upon Post-Damage Attacks",
+      "Defeating enemies fills more of the Art gauge"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating any Everdark Sovereign while playing as Undertaker.",
+    "icon": "relics/grand-drizzly-scene-1.webp"
+  },
+  {
+    "slug": "grand-drizzly-scene-ffde5e",
+    "name": "Grand Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "[Undertaker] Improved Dexterity, Reduced Vigor and Faith",
+      "Vigor +3",
+      "Dexterity +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-drizzly-scene-1.webp"
+  },
+  {
+    "slug": "grand-tranquil-scene-debec0",
+    "name": "Grand Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "[Undertaker] Improved Mind and Faith, Reduced Strength",
+      "Mind +3",
+      "Faith +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord.",
+    "icon": "relics/grand-tranquil-scene-1.webp"
+  },
+  {
+    "slug": "grand-burning-scene-eb51bf",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "Slowly restore HP for self and nearby allies when HP is low",
+      "Improved Damage Negation at Low HP",
+      "Vigor +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3.",
+    "icon": "relics/grand-burning-scene-1.webp"
+  },
+  {
+    "slug": "grand-tranquil-scene-5fea4b",
+    "name": "Grand Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "Improved Stance-Breaking when Two-Handing",
+      "Improved Initial Standard Attack",
+      "Poise +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3.",
+    "icon": "relics/grand-tranquil-scene-2.webp"
+  },
+  {
+    "slug": "grand-burning-scene-83adb5",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "Improved Stance-Breaking when Wielding Two Armaments",
+      "Stamina Recovery upon Landing Attacks",
+      "Endurance +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3.",
+    "icon": "relics/grand-burning-scene-1.webp"
+  },
+  {
+    "slug": "grand-luminous-scene-84a036",
+    "name": "Grand Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "Attack power increased for each evergaol prisoner defeated",
+      "Treasure marked upon map",
+      "Stonesword Key in possession at start of expedition"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3.",
+    "icon": "relics/grand-luminous-scene-3.webp"
+  },
+  {
+    "slug": "grand-drizzly-scene-30249c",
+    "name": "Grand Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "Starlight Shards in possession at start of expedition",
+      "Starlight Shards in possession at start of expedition",
+      "Starlight Shards in possession at start of expedition"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3.",
+    "icon": "relics/grand-drizzly-scene-2.webp"
+  },
+  {
+    "slug": "grand-burning-scene-ae091b",
+    "name": "Grand Burning Scene",
+    "kind": "scene",
+    "colour": "red",
+    "effects": [
+      "HP Restored when using medicinal boluses, etc.",
+      "Items confer effect to all nearby allies",
+      "Small Pouch in possession at start of expedition"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord as Undertaker and as Scholar.",
+    "icon": "relics/grand-burning-scene-2.webp"
+  },
+  {
+    "slug": "grand-drizzly-scene-1660da",
+    "name": "Grand Drizzly Scene",
+    "kind": "scene",
+    "colour": "blue",
+    "effects": [
+      "Max HP increased for each great enemy defeated at a Great Church",
+      "Arcane increased for each great enemy defeated at a Ruin",
+      "Max FP increased for each Sorcerer's Rise unlocked"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating the Dreglord as Undertaker and as Scholar.",
+    "icon": "relics/grand-drizzly-scene-3.webp"
+  },
+  {
+    "slug": "grand-luminous-scene-1e3d71",
+    "name": "Grand Luminous Scene",
+    "kind": "scene",
+    "colour": "yellow",
+    "effects": [
+      "Critical hits fills more of the Art gauge",
+      "Defeating enemies fills more of the Art gauge",
+      "Ultimate Art Auto Charge +3"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating any Everdark Sovereign as Undertaker or Scholar.",
+    "icon": "relics/grand-luminous-scene-1.webp"
+  },
+  {
+    "slug": "grand-tranquil-scene-952e48",
+    "name": "Grand Tranquil Scene",
+    "kind": "scene",
+    "colour": "green",
+    "effects": [
+      "Taking attacks improves attack power",
+      "Improved Poise and Damage Negation when Knocked Back by Damage",
+      "Physical Attack Power Up +2"
+    ],
+    "acquisition": "Acquired from the Collector Signboard for 3 after defeating any Everdark Sovereign as Undertaker or Scholar.",
+    "icon": "relics/grand-tranquil-scene-2.webp"
+  }
+]

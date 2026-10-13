@@ -1,7 +1,13 @@
 import pytest
 from django.urls import reverse
 
-from tests.factories import BuildFactory, UserFactory, VesselFactory
+from tests.factories import (
+    BuildFactory,
+    RelicEffectFactory,
+    RelicFactory,
+    UserFactory,
+    VesselFactory,
+)
 
 
 @pytest.mark.django_db
@@ -62,3 +68,21 @@ def test_healthz_is_not_redirected(client, settings, debug):
     settings.SECURE_SSL_REDIRECT = not debug
     settings.SECURE_REDIRECT_EXEMPT = [r"^healthz/$"]
     assert client.get("/healthz/").status_code == 200
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    ("params", "expected"),
+    [
+        ({"q": "tear"}, ["Silver Tear"]),
+        ({"q": "arcane"}, ["Silver Tear"]),
+        ({"colour": "green"}, ["Golden Sprout"]),
+        ({"kind": "custom"}, ["Golden Sprout"]),
+    ],
+)
+def test_relic_list_filters(client, params, expected):
+    tear = RelicFactory(name="Silver Tear", colour="blue", kind="unique")
+    tear.effects.set([RelicEffectFactory(name="Arcane +3")])
+    RelicFactory(name="Golden Sprout", colour="green", kind="custom")
+    response = client.get(reverse("relic-list"), params)
+    assert [r.name for r in response.context["relic_list"]] == expected

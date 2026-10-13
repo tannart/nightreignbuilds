@@ -95,6 +95,14 @@ class RelicEffect(models.Model):
     is_curse = models.BooleanField(
         default=False, help_text="A negative effect attached to deep relics."
     )
+    nightfarer = models.ForeignKey(
+        Nightfarer,
+        on_delete=models.CASCADE,
+        related_name="relic_effects",
+        null=True,
+        blank=True,
+        help_text="Set when the effect only works for one nightfarer.",
+    )
 
     class Meta:
         ordering = ["name"]
@@ -106,9 +114,25 @@ class RelicEffect(models.Model):
 class Relic(models.Model):
     MAX_EFFECTS = 3
 
+    class Kind(models.TextChoices):
+        UNIQUE = "unique", "Unique"
+        SCENE = "scene", "Fixed scene"
+        CUSTOM = "custom", "Player-found"
+
     name = models.CharField(max_length=200)
+    slug = models.SlugField(
+        unique=True,
+        null=True,
+        blank=True,
+        help_text="Set on catalogued relics so seeding can update them in place.",
+    )
+    kind = models.CharField(max_length=10, choices=Kind.choices, default=Kind.CUSTOM)
     colour = models.CharField(max_length=10, choices=Colour.choices)
     is_deep = models.BooleanField(default=False, help_text="Deep of Night relic.")
+    acquisition = models.TextField(blank=True, help_text="How to get it.")
+    icon = models.CharField(
+        max_length=200, blank=True, help_text="Path under static/, e.g. relics/x.webp"
+    )
     effects = models.ManyToManyField(RelicEffect, related_name="relics", blank=True)
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -119,11 +143,18 @@ class Relic(models.Model):
     )
 
     class Meta:
-        ordering = ["colour", "name"]
+        ordering = ["kind", "name"]
 
     def __str__(self) -> str:
         deep = " (Deep)" if self.is_deep else ""
         return f"{self.name} [{self.get_colour_display()}]{deep}"
+
+    def label(self) -> str:
+        """Scene relics share names, so tell them apart by their effects."""
+        label = str(self)
+        if self.kind == self.Kind.SCENE:
+            label += " — " + " · ".join(e.name for e in self.effects.all())
+        return label
 
     def fits_slot(self, slot_colour: str) -> bool:
         return slot_colour == SlotColour.WHITE or slot_colour == self.colour

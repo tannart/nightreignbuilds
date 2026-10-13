@@ -1,3 +1,6 @@
+import json
+import re
+from pathlib import Path
 from typing import Any
 
 from django.core.management.base import BaseCommand
@@ -11,7 +14,12 @@ from builds.data.game_data import (
     VESSEL_NAME_TEMPLATES,
     possessive,
 )
-from builds.models import Nightfarer, SlotColour, Vessel
+from builds.models import Nightfarer, Relic, RelicEffect, SlotColour, Vessel
+
+RELICS_FILE = Path(__file__).resolve().parents[2] / "data" / "relics.json"
+
+# Character-specific effects are written "[Wylder] ...".
+NIGHTFARER_PREFIX = re.compile(r"^\[(\w+)\]")
 
 COLOUR_CODES = {
     "R": SlotColour.RED,
@@ -58,9 +66,43 @@ class Command(BaseCommand):
                     **slot_fields(standard, deep),
                 },
             )
+        self.seed_relics()
         self.stdout.write(
             self.style.SUCCESS(
                 f"{Nightfarer.objects.count()} nightfarers, "
-                f"{Vessel.objects.count()} vessels"
+                f"{Vessel.objects.count()} vessels, "
+                f"{Relic.objects.exclude(slug=None).count()} catalogued relics"
             )
         )
+
+    def seed_relics(self) -> None:
+        nightfarers = {n.name: n for n in Nightfarer.objects.all()}
+        effects: dict[str, RelicEffect] = {}
+        for entry in json.loads(RELICS_FILE.read_text()):
+            relic, _ = Relic.objects.update_or_create(
+                slug=entry["slug"],
+                defaults={
+                    "name": entry["name"],
+                    "kind": entry["kind"],
+                    "colour": entry["colour"],
+                    "acquisition": entry["acquisition"],
+                    "icon": entry["icon"],
+                },
+            )
+            relic.effects.set(
+                [self.effect(name, nightfarers, effects) for name in entry["effects"]]
+            )
+
+    def effect(
+        self,
+        name: str,
+        nightfarers: dict[str, Nightfarer],
+        cache: dict[str, RelicEffect],
+    ) -> RelicEffect:
+        if name not in cache:
+            match = NIGHTFARER_PREFIX.match(name)
+            cache[name], _ = RelicEffect.objects.update_or_create(
+                name=name,
+                defaults={"nightfarer": nightfarers.get(match[1]) if match else None},
+            )
+        return cache[name]

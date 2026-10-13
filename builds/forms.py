@@ -88,6 +88,11 @@ class VesselChoiceField(forms.ModelChoiceField[Vessel]):
         return f"{obj.name} ({obj.slot_summary()})"
 
 
+class RelicChoiceField(forms.ModelChoiceField[Relic]):
+    def label_from_instance(self, obj: Relic) -> str:
+        return obj.label()
+
+
 def slot_field_name(slot: int) -> str:
     return f"slot_{slot}"
 
@@ -116,8 +121,8 @@ class BuildForm(forms.ModelForm[Build]):
         for slot in STANDARD_SLOTS + DEEP_SLOTS:
             deep = slot in DEEP_SLOTS
             label = f"Deep slot {slot - 3}" if deep else f"Slot {slot}"
-            self.fields[slot_field_name(slot)] = forms.ModelChoiceField(
-                queryset=Relic.objects.filter(is_deep=deep),
+            self.fields[slot_field_name(slot)] = RelicChoiceField(
+                queryset=Relic.objects.filter(is_deep=deep).prefetch_related("effects"),
                 required=False,
                 label=label,
                 initial=current.get(slot),

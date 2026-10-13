@@ -6,6 +6,7 @@ from tests.factories import (
     BuildFactory,
     BuildRelicFactory,
     NightfarerFactory,
+    RelicEffectFactory,
     RelicFactory,
     VesselFactory,
 )
@@ -75,3 +76,17 @@ def test_build_relic_accepts_matching_relic(build):
 def test_vessel_slot_summary():
     vessel = VesselFactory.build()
     assert vessel.slot_summary() == "Red, Blue, White | Deep: Red, Green, Yellow"
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    ("kind", "expected"),
+    [
+        ("scene", "Grand Scene [Red] — Vigor +2"),
+        ("unique", "Grand Scene [Red]"),
+    ],
+)
+def test_relic_label_shows_effects_for_scene_relics(kind, expected):
+    relic = RelicFactory(name="Grand Scene", kind=kind)
+    relic.effects.set([RelicEffectFactory(name="Vigor +2")])
+    assert relic.label() == expected

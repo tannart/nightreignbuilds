@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
-from django.db.models import Count, QuerySet
+from django.db.models import Count, Q, QuerySet
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
@@ -138,12 +138,21 @@ class RelicListView(generic.ListView[Relic]):
         qs = super().get_queryset()
         if colour := self.request.GET.get("colour"):
             qs = qs.filter(colour=colour)
+        if kind := self.request.GET.get("kind"):
+            qs = qs.filter(kind=kind)
+        if query := self.request.GET.get("q", "").strip():
+            qs = qs.filter(
+                Q(name__icontains=query) | Q(effects__name__icontains=query)
+            ).distinct()
         return qs
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["colours"] = Colour.choices
         context["selected"] = self.request.GET.get("colour", "")
+        context["kinds"] = Relic.Kind.choices
+        context["kind"] = self.request.GET.get("kind", "")
+        context["query"] = self.request.GET.get("q", "")
         return context
 
 

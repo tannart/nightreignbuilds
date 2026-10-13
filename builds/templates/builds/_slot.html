@@ -1,5 +1,10 @@
+{% load static %}
 <div class="slot{% if not relic %} empty{% endif %}">
-    <span class="gem lg {{ colour }}{% if not relic %} empty{% endif %}" title="{{ colour|title }} slot"></span>
+    {% if relic.icon %}
+        <span class="slot-icon"><img class="relic-icon {{ relic.colour }}" src="{% static relic.icon %}" alt="" width="56" height="56"><span class="gem {{ colour }}" title="{{ colour|title }} slot"></span></span>
+    {% else %}
+        <span class="gem lg {{ colour }}{% if not relic %} empty{% endif %}" title="{{ colour|title }} slot"></span>
+    {% endif %}
     <div>
         <span class="slot-label">{{ colour }} slot</span>
         {% if relic %}
