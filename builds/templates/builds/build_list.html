@@ -6,7 +6,7 @@
             <h1>{% if author == user.username %}My builds{% else %}{{ author }}’s builds{% endif %}</h1>
             <p>{{ paginator.count }} build{{ paginator.count|pluralize }}</p>
         </div>
-        {% if author == user.username %}<a class="button" href="{% url 'build-choose' %}">New build</a>{% endif %}
+        {% if author == user.username %}<a class="button" href="{% url 'builder' %}">New build</a>{% endif %}
     </div>
 {% else %}
     <section class="hero">
@@ -16,9 +16,9 @@
             <p class="lede">Share your relic loadouts, steal the ones that beat the Night Lord, and find the vessel that makes your Nightfarer sing.</p>
             <div class="cta-group">
                 {% if user.is_authenticated %}
-                    <a class="button" href="{% url 'build-choose' %}">Share a build</a>
+                    <a class="button" href="{% url 'builder' %}">Open the builder</a>
                 {% else %}
-                    <a class="button" href="{% url 'signup' %}">Share a build</a>
+                    <a class="button" href="{% url 'builder' %}">Open the builder</a>
                 {% endif %}
                 <a class="button button-ghost" href="{% url 'relic-list' %}">Browse relics</a>
             </div>
@@ -46,7 +46,7 @@
 {% else %}
     <div class="empty-state">
         <p>No builds here yet. The night is young.</p>
-        {% if user.is_authenticated %}<a class="button" href="{% url 'build-choose' %}">Share the first one</a>{% else %}<a class="button" href="{% url 'signup' %}">Sign up to share one</a>{% endif %}
+        {% if user.is_authenticated %}<a class="button" href="{% url 'builder' %}">Share the first one</a>{% else %}<a class="button" href="{% url 'builder' %}">Make one</a>{% endif %}
     </div>
 {% endif %}
 

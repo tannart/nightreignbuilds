@@ -1,0 +1,8 @@
+{% load static %}
+<li class="card weapon-card">
+    {% if weapon.icon %}<img class="weapon-icon" src="{% static weapon.icon %}" alt="" width="72" height="72" loading="lazy">{% endif %}
+    <div>
+        <h3>{{ weapon.name }}</h3>
+        <p class="meta">{{ weapon.category }}</p>
+    </div>
+</li>

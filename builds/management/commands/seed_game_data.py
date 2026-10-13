@@ -14,9 +14,16 @@ from builds.data.game_data import (
     VESSEL_NAME_TEMPLATES,
     possessive,
 )
-from builds.models import Nightfarer, Relic, RelicEffect, SlotColour, Vessel
+from builds.models import (
+    Nightfarer,
+    Relic,
+    RelicEffect,
+    SlotColour,
+    Vessel,
+    Weapon,
+)
 
-RELICS_FILE = Path(__file__).resolve().parents[2] / "data" / "relics.json"
+DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 
 # Character-specific effects are written "[Wylder] ...".
 NIGHTFARER_PREFIX = re.compile(r"^\[(\w+)\]")
@@ -67,18 +74,22 @@ class Command(BaseCommand):
                 },
             )
         self.seed_relics()
+        self.seed_effects()
+        self.seed_weapons()
         self.stdout.write(
             self.style.SUCCESS(
                 f"{Nightfarer.objects.count()} nightfarers, "
                 f"{Vessel.objects.count()} vessels, "
-                f"{Relic.objects.exclude(slug=None).count()} catalogued relics"
+                f"{Relic.objects.exclude(slug=None).count()} catalogued relics, "
+                f"{RelicEffect.objects.filter(official=True).count()} effects, "
+                f"{Weapon.objects.count()} weapons"
             )
         )
 
     def seed_relics(self) -> None:
         nightfarers = {n.name: n for n in Nightfarer.objects.all()}
         effects: dict[str, RelicEffect] = {}
-        for entry in json.loads(RELICS_FILE.read_text()):
+        for entry in json.loads((DATA_DIR / "relics.json").read_text()):
             relic, _ = Relic.objects.update_or_create(
                 slug=entry["slug"],
                 defaults={
@@ -93,6 +104,25 @@ class Command(BaseCommand):
                 [self.effect(name, nightfarers, effects) for name in entry["effects"]]
             )
 
+    def seed_effects(self) -> None:
+        """The wider pool of effects that random relics can roll, offered as
+        suggestions when people describe their own relics."""
+        nightfarers = {n.name: n for n in Nightfarer.objects.all()}
+        cache = {e.name: e for e in RelicEffect.objects.all()}
+        for name in json.loads((DATA_DIR / "effects.json").read_text()):
+            self.effect(name, nightfarers, cache)
+
+    def seed_weapons(self) -> None:
+        for entry in json.loads((DATA_DIR / "weapons.json").read_text()):
+            Weapon.objects.update_or_create(
+                slug=entry["slug"],
+                defaults={
+                    "name": entry["name"],
+                    "category": entry["category"],
+                    "icon": entry["icon"],
+                },
+            )
+
     def effect(
         self,
         name: str,
@@ -103,6 +133,9 @@ class Command(BaseCommand):
             match = NIGHTFARER_PREFIX.match(name)
             cache[name], _ = RelicEffect.objects.update_or_create(
                 name=name,
-                defaults={"nightfarer": nightfarers.get(match[1]) if match else None},
+                defaults={
+                    "nightfarer": nightfarers.get(match[1]) if match else None,
+                    "official": True,
+                },
             )
         return cache[name]

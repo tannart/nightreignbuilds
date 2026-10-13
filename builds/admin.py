@@ -1,6 +1,14 @@
 from django.contrib import admin
 
-from .models import Build, BuildRelic, Nightfarer, Relic, RelicEffect, Vessel
+from .models import (
+    Build,
+    BuildRelic,
+    Nightfarer,
+    Relic,
+    RelicEffect,
+    Vessel,
+    Weapon,
+)
 
 
 class VesselInline(admin.TabularInline[Vessel, Nightfarer]):
@@ -34,15 +42,15 @@ class VesselAdmin(admin.ModelAdmin[Vessel]):
 
 @admin.register(RelicEffect)
 class RelicEffectAdmin(admin.ModelAdmin[RelicEffect]):
-    list_display = ["name", "deep_only", "is_curse"]
-    list_filter = ["deep_only", "is_curse"]
+    list_display = ["name", "nightfarer", "official", "deep_only", "is_curse"]
+    list_filter = ["official", "nightfarer", "deep_only", "is_curse"]
     search_fields = ["name"]
 
 
 @admin.register(Relic)
 class RelicAdmin(admin.ModelAdmin[Relic]):
-    list_display = ["name", "colour", "is_deep", "created_by"]
-    list_filter = ["colour", "is_deep"]
+    list_display = ["name", "kind", "colour", "is_deep", "created_by"]
+    list_filter = ["kind", "colour", "is_deep"]
     search_fields = ["name"]
     filter_horizontal = ["effects"]
 
@@ -54,7 +62,25 @@ class BuildRelicInline(admin.TabularInline[BuildRelic, Build]):
 
 @admin.register(Build)
 class BuildAdmin(admin.ModelAdmin[Build]):
-    list_display = ["name", "nightfarer", "vessel", "author", "created_at"]
-    list_filter = ["nightfarer"]
-    search_fields = ["name", "author__username"]
+    list_display = [
+        "name",
+        "slug",
+        "nightfarer",
+        "author",
+        "is_listed",
+        "deep_of_night",
+        "created_at",
+    ]
+    list_filter = ["is_listed", "deep_of_night", "nightfarer"]
+    search_fields = ["name", "slug", "author__username"]
+    readonly_fields = ["slug"]
+    filter_horizontal = ["weapons"]
     inlines = [BuildRelicInline]
+
+
+@admin.register(Weapon)
+class WeaponAdmin(admin.ModelAdmin[Weapon]):
+    list_display = ["name", "category"]
+    list_filter = ["category"]
+    search_fields = ["name"]
+    prepopulated_fields = {"slug": ("name",)}

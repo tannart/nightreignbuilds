@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Weapons · nightreign.build{% endblock %}
+{% block content %}
+<div class="page-head">
+    <div>
+        <h1>Weapons</h1>
+        <p>Every armament you can find on an expedition.</p>
+    </div>
+</div>
+<form class="search" method="get" role="search">
+    <select name="category" aria-label="Weapon type" onchange="this.form.submit()">
+        <option value="">All types</option>
+        {% for c in categories %}<option value="{{ c }}"{% if c == category %} selected{% endif %}>{{ c }}</option>{% endfor %}
+    </select>
+    <input type="search" name="q" value="{{ query }}" placeholder="Search weapons" aria-label="Search weapons">
+    <button type="submit" class="button-sm">Search</button>
+</form>
+{% if weapon_list %}
+<ul class="grid tight">{% for weapon in weapon_list %}{% include "builds/_weapon.html" %}{% endfor %}</ul>
+{% else %}
+<div class="empty-state"><p>No weapons match that.</p><a class="button button-ghost" href="{% url 'weapon-list' %}">Clear filters</a></div>
+{% endif %}
+{% if is_paginated %}
+<nav class="pagination" aria-label="Pages">
+    {% if page_obj.has_previous %}<a class="button button-ghost button-sm" href="{% querystring page=page_obj.previous_page_number %}">← Previous</a>{% endif %}
+    <span>Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
+    {% if page_obj.has_next %}<a class="button button-ghost button-sm" href="{% querystring page=page_obj.next_page_number %}">Next →</a>{% endif %}
+</nav>
+{% endif %}
+{% endblock %}

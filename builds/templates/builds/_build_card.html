@@ -1,12 +1,12 @@
 {% load humanize %}
 <li>
     <a class="card" href="{{ build.get_absolute_url }}">
-        <span class="badge">{{ build.nightfarer }}</span>
+        <span class="badge">{{ build.nightfarer }}</span>{% if not build.is_listed %} <span class="badge gold">Link only</span>{% endif %}
         <h3>{{ build.name }}</h3>
-        <p class="meta">{{ build.vessel }}</p>
+        <p class="meta">{% if build.vessel %}{{ build.vessel }}{% else %}Any vessel{% endif %}{% if build.deep_of_night %} · Deep of Night{% endif %}</p>
         <div class="footer">
-            {% include "builds/_gems.html" with vessel=build.vessel %}
-            <span class="meta">{{ build.author }} · {{ build.created_at|naturaltime }}</span>
+            {% if build.vessel %}{% include "builds/_gems.html" with vessel=build.vessel %}{% else %}<span></span>{% endif %}
+            <span class="meta">{{ build.author|default:'Anonymous' }} · {{ build.created_at|naturaltime }}</span>
         </div>
     </a>
 </li>

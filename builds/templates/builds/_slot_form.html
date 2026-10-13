@@ -1,0 +1,19 @@
+<div class="slot-card{% if slot.is_deep %} deep{% endif %}">
+    <label class="slot-card-head" for="{{ slot.relic.id_for_label }}">
+        <span class="gem white empty" data-gem-for="{{ slot.relic.id_for_label }}"></span>
+        {{ slot.relic.label }}
+    </label>
+    {{ slot.non_field_errors }}
+    <div class="relic-picker">{{ slot.relic }}{{ slot.relic.errors }}</div>
+    <label class="custom-toggle">{{ slot.custom }} <span>Describe a custom relic instead</span></label>
+    <div class="custom-relic" data-custom-for="{{ slot.custom.id_for_label }}"{% if not slot.custom.value %} hidden{% endif %}>
+        <div class="custom-row">
+            <p><label for="{{ slot.custom_name.id_for_label }}">{{ slot.custom_name.label }}</label>{{ slot.custom_name }}{{ slot.custom_name.errors }}</p>
+            <p><label for="{{ slot.custom_colour.id_for_label }}">{{ slot.custom_colour.label }}</label>{{ slot.custom_colour }}{{ slot.custom_colour.errors }}</p>
+        </div>
+        {% for field in slot.effect_fields %}<p><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{{ field.errors }}</p>{% endfor %}
+        {% if user.is_authenticated %}
+            <p class="check"><label for="{{ slot.save_custom.id_for_label }}">{{ slot.save_custom.label }}</label>{{ slot.save_custom }}</p>
+        {% endif %}
+    </div>
+</div>

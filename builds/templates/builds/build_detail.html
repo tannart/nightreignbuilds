@@ -1,16 +1,39 @@
 {% extends "base.html" %}
-{% load humanize %}
+{% load humanize static %}
 {% block title %}{{ build.name }} · {{ build.nightfarer }} build · nightreign.build{% endblock %}
-{% block description %}{{ build.nightfarer }} build using {{ build.vessel }}{% if build.description %}: {{ build.description|truncatechars:140 }}{% endif %}{% endblock %}
+{% block description %}{{ build.nightfarer }} build{% if build.vessel %} using {{ build.vessel }}{% endif %}{% if build.description %}: {{ build.description|truncatechars:140 }}{% endif %}{% endblock %}
+{% block head %}{% if not build.is_listed %}<meta name="robots" content="noindex">{% endif %}{% endblock %}
 {% block content %}
+{% if just_shared or not build.is_listed and is_author %}
+<section class="share-banner">
+    <div>
+        <strong>{% if just_shared %}Your build is ready to share.{% else %}This build is link-only.{% endif %}</strong>
+        <span class="muted">Anyone with the link can see it. It won't show up in listings{% if is_author %} until you save it{% endif %}.</span>
+    </div>
+    <div class="share-row">
+        <input type="text" readonly value="{{ share_url }}" id="share-url" aria-label="Share link">
+        <button type="button" class="button button-sm" data-copy="share-url">Copy link</button>
+    </div>
+    {% if is_author and not build.is_listed %}
+        <form method="post" action="{% url 'build-publish' build.slug %}">{% csrf_token %}<button type="submit" class="button button-ghost button-sm">Save to my builds</button></form>
+    {% endif %}
+</section>
+{% endif %}
+
 <section class="build-hero">
     <a class="badge" href="{% url 'build-list' %}?nightfarer={{ build.nightfarer.slug }}">{{ build.nightfarer }}</a>
+    {% if not build.is_listed %}<span class="badge gold">Link only</span>{% endif %}
+    {% if build.deep_of_night %}<span class="badge">Deep of Night</span>{% endif %}
     <h1>{{ build.name }}</h1>
-    <p class="byline">by <a href="{% url 'build-list' %}?author={{ build.author.username|urlencode }}">{{ build.author }}</a> · {{ build.created_at|naturaltime }}{% if build.updated_at|date:"U" != build.created_at|date:"U" %} · updated {{ build.updated_at|naturaltime }}{% endif %}</p>
+    <p class="byline">{% if build.author %}by <a href="{% url 'build-list' %}?author={{ build.author.username|urlencode }}">{{ build.author }}</a>{% else %}Shared anonymously{% endif %} · {{ build.created_at|naturaltime }}{% if build.updated_at|date:"U" != build.created_at|date:"U" %} · updated {{ build.updated_at|naturaltime }}{% endif %}</p>
     <div class="vessel-line">
         <span class="muted">Vessel</span>
-        <strong>{{ build.vessel }}</strong>
-        {% include "builds/_gems.html" with vessel=build.vessel deep=True %}
+        {% if build.vessel %}
+            <strong>{{ build.vessel }}</strong>
+            {% include "builds/_gems.html" with vessel=build.vessel deep=build.deep_of_night %}
+        {% else %}
+            <strong>Any</strong>
+        {% endif %}
     </div>
 </section>
 
@@ -20,15 +43,26 @@
 {% endif %}
 
 <h2 class="eyebrow">Relics</h2>
-<div class="slots">{% for colour, relic in standard_slots %}{% include "builds/_slot.html" %}{% endfor %}</div>
+<div class="slots">{% for slot in standard_slots %}{% include "builds/_slot.html" with colour=slot.colour relic=slot.relic shown=slot.shown %}{% endfor %}</div>
 
+{% if build.deep_of_night %}
 <h2 class="eyebrow">Deep of Night</h2>
-<div class="slots deep">{% for colour, relic in deep_slots %}{% include "builds/_slot.html" %}{% endfor %}</div>
-
-{% if user == build.author %}
-<div class="actions">
-    <a class="button" href="{% url 'build-update' build.pk %}">Edit build</a>
-    <a class="button button-ghost" href="{% url 'build-delete' build.pk %}">Delete</a>
-</div>
+<div class="slots deep">{% for slot in deep_slots %}{% include "builds/_slot.html" with colour=slot.colour relic=slot.relic shown=slot.shown %}{% endfor %}</div>
 {% endif %}
+
+{% with weapons=build.weapons.all %}{% if weapons %}
+<h2 class="eyebrow">Weapons</h2>
+<ul class="grid tight">
+    {% for weapon in weapons %}{% include "builds/_weapon.html" %}{% endfor %}
+</ul>
+{% endif %}{% endwith %}
+
+<div class="actions">
+    {% if is_author %}
+        <a class="button" href="{% url 'build-update' build.slug %}">Edit build</a>
+    {% endif %}
+    <a class="button button-ghost" href="{% url 'builder' %}?from={{ build.slug }}">Remix</a>
+    {% if is_author %}<a class="button button-ghost" href="{% url 'build-delete' build.slug %}">Delete</a>{% endif %}
+</div>
 {% endblock %}
+{% block scripts %}<script src="{% static 'js/builder.js' %}"></script>{% endblock %}

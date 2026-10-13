@@ -1,3 +1,5 @@
+import secrets
+
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -103,6 +105,10 @@ class RelicEffect(models.Model):
         blank=True,
         help_text="Set when the effect only works for one nightfarer.",
     )
+    official = models.BooleanField(
+        default=True,
+        help_text="Known in-game effect. Effects typed into custom relics are not.",
+    )
 
     class Meta:
         ordering = ["name"]
@@ -156,19 +162,64 @@ class Relic(models.Model):
             label += " — " + " · ".join(e.name for e in self.effects.all())
         return label
 
-    def fits_slot(self, slot_colour: str) -> bool:
-        return slot_colour == SlotColour.WHITE or slot_colour == self.colour
+    def fits_slot(self, slot_colour: str | None) -> bool:
+        return slot_colour in (None, SlotColour.WHITE, self.colour)
+
+    @property
+    def is_remembrance(self) -> bool:
+        return self.kind == self.Kind.UNIQUE and "Remembrance" in self.acquisition
+
+
+class Weapon(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=110, unique=True)
+    category = models.CharField(max_length=50)
+    icon = models.CharField(
+        max_length=200, blank=True, help_text="Path under static/, e.g. weapons/x.webp"
+    )
+
+    class Meta:
+        ordering = ["category", "name"]
+
+    def __str__(self) -> str:
+        return self.name
+
+
+def new_build_slug() -> str:
+    return secrets.token_urlsafe(6)
 
 
 class Build(models.Model):
+    MAX_WEAPONS = 6
+
+    slug = models.CharField(
+        max_length=16, unique=True, default=new_build_slug, editable=False
+    )
     name = models.CharField(max_length=120)
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="builds"
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="builds",
+        null=True,
+        blank=True,
+        help_text="Empty for share links made without logging in.",
+    )
+    is_listed = models.BooleanField(
+        default=True,
+        help_text="Saved builds are listed; share links are only reachable by URL.",
     )
     nightfarer = models.ForeignKey(
         Nightfarer, on_delete=models.PROTECT, related_name="builds"
     )
-    vessel = models.ForeignKey(Vessel, on_delete=models.PROTECT, related_name="builds")
+    vessel = models.ForeignKey(
+        Vessel,
+        on_delete=models.PROTECT,
+        related_name="builds",
+        null=True,
+        blank=True,
+    )
+    deep_of_night = models.BooleanField(default=False)
+    weapons = models.ManyToManyField(Weapon, related_name="builds", blank=True)
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -180,11 +231,18 @@ class Build(models.Model):
         return self.name
 
     def get_absolute_url(self) -> str:
-        return reverse("build-detail", args=[self.pk])
+        return reverse("build-detail", args=[self.slug])
+
+    @property
+    def slot_numbers(self) -> tuple[int, ...]:
+        return STANDARD_SLOTS + DEEP_SLOTS if self.deep_of_night else STANDARD_SLOTS
+
+    def slot_colour(self, slot: int) -> str | None:
+        return self.vessel.slot_colour(slot) if self.vessel else None
 
     def clean(self) -> None:
         if (
-            self.vessel_id
+            self.vessel is not None
             and self.nightfarer_id
             and not self.vessel.usable_by(self.nightfarer)
         ):
@@ -215,8 +273,8 @@ class BuildRelic(models.Model):
         return self.slot in DEEP_SLOTS
 
     @property
-    def slot_colour(self) -> str:
-        return self.build.vessel.slot_colour(self.slot)
+    def slot_colour(self) -> str | None:
+        return self.build.slot_colour(self.slot)
 
     def clean(self) -> None:
         if self.relic.is_deep != self.is_deep_slot:

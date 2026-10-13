@@ -1,0 +1,5 @@
+<label class="farer-option"{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %}>
+    <input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>
+    <span class="monogram" aria-hidden="true">{{ widget.label|first }}</span>
+    <span class="farer-name">{{ widget.label }}</span>
+</label>

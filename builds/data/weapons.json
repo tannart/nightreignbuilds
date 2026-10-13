@@ -1,0 +1,2324 @@
+[
+  {
+    "slug": "duchess-dagger",
+    "name": "Duchess' Dagger",
+    "category": "Dagger",
+    "icon": "weapons/duchess-dagger.webp"
+  },
+  {
+    "slug": "dagger",
+    "name": "Dagger",
+    "category": "Dagger",
+    "icon": "weapons/dagger.webp"
+  },
+  {
+    "slug": "parrying-dagger",
+    "name": "Parrying Dagger",
+    "category": "Dagger",
+    "icon": "weapons/parrying-dagger.webp"
+  },
+  {
+    "slug": "great-knife",
+    "name": "Great Knife",
+    "category": "Dagger",
+    "icon": "weapons/great-knife.webp"
+  },
+  {
+    "slug": "misericorde",
+    "name": "Miséricorde",
+    "category": "Dagger",
+    "icon": "weapons/misericorde.webp"
+  },
+  {
+    "slug": "bloodstained-dagger",
+    "name": "Bloodstained Dagger",
+    "category": "Dagger",
+    "icon": "weapons/bloodstained-dagger.webp"
+  },
+  {
+    "slug": "erdsteel-dagger",
+    "name": "Erdsteel Dagger",
+    "category": "Dagger",
+    "icon": "weapons/erdsteel-dagger.webp"
+  },
+  {
+    "slug": "wakizashi",
+    "name": "Wakizashi",
+    "category": "Dagger",
+    "icon": "weapons/wakizashi.webp"
+  },
+  {
+    "slug": "celebrant-s-sickle",
+    "name": "Celebrant's Sickle",
+    "category": "Dagger",
+    "icon": "weapons/celebrant-s-sickle.webp"
+  },
+  {
+    "slug": "ivory-sickle",
+    "name": "Ivory Sickle",
+    "category": "Dagger",
+    "icon": "weapons/ivory-sickle.webp"
+  },
+  {
+    "slug": "crystal-knife",
+    "name": "Crystal Knife",
+    "category": "Dagger",
+    "icon": "weapons/crystal-knife.webp"
+  },
+  {
+    "slug": "scorpion-s-stinger",
+    "name": "Scorpion's Stinger",
+    "category": "Dagger",
+    "icon": "weapons/scorpion-s-stinger.webp"
+  },
+  {
+    "slug": "cinquedea",
+    "name": "Cinquedea",
+    "category": "Dagger",
+    "icon": "weapons/cinquedea.webp"
+  },
+  {
+    "slug": "glintstone-kris",
+    "name": "Glintstone Kris",
+    "category": "Dagger",
+    "icon": "weapons/glintstone-kris.webp"
+  },
+  {
+    "slug": "reduvia",
+    "name": "Reduvia",
+    "category": "Dagger",
+    "icon": "weapons/reduvia.webp"
+  },
+  {
+    "slug": "blade-of-calling",
+    "name": "Blade of Calling",
+    "category": "Dagger",
+    "icon": "weapons/blade-of-calling.webp"
+  },
+  {
+    "slug": "black-knife",
+    "name": "Black Knife",
+    "category": "Dagger",
+    "icon": "weapons/black-knife.webp"
+  },
+  {
+    "slug": "short-sword",
+    "name": "Short Sword",
+    "category": "Straight Sword",
+    "icon": "weapons/short-sword.webp"
+  },
+  {
+    "slug": "longsword",
+    "name": "Longsword",
+    "category": "Straight Sword",
+    "icon": "weapons/longsword.webp"
+  },
+  {
+    "slug": "broadsword",
+    "name": "Broadsword",
+    "category": "Straight Sword",
+    "icon": "weapons/broadsword.webp"
+  },
+  {
+    "slug": "weathered-straight-sword",
+    "name": "Weathered Straight Sword",
+    "category": "Straight Sword",
+    "icon": "weapons/weathered-straight-sword.webp"
+  },
+  {
+    "slug": "noble-s-slender-sword",
+    "name": "Noble's Slender Sword",
+    "category": "Straight Sword",
+    "icon": "weapons/noble-s-slender-sword.webp"
+  },
+  {
+    "slug": "lordsworn-s-straight-sword",
+    "name": "Lordsworn's Straight Sword",
+    "category": "Straight Sword",
+    "icon": "weapons/lordsworn-s-straight-sword.webp"
+  },
+  {
+    "slug": "cane-sword",
+    "name": "Cane Sword",
+    "category": "Straight Sword",
+    "icon": "weapons/cane-sword.webp"
+  },
+  {
+    "slug": "warhawk-s-talon",
+    "name": "Warhawk's Talon",
+    "category": "Straight Sword",
+    "icon": "weapons/warhawk-s-talon.webp"
+  },
+  {
+    "slug": "lazuli-glintstone-sword",
+    "name": "Lazuli Glintstone Sword",
+    "category": "Straight Sword",
+    "icon": "weapons/lazuli-glintstone-sword.webp"
+  },
+  {
+    "slug": "carian-knight-s-sword",
+    "name": "Carian Knight's Sword",
+    "category": "Straight Sword",
+    "icon": "weapons/carian-knight-s-sword.webp"
+  },
+  {
+    "slug": "crystal-sword",
+    "name": "Crystal Sword",
+    "category": "Straight Sword",
+    "icon": "weapons/crystal-sword.webp"
+  },
+  {
+    "slug": "rotten-crystal-sword",
+    "name": "Rotten Crystal Sword",
+    "category": "Straight Sword",
+    "icon": "weapons/rotten-crystal-sword.webp"
+  },
+  {
+    "slug": "miquellan-knight-s-sword",
+    "name": "Miquellan Knight's Sword",
+    "category": "Straight Sword",
+    "icon": "weapons/miquellan-knight-s-sword.webp"
+  },
+  {
+    "slug": "ornamental-straight-sword",
+    "name": "Ornamental Straight Sword",
+    "category": "Straight Sword",
+    "icon": "weapons/ornamental-straight-sword.webp"
+  },
+  {
+    "slug": "golden-epitaph",
+    "name": "Golden Epitaph",
+    "category": "Straight Sword",
+    "icon": "weapons/golden-epitaph.webp"
+  },
+  {
+    "slug": "sword-of-st-trina",
+    "name": "Sword of St. Trina",
+    "category": "Straight Sword",
+    "icon": "weapons/sword-of-st-trina.webp"
+  },
+  {
+    "slug": "regalia-of-eochaid",
+    "name": "Regalia of Eochaid",
+    "category": "Straight Sword",
+    "icon": "weapons/regalia-of-eochaid.webp"
+  },
+  {
+    "slug": "coded-sword",
+    "name": "Coded Sword",
+    "category": "Straight Sword",
+    "icon": "weapons/coded-sword.webp"
+  },
+  {
+    "slug": "sword-of-night-and-flame",
+    "name": "Sword of Night and Flame",
+    "category": "Straight Sword",
+    "icon": "weapons/sword-of-night-and-flame.webp"
+  },
+  {
+    "slug": "wylder-s-greatsword",
+    "name": "Wylder's Greatsword",
+    "category": "Greatsword",
+    "icon": "weapons/wylder-s-greatsword.webp"
+  },
+  {
+    "slug": "bastard-sword",
+    "name": "Bastard Sword",
+    "category": "Greatsword",
+    "icon": "weapons/bastard-sword.webp"
+  },
+  {
+    "slug": "iron-greatsword",
+    "name": "Iron Greatsword",
+    "category": "Greatsword",
+    "icon": "weapons/iron-greatsword.webp"
+  },
+  {
+    "slug": "lordsworn-s-greatsword",
+    "name": "Lordsworn's Greatsword",
+    "category": "Greatsword",
+    "icon": "weapons/lordsworn-s-greatsword.webp"
+  },
+  {
+    "slug": "claymore",
+    "name": "Claymore",
+    "category": "Greatsword",
+    "icon": "weapons/claymore.webp"
+  },
+  {
+    "slug": "knight-s-greatsword",
+    "name": "Knight's Greatsword",
+    "category": "Greatsword",
+    "icon": "weapons/knight-s-greatsword.webp"
+  },
+  {
+    "slug": "banished-knight-s-greatsword",
+    "name": "Banished Knight's Greatsword",
+    "category": "Greatsword",
+    "icon": "weapons/banished-knight-s-greatsword.webp"
+  },
+  {
+    "slug": "forked-greatsword",
+    "name": "Forked Greatsword",
+    "category": "Greatsword",
+    "icon": "weapons/forked-greatsword.webp"
+  },
+  {
+    "slug": "flamberge",
+    "name": "Flamberge",
+    "category": "Greatsword",
+    "icon": "weapons/flamberge.webp"
+  },
+  {
+    "slug": "inseparable-sword",
+    "name": "Inseparable Sword",
+    "category": "Greatsword",
+    "icon": "weapons/inseparable-sword.webp"
+  },
+  {
+    "slug": "gargoyle-s-greatsword",
+    "name": "Gargoyle's Greatsword",
+    "category": "Greatsword",
+    "icon": "weapons/gargoyle-s-greatsword.webp"
+  },
+  {
+    "slug": "gargoyle-s-blackblade",
+    "name": "Gargoyle's Blackblade",
+    "category": "Greatsword",
+    "icon": "weapons/gargoyle-s-blackblade.webp"
+  },
+  {
+    "slug": "sword-of-milos",
+    "name": "Sword of Milos",
+    "category": "Greatsword",
+    "icon": "weapons/sword-of-milos.webp"
+  },
+  {
+    "slug": "ordovis-s-greatsword",
+    "name": "Ordovis's Greatsword",
+    "category": "Greatsword",
+    "icon": "weapons/ordovis-s-greatsword.webp"
+  },
+  {
+    "slug": "alabaster-lord-s-sword",
+    "name": "Alabaster Lord's Sword",
+    "category": "Greatsword",
+    "icon": "weapons/alabaster-lord-s-sword.webp"
+  },
+  {
+    "slug": "death-s-poker",
+    "name": "Death's Poker",
+    "category": "Greatsword",
+    "icon": "weapons/death-s-poker.webp"
+  },
+  {
+    "slug": "helphen-s-steeple",
+    "name": "Helphen's Steeple",
+    "category": "Greatsword",
+    "icon": "weapons/helphen-s-steeple.webp"
+  },
+  {
+    "slug": "marais-executioner-s-sword",
+    "name": "Marais Executioner's Sword",
+    "category": "Greatsword",
+    "icon": "weapons/marais-executioner-s-sword.webp"
+  },
+  {
+    "slug": "blasphemous-blade",
+    "name": "Blasphemous Blade",
+    "category": "Greatsword",
+    "icon": "weapons/blasphemous-blade.webp"
+  },
+  {
+    "slug": "golden-order-greatsword",
+    "name": "Golden Order Greatsword",
+    "category": "Greatsword",
+    "icon": "weapons/golden-order-greatsword.webp"
+  },
+  {
+    "slug": "dark-moon-greatsword",
+    "name": "Dark Moon Greatsword",
+    "category": "Greatsword",
+    "icon": "weapons/dark-moon-greatsword.webp"
+  },
+  {
+    "slug": "sacred-relic-sword",
+    "name": "Sacred Relic Sword",
+    "category": "Greatsword",
+    "icon": "weapons/sacred-relic-sword.webp"
+  },
+  {
+    "slug": "zweihander",
+    "name": "Zweihander",
+    "category": "Colossal Sword",
+    "icon": "weapons/zweihander.webp"
+  },
+  {
+    "slug": "greatsword",
+    "name": "Greatsword",
+    "category": "Colossal Sword",
+    "icon": "weapons/greatsword.webp"
+  },
+  {
+    "slug": "watchdog-s-greatsword",
+    "name": "Watchdog's Greatsword",
+    "category": "Colossal Sword",
+    "icon": "weapons/watchdog-s-greatsword.webp"
+  },
+  {
+    "slug": "troll-s-golden-sword",
+    "name": "Troll's Golden Sword",
+    "category": "Colossal Sword",
+    "icon": "weapons/troll-s-golden-sword.webp"
+  },
+  {
+    "slug": "troll-knight-s-sword",
+    "name": "Troll Knight's Sword",
+    "category": "Colossal Sword",
+    "icon": "weapons/troll-knight-s-sword.webp"
+  },
+  {
+    "slug": "royal-greatsword",
+    "name": "Royal Greatsword",
+    "category": "Colossal Sword",
+    "icon": "weapons/royal-greatsword.webp"
+  },
+  {
+    "slug": "godslayer-s-greatsword",
+    "name": "Godslayer's Greatsword",
+    "category": "Colossal Sword",
+    "icon": "weapons/godslayer-s-greatsword.webp"
+  },
+  {
+    "slug": "grafted-blade-greatsword",
+    "name": "Grafted Blade Greatsword",
+    "category": "Colossal Sword",
+    "icon": "weapons/grafted-blade-greatsword.webp"
+  },
+  {
+    "slug": "ruins-greatsword",
+    "name": "Ruins Greatsword",
+    "category": "Colossal Sword",
+    "icon": "weapons/ruins-greatsword.webp"
+  },
+  {
+    "slug": "starscourge-greatsword",
+    "name": "Starscourge Greatsword",
+    "category": "Colossal Sword",
+    "icon": "weapons/starscourge-greatsword.webp"
+  },
+  {
+    "slug": "maliketh-s-black-blade",
+    "name": "Maliketh's Black Blade",
+    "category": "Colossal Sword",
+    "icon": "weapons/maliketh-s-black-blade.webp"
+  },
+  {
+    "slug": "rapier",
+    "name": "Rapier",
+    "category": "Thrusting Sword",
+    "icon": "weapons/rapier.webp"
+  },
+  {
+    "slug": "estoc",
+    "name": "Estoc",
+    "category": "Thrusting Sword",
+    "icon": "weapons/estoc.webp"
+  },
+  {
+    "slug": "noble-s-estoc",
+    "name": "Noble's Estoc",
+    "category": "Thrusting Sword",
+    "icon": "weapons/noble-s-estoc.webp"
+  },
+  {
+    "slug": "cleanrot-knight-s-sword",
+    "name": "Cleanrot Knight's Sword",
+    "category": "Thrusting Sword",
+    "icon": "weapons/cleanrot-knight-s-sword.webp"
+  },
+  {
+    "slug": "rogier-s-rapier",
+    "name": "Rogier's Rapier",
+    "category": "Thrusting Sword",
+    "icon": "weapons/rogier-s-rapier.webp"
+  },
+  {
+    "slug": "antspur-rapier",
+    "name": "Antspur Rapier",
+    "category": "Thrusting Sword",
+    "icon": "weapons/antspur-rapier.webp"
+  },
+  {
+    "slug": "frozen-needle",
+    "name": "Frozen Needle",
+    "category": "Thrusting Sword",
+    "icon": "weapons/frozen-needle.webp"
+  },
+  {
+    "slug": "great-epee",
+    "name": "Great Épée",
+    "category": "Heavy Thrusting Sword",
+    "icon": "weapons/great-epee.webp"
+  },
+  {
+    "slug": "godskin-stitcher",
+    "name": "Godskin Stitcher",
+    "category": "Heavy Thrusting Sword",
+    "icon": "weapons/godskin-stitcher.webp"
+  },
+  {
+    "slug": "bloody-helice",
+    "name": "Bloody Helice",
+    "category": "Heavy Thrusting Sword",
+    "icon": "weapons/bloody-helice.webp"
+  },
+  {
+    "slug": "dragon-king-s-cragblade",
+    "name": "Dragon King's Cragblade",
+    "category": "Heavy Thrusting Sword",
+    "icon": "weapons/dragon-king-s-cragblade.webp"
+  },
+  {
+    "slug": "scimitar",
+    "name": "Scimitar",
+    "category": "Curved Sword",
+    "icon": "weapons/scimitar.webp"
+  },
+  {
+    "slug": "falchion",
+    "name": "Falchion",
+    "category": "Curved Sword",
+    "icon": "weapons/falchion.webp"
+  },
+  {
+    "slug": "bandit-s-curved-sword",
+    "name": "Bandit's Curved Sword",
+    "category": "Curved Sword",
+    "icon": "weapons/bandit-s-curved-sword.webp"
+  },
+  {
+    "slug": "shotel",
+    "name": "Shotel",
+    "category": "Curved Sword",
+    "icon": "weapons/shotel.webp"
+  },
+  {
+    "slug": "shamshir",
+    "name": "Shamshir",
+    "category": "Curved Sword",
+    "icon": "weapons/shamshir.webp"
+  },
+  {
+    "slug": "grossmesser",
+    "name": "Grossmesser",
+    "category": "Curved Sword",
+    "icon": "weapons/grossmesser.webp"
+  },
+  {
+    "slug": "scavenger-s-curved-sword",
+    "name": "Scavenger's Curved Sword",
+    "category": "Curved Sword",
+    "icon": "weapons/scavenger-s-curved-sword.webp"
+  },
+  {
+    "slug": "mantis-blade",
+    "name": "Mantis Blade",
+    "category": "Curved Sword",
+    "icon": "weapons/mantis-blade.webp"
+  },
+  {
+    "slug": "beastman-s-curved-sword",
+    "name": "Beastman's Curved Sword",
+    "category": "Curved Sword",
+    "icon": "weapons/beastman-s-curved-sword.webp"
+  },
+  {
+    "slug": "serpent-god-s-curved-sword",
+    "name": "Serpent-God's Curved Sword",
+    "category": "Curved Sword",
+    "icon": "weapons/serpent-god-s-curved-sword.webp"
+  },
+  {
+    "slug": "flowing-curved-sword",
+    "name": "Flowing Curved Sword",
+    "category": "Curved Sword",
+    "icon": "weapons/flowing-curved-sword.webp"
+  },
+  {
+    "slug": "magma-blade",
+    "name": "Magma Blade",
+    "category": "Curved Sword",
+    "icon": "weapons/magma-blade.webp"
+  },
+  {
+    "slug": "nox-flowing-sword",
+    "name": "Nox Flowing Sword",
+    "category": "Curved Sword",
+    "icon": "weapons/nox-flowing-sword.webp"
+  },
+  {
+    "slug": "wing-of-astel",
+    "name": "Wing of Astel",
+    "category": "Curved Sword",
+    "icon": "weapons/wing-of-astel.webp"
+  },
+  {
+    "slug": "eclipse-shotel",
+    "name": "Eclipse Shotel",
+    "category": "Curved Sword",
+    "icon": "weapons/eclipse-shotel.webp"
+  },
+  {
+    "slug": "dismounter",
+    "name": "Dismounter",
+    "category": "Curved Greatsword",
+    "icon": "weapons/dismounter.webp"
+  },
+  {
+    "slug": "omen-cleaver",
+    "name": "Omen Cleaver",
+    "category": "Curved Greatsword",
+    "icon": "weapons/omen-cleaver.webp"
+  },
+  {
+    "slug": "monk-s-flameblade",
+    "name": "Monk's Flameblade",
+    "category": "Curved Greatsword",
+    "icon": "weapons/monk-s-flameblade.webp"
+  },
+  {
+    "slug": "beastman-s-cleaver",
+    "name": "Beastman's Cleaver",
+    "category": "Curved Greatsword",
+    "icon": "weapons/beastman-s-cleaver.webp"
+  },
+  {
+    "slug": "bloodhound-s-fang",
+    "name": "Bloodhound's Fang",
+    "category": "Curved Greatsword",
+    "icon": "weapons/bloodhound-s-fang.webp"
+  },
+  {
+    "slug": "onyx-lord-s-greatsword",
+    "name": "Onyx Lord's Greatsword",
+    "category": "Curved Greatsword",
+    "icon": "weapons/onyx-lord-s-greatsword.webp"
+  },
+  {
+    "slug": "zamor-curved-sword",
+    "name": "Zamor Curved Sword",
+    "category": "Curved Greatsword",
+    "icon": "weapons/zamor-curved-sword.webp"
+  },
+  {
+    "slug": "magma-wyrm-s-scalesword",
+    "name": "Magma Wyrm's Scalesword",
+    "category": "Curved Greatsword",
+    "icon": "weapons/magma-wyrm-s-scalesword.webp"
+  },
+  {
+    "slug": "morgott-s-cursed-sword",
+    "name": "Morgott's Cursed Sword",
+    "category": "Curved Greatsword",
+    "icon": "weapons/morgott-s-cursed-sword.webp"
+  },
+  {
+    "slug": "executor-s-blade",
+    "name": "Executor's Blade",
+    "category": "Katana",
+    "icon": "weapons/executor-s-blade.webp"
+  },
+  {
+    "slug": "uchigatana",
+    "name": "Uchigatana",
+    "category": "Katana",
+    "icon": "weapons/uchigatana.webp"
+  },
+  {
+    "slug": "nagakiba",
+    "name": "Nagakiba",
+    "category": "Katana",
+    "icon": "weapons/nagakiba.webp"
+  },
+  {
+    "slug": "serpentbone-blade",
+    "name": "Serpentbone Blade",
+    "category": "Katana",
+    "icon": "weapons/serpentbone-blade.webp"
+  },
+  {
+    "slug": "meteoric-ore-blade",
+    "name": "Meteoric Ore Blade",
+    "category": "Katana",
+    "icon": "weapons/meteoric-ore-blade.webp"
+  },
+  {
+    "slug": "moonveil",
+    "name": "Moonveil",
+    "category": "Katana",
+    "icon": "weapons/moonveil.webp"
+  },
+  {
+    "slug": "rivers-of-blood",
+    "name": "Rivers of Blood",
+    "category": "Katana",
+    "icon": "weapons/rivers-of-blood.webp"
+  },
+  {
+    "slug": "dragonscale-blade",
+    "name": "Dragonscale Blade",
+    "category": "Katana",
+    "icon": "weapons/dragonscale-blade.webp"
+  },
+  {
+    "slug": "hand-of-malenia",
+    "name": "Hand of Malenia",
+    "category": "Katana",
+    "icon": "weapons/hand-of-malenia.webp"
+  },
+  {
+    "slug": "twinblade",
+    "name": "Twinblade",
+    "category": "Twinblade",
+    "icon": "weapons/twinblade.webp"
+  },
+  {
+    "slug": "twinned-knight-swords",
+    "name": "Twinned Knight Swords",
+    "category": "Twinblade",
+    "icon": "weapons/twinned-knight-swords.webp"
+  },
+  {
+    "slug": "godskin-peeler",
+    "name": "Godskin Peeler",
+    "category": "Twinblade",
+    "icon": "weapons/godskin-peeler.webp"
+  },
+  {
+    "slug": "gargoyle-s-twinblade",
+    "name": "Gargoyle's Twinblade",
+    "category": "Twinblade",
+    "icon": "weapons/gargoyle-s-twinblade.webp"
+  },
+  {
+    "slug": "gargoyle-s-black-blades",
+    "name": "Gargoyle's Black Blades",
+    "category": "Twinblade",
+    "icon": "weapons/gargoyle-s-black-blades.webp"
+  },
+  {
+    "slug": "eleonora-s-poleblade",
+    "name": "Eleonora's Poleblade",
+    "category": "Twinblade",
+    "icon": "weapons/eleonora-s-poleblade.webp"
+  },
+  {
+    "slug": "hand-axe",
+    "name": "Hand Axe",
+    "category": "Axe",
+    "icon": "weapons/hand-axe.webp"
+  },
+  {
+    "slug": "forked-hatchet",
+    "name": "Forked Hatchet",
+    "category": "Axe",
+    "icon": "weapons/forked-hatchet.webp"
+  },
+  {
+    "slug": "battle-axe",
+    "name": "Battle Axe",
+    "category": "Axe",
+    "icon": "weapons/battle-axe.webp"
+  },
+  {
+    "slug": "jawbone-axe",
+    "name": "Jawbone Axe",
+    "category": "Axe",
+    "icon": "weapons/jawbone-axe.webp"
+  },
+  {
+    "slug": "warped-axe",
+    "name": "Warped Axe",
+    "category": "Axe",
+    "icon": "weapons/warped-axe.webp"
+  },
+  {
+    "slug": "iron-cleaver",
+    "name": "Iron Cleaver",
+    "category": "Axe",
+    "icon": "weapons/iron-cleaver.webp"
+  },
+  {
+    "slug": "highland-axe",
+    "name": "Highland Axe",
+    "category": "Axe",
+    "icon": "weapons/highland-axe.webp"
+  },
+  {
+    "slug": "celebrant-s-cleaver",
+    "name": "Celebrant's Cleaver",
+    "category": "Axe",
+    "icon": "weapons/celebrant-s-cleaver.webp"
+  },
+  {
+    "slug": "ripple-blade",
+    "name": "Ripple Blade",
+    "category": "Axe",
+    "icon": "weapons/ripple-blade.webp"
+  },
+  {
+    "slug": "icerind-hatchet",
+    "name": "Icerind Hatchet",
+    "category": "Axe",
+    "icon": "weapons/icerind-hatchet.webp"
+  },
+  {
+    "slug": "sacrificial-axe",
+    "name": "Sacrificial Axe",
+    "category": "Axe",
+    "icon": "weapons/sacrificial-axe.webp"
+  },
+  {
+    "slug": "stormhawk-axe",
+    "name": "Stormhawk Axe",
+    "category": "Axe",
+    "icon": "weapons/stormhawk-axe.webp"
+  },
+  {
+    "slug": "rosus-axe",
+    "name": "Rosus' Axe",
+    "category": "Axe",
+    "icon": "weapons/rosus-axe.webp"
+  },
+  {
+    "slug": "greataxe",
+    "name": "Greataxe",
+    "category": "Greataxe",
+    "icon": "weapons/greataxe.webp"
+  },
+  {
+    "slug": "crescent-moon-axe",
+    "name": "Crescent Moon Axe",
+    "category": "Greataxe",
+    "icon": "weapons/crescent-moon-axe.webp"
+  },
+  {
+    "slug": "longhaft-axe",
+    "name": "Longhaft Axe",
+    "category": "Greataxe",
+    "icon": "weapons/longhaft-axe.webp"
+  },
+  {
+    "slug": "executioner-s-greataxe",
+    "name": "Executioner's Greataxe",
+    "category": "Greataxe",
+    "icon": "weapons/executioner-s-greataxe.webp"
+  },
+  {
+    "slug": "great-omenkiller-cleaver",
+    "name": "Great Omenkiller Cleaver",
+    "category": "Greataxe",
+    "icon": "weapons/great-omenkiller-cleaver.webp"
+  },
+  {
+    "slug": "rusted-anchor",
+    "name": "Rusted Anchor",
+    "category": "Greataxe",
+    "icon": "weapons/rusted-anchor.webp"
+  },
+  {
+    "slug": "gargoyle-s-great-axe",
+    "name": "Gargoyle's Great Axe",
+    "category": "Greataxe",
+    "icon": "weapons/gargoyle-s-great-axe.webp"
+  },
+  {
+    "slug": "gargoyle-s-black-axe",
+    "name": "Gargoyle's Black Axe",
+    "category": "Greataxe",
+    "icon": "weapons/gargoyle-s-black-axe.webp"
+  },
+  {
+    "slug": "butchering-knife",
+    "name": "Butchering Knife",
+    "category": "Greataxe",
+    "icon": "weapons/butchering-knife.webp"
+  },
+  {
+    "slug": "winged-greathorn",
+    "name": "Winged Greathorn",
+    "category": "Greataxe",
+    "icon": "weapons/winged-greathorn.webp"
+  },
+  {
+    "slug": "axe-of-godrick",
+    "name": "Axe of Godrick",
+    "category": "Greataxe",
+    "icon": "weapons/axe-of-godrick.webp"
+  },
+  {
+    "slug": "club",
+    "name": "Club",
+    "category": "Hammer",
+    "icon": "weapons/club.webp"
+  },
+  {
+    "slug": "curved-club",
+    "name": "Curved Club",
+    "category": "Hammer",
+    "icon": "weapons/curved-club.webp"
+  },
+  {
+    "slug": "stone-club",
+    "name": "Stone Club",
+    "category": "Hammer",
+    "icon": "weapons/stone-club.webp"
+  },
+  {
+    "slug": "mace",
+    "name": "Mace",
+    "category": "Hammer",
+    "icon": "weapons/mace.webp"
+  },
+  {
+    "slug": "spiked-club",
+    "name": "Spiked Club",
+    "category": "Hammer",
+    "icon": "weapons/spiked-club.webp"
+  },
+  {
+    "slug": "morning-star",
+    "name": "Morning Star",
+    "category": "Hammer",
+    "icon": "weapons/morning-star.webp"
+  },
+  {
+    "slug": "warpick",
+    "name": "Warpick",
+    "category": "Hammer",
+    "icon": "weapons/warpick.webp"
+  },
+  {
+    "slug": "hammer",
+    "name": "Hammer",
+    "category": "Hammer",
+    "icon": "weapons/hammer.webp"
+  },
+  {
+    "slug": "monk-s-flamemace",
+    "name": "Monk's Flamemace",
+    "category": "Hammer",
+    "icon": "weapons/monk-s-flamemace.webp"
+  },
+  {
+    "slug": "varre-s-bouquet",
+    "name": "Varré's Bouquet",
+    "category": "Hammer",
+    "icon": "weapons/varre-s-bouquet.webp"
+  },
+  {
+    "slug": "envoy-s-horn",
+    "name": "Envoy's Horn",
+    "category": "Hammer",
+    "icon": "weapons/envoy-s-horn.webp"
+  },
+  {
+    "slug": "nox-flowing-hammer",
+    "name": "Nox Flowing Hammer",
+    "category": "Hammer",
+    "icon": "weapons/nox-flowing-hammer.webp"
+  },
+  {
+    "slug": "ringed-finger",
+    "name": "Ringed Finger",
+    "category": "Hammer",
+    "icon": "weapons/ringed-finger.webp"
+  },
+  {
+    "slug": "scepter-of-the-all-knowing",
+    "name": "Scepter of the All-Knowing",
+    "category": "Hammer",
+    "icon": "weapons/scepter-of-the-all-knowing.webp"
+  },
+  {
+    "slug": "marika-s-hammer",
+    "name": "Marika's Hammer",
+    "category": "Hammer",
+    "icon": "weapons/marika-s-hammer.webp"
+  },
+  {
+    "slug": "flail",
+    "name": "Flail",
+    "category": "Flail",
+    "icon": "weapons/flail.webp"
+  },
+  {
+    "slug": "nightrider-flail",
+    "name": "Nightrider Flail",
+    "category": "Flail",
+    "icon": "weapons/nightrider-flail.webp"
+  },
+  {
+    "slug": "chainlink-flail",
+    "name": "Chainlink Flail",
+    "category": "Flail",
+    "icon": "weapons/chainlink-flail.webp"
+  },
+  {
+    "slug": "family-heads",
+    "name": "Family Heads",
+    "category": "Flail",
+    "icon": "weapons/family-heads.webp"
+  },
+  {
+    "slug": "bastard-s-stars",
+    "name": "Bastard's Stars",
+    "category": "Flail",
+    "icon": "weapons/bastard-s-stars.webp"
+  },
+  {
+    "slug": "large-club",
+    "name": "Large Club",
+    "category": "Great Hammer",
+    "icon": "weapons/large-club.webp"
+  },
+  {
+    "slug": "curved-great-club",
+    "name": "Curved Great Club",
+    "category": "Great Hammer",
+    "icon": "weapons/curved-great-club.webp"
+  },
+  {
+    "slug": "great-mace",
+    "name": "Great Mace",
+    "category": "Great Hammer",
+    "icon": "weapons/great-mace.webp"
+  },
+  {
+    "slug": "pickaxe",
+    "name": "Pickaxe",
+    "category": "Great Hammer",
+    "icon": "weapons/pickaxe.webp"
+  },
+  {
+    "slug": "brick-hammer",
+    "name": "Brick Hammer",
+    "category": "Great Hammer",
+    "icon": "weapons/brick-hammer.webp"
+  },
+  {
+    "slug": "battle-hammer",
+    "name": "Battle Hammer",
+    "category": "Great Hammer",
+    "icon": "weapons/battle-hammer.webp"
+  },
+  {
+    "slug": "rotten-battle-hammer",
+    "name": "Rotten Battle Hammer",
+    "category": "Great Hammer",
+    "icon": "weapons/rotten-battle-hammer.webp"
+  },
+  {
+    "slug": "celebrant-s-skull",
+    "name": "Celebrant's Skull",
+    "category": "Great Hammer",
+    "icon": "weapons/celebrant-s-skull.webp"
+  },
+  {
+    "slug": "great-stars",
+    "name": "Great Stars",
+    "category": "Great Hammer",
+    "icon": "weapons/great-stars.webp"
+  },
+  {
+    "slug": "greathorn-hammer",
+    "name": "Greathorn Hammer",
+    "category": "Great Hammer",
+    "icon": "weapons/greathorn-hammer.webp"
+  },
+  {
+    "slug": "envoy-s-long-horn",
+    "name": "Envoy's Long Horn",
+    "category": "Great Hammer",
+    "icon": "weapons/envoy-s-long-horn.webp"
+  },
+  {
+    "slug": "cranial-vessel-candlestand",
+    "name": "Cranial Vessel Candlestand",
+    "category": "Great Hammer",
+    "icon": "weapons/cranial-vessel-candlestand.webp"
+  },
+  {
+    "slug": "beastclaw-greathammer",
+    "name": "Beastclaw Greathammer",
+    "category": "Great Hammer",
+    "icon": "weapons/beastclaw-greathammer.webp"
+  },
+  {
+    "slug": "devourer-s-scepter",
+    "name": "Devourer's Scepter",
+    "category": "Great Hammer",
+    "icon": "weapons/devourer-s-scepter.webp"
+  },
+  {
+    "slug": "raider-s-greataxe",
+    "name": "Raider's Greataxe",
+    "category": "Colossal Weapon",
+    "icon": "weapons/raider-s-greataxe.webp"
+  },
+  {
+    "slug": "duelist-greataxe",
+    "name": "Duelist Greataxe",
+    "category": "Colossal Weapon",
+    "icon": "weapons/duelist-greataxe.webp"
+  },
+  {
+    "slug": "rotten-greataxe",
+    "name": "Rotten Greataxe",
+    "category": "Colossal Weapon",
+    "icon": "weapons/rotten-greataxe.webp"
+  },
+  {
+    "slug": "golem-s-halberd",
+    "name": "Golem's Halberd",
+    "category": "Colossal Weapon",
+    "icon": "weapons/golem-s-halberd.webp"
+  },
+  {
+    "slug": "giant-crusher",
+    "name": "Giant-Crusher",
+    "category": "Colossal Weapon",
+    "icon": "weapons/giant-crusher.webp"
+  },
+  {
+    "slug": "great-club",
+    "name": "Great Club",
+    "category": "Colossal Weapon",
+    "icon": "weapons/great-club.webp"
+  },
+  {
+    "slug": "troll-s-hammer",
+    "name": "Troll's Hammer",
+    "category": "Colossal Weapon",
+    "icon": "weapons/troll-s-hammer.webp"
+  },
+  {
+    "slug": "prelate-s-inferno-crozier",
+    "name": "Prelate's Inferno Crozier",
+    "category": "Colossal Weapon",
+    "icon": "weapons/prelate-s-inferno-crozier.webp"
+  },
+  {
+    "slug": "dragon-greatclaw",
+    "name": "Dragon Greatclaw",
+    "category": "Colossal Weapon",
+    "icon": "weapons/dragon-greatclaw.webp"
+  },
+  {
+    "slug": "watchdog-s-staff",
+    "name": "Watchdog's Staff",
+    "category": "Colossal Weapon",
+    "icon": "weapons/watchdog-s-staff.webp"
+  },
+  {
+    "slug": "staff-of-the-avatar",
+    "name": "Staff of the Avatar",
+    "category": "Colossal Weapon",
+    "icon": "weapons/staff-of-the-avatar.webp"
+  },
+  {
+    "slug": "rotten-staff",
+    "name": "Rotten Staff",
+    "category": "Colossal Weapon",
+    "icon": "weapons/rotten-staff.webp"
+  },
+  {
+    "slug": "envoy-s-greathorn",
+    "name": "Envoy's Greathorn",
+    "category": "Colossal Weapon",
+    "icon": "weapons/envoy-s-greathorn.webp"
+  },
+  {
+    "slug": "ghiza-s-wheel",
+    "name": "Ghiza's Wheel",
+    "category": "Colossal Weapon",
+    "icon": "weapons/ghiza-s-wheel.webp"
+  },
+  {
+    "slug": "fallingstar-beast-jaw",
+    "name": "Fallingstar Beast Jaw",
+    "category": "Colossal Weapon",
+    "icon": "weapons/fallingstar-beast-jaw.webp"
+  },
+  {
+    "slug": "axe-of-godfrey",
+    "name": "Axe of Godfrey",
+    "category": "Colossal Weapon",
+    "icon": "weapons/axe-of-godfrey.webp"
+  },
+  {
+    "slug": "short-spear",
+    "name": "Short Spear",
+    "category": "Spear",
+    "icon": "weapons/short-spear.webp"
+  },
+  {
+    "slug": "iron-spear",
+    "name": "Iron Spear",
+    "category": "Spear",
+    "icon": "weapons/iron-spear.webp"
+  },
+  {
+    "slug": "spear",
+    "name": "Spear",
+    "category": "Spear",
+    "icon": "weapons/spear.webp"
+  },
+  {
+    "slug": "partisan",
+    "name": "Partisan",
+    "category": "Spear",
+    "icon": "weapons/partisan.webp"
+  },
+  {
+    "slug": "pike",
+    "name": "Pike",
+    "category": "Spear",
+    "icon": "weapons/pike.webp"
+  },
+  {
+    "slug": "spiked-spear",
+    "name": "Spiked Spear",
+    "category": "Spear",
+    "icon": "weapons/spiked-spear.webp"
+  },
+  {
+    "slug": "cross-naginata",
+    "name": "Cross-Naginata",
+    "category": "Spear",
+    "icon": "weapons/cross-naginata.webp"
+  },
+  {
+    "slug": "clayman-s-harpoon",
+    "name": "Clayman's Harpoon",
+    "category": "Spear",
+    "icon": "weapons/clayman-s-harpoon.webp"
+  },
+  {
+    "slug": "celebrant-s-rib-rake",
+    "name": "Celebrant's Rib-Rake",
+    "category": "Spear",
+    "icon": "weapons/celebrant-s-rib-rake.webp"
+  },
+  {
+    "slug": "torchpole",
+    "name": "Torchpole",
+    "category": "Spear",
+    "icon": "weapons/torchpole.webp"
+  },
+  {
+    "slug": "crystal-spear",
+    "name": "Crystal Spear",
+    "category": "Spear",
+    "icon": "weapons/crystal-spear.webp"
+  },
+  {
+    "slug": "rotten-crystal-spear",
+    "name": "Rotten Crystal Spear",
+    "category": "Spear",
+    "icon": "weapons/rotten-crystal-spear.webp"
+  },
+  {
+    "slug": "inquisitor-s-girandole",
+    "name": "Inquisitor's Girandole",
+    "category": "Spear",
+    "icon": "weapons/inquisitor-s-girandole.webp"
+  },
+  {
+    "slug": "cleanrot-spear",
+    "name": "Cleanrot Spear",
+    "category": "Spear",
+    "icon": "weapons/cleanrot-spear.webp"
+  },
+  {
+    "slug": "death-ritual-spear",
+    "name": "Death Ritual Spear",
+    "category": "Spear",
+    "icon": "weapons/death-ritual-spear.webp"
+  },
+  {
+    "slug": "bolt-of-gransax",
+    "name": "Bolt of Gransax",
+    "category": "Spear",
+    "icon": "weapons/bolt-of-gransax.webp"
+  },
+  {
+    "slug": "lance",
+    "name": "Lance",
+    "category": "Great Spear",
+    "icon": "weapons/lance.webp"
+  },
+  {
+    "slug": "treespear",
+    "name": "Treespear",
+    "category": "Great Spear",
+    "icon": "weapons/treespear.webp"
+  },
+  {
+    "slug": "serpent-hunter",
+    "name": "Serpent-Hunter",
+    "category": "Great Spear",
+    "icon": "weapons/serpent-hunter.webp"
+  },
+  {
+    "slug": "siluria-s-tree",
+    "name": "Siluria's Tree",
+    "category": "Great Spear",
+    "icon": "weapons/siluria-s-tree.webp"
+  },
+  {
+    "slug": "vyke-s-war-spear",
+    "name": "Vyke's War Spear",
+    "category": "Great Spear",
+    "icon": "weapons/vyke-s-war-spear.webp"
+  },
+  {
+    "slug": "mohgwyn-s-sacred-spear",
+    "name": "Mohgwyn's Sacred Spear",
+    "category": "Great Spear",
+    "icon": "weapons/mohgwyn-s-sacred-spear.webp"
+  },
+  {
+    "slug": "guardian-s-halberd",
+    "name": "Guardian's Halberd",
+    "category": "Halberd",
+    "icon": "weapons/guardian-s-halberd.webp"
+  },
+  {
+    "slug": "halberd",
+    "name": "Halberd",
+    "category": "Halberd",
+    "icon": "weapons/halberd.webp"
+  },
+  {
+    "slug": "banished-knight-s-halberd",
+    "name": "Banished Knight's Halberd",
+    "category": "Halberd",
+    "icon": "weapons/banished-knight-s-halberd.webp"
+  },
+  {
+    "slug": "lucerne",
+    "name": "Lucerne",
+    "category": "Halberd",
+    "icon": "weapons/lucerne.webp"
+  },
+  {
+    "slug": "glaive",
+    "name": "Glaive",
+    "category": "Halberd",
+    "icon": "weapons/glaive.webp"
+  },
+  {
+    "slug": "vulgar-militia-shotel",
+    "name": "Vulgar Militia Shotel",
+    "category": "Halberd",
+    "icon": "weapons/vulgar-militia-shotel.webp"
+  },
+  {
+    "slug": "vulgar-militia-saw",
+    "name": "Vulgar Militia Saw",
+    "category": "Halberd",
+    "icon": "weapons/vulgar-militia-saw.webp"
+  },
+  {
+    "slug": "guardian-s-swordspear",
+    "name": "Guardian's Swordspear",
+    "category": "Halberd",
+    "icon": "weapons/guardian-s-swordspear.webp"
+  },
+  {
+    "slug": "nightrider-glaive",
+    "name": "Nightrider Glaive",
+    "category": "Halberd",
+    "icon": "weapons/nightrider-glaive.webp"
+  },
+  {
+    "slug": "pest-s-glaive",
+    "name": "Pest's Glaive",
+    "category": "Halberd",
+    "icon": "weapons/pest-s-glaive.webp"
+  },
+  {
+    "slug": "ripple-crescent-halberd",
+    "name": "Ripple Crescent Halberd",
+    "category": "Halberd",
+    "icon": "weapons/ripple-crescent-halberd.webp"
+  },
+  {
+    "slug": "gargoyle-s-halberd",
+    "name": "Gargoyle's Halberd",
+    "category": "Halberd",
+    "icon": "weapons/gargoyle-s-halberd.webp"
+  },
+  {
+    "slug": "gargoyle-s-black-halberd",
+    "name": "Gargoyle's Black Halberd",
+    "category": "Halberd",
+    "icon": "weapons/gargoyle-s-black-halberd.webp"
+  },
+  {
+    "slug": "golden-halberd",
+    "name": "Golden Halberd",
+    "category": "Halberd",
+    "icon": "weapons/golden-halberd.webp"
+  },
+  {
+    "slug": "dragon-halberd",
+    "name": "Dragon Halberd",
+    "category": "Halberd",
+    "icon": "weapons/dragon-halberd.webp"
+  },
+  {
+    "slug": "loretta-s-war-sickle",
+    "name": "Loretta's War Sickle",
+    "category": "Halberd",
+    "icon": "weapons/loretta-s-war-sickle.webp"
+  },
+  {
+    "slug": "commander-s-standard",
+    "name": "Commander's Standard",
+    "category": "Halberd",
+    "icon": "weapons/commander-s-standard.webp"
+  },
+  {
+    "slug": "scythe",
+    "name": "Scythe",
+    "category": "Reaper",
+    "icon": "weapons/scythe.webp"
+  },
+  {
+    "slug": "grave-scythe",
+    "name": "Grave Scythe",
+    "category": "Reaper",
+    "icon": "weapons/grave-scythe.webp"
+  },
+  {
+    "slug": "halo-scythe",
+    "name": "Halo Scythe",
+    "category": "Reaper",
+    "icon": "weapons/halo-scythe.webp"
+  },
+  {
+    "slug": "winged-scythe",
+    "name": "Winged Scythe",
+    "category": "Reaper",
+    "icon": "weapons/winged-scythe.webp"
+  },
+  {
+    "slug": "whip",
+    "name": "Whip",
+    "category": "Whip",
+    "icon": "weapons/whip.webp"
+  },
+  {
+    "slug": "thorned-whip",
+    "name": "Thorned Whip",
+    "category": "Whip",
+    "icon": "weapons/thorned-whip.webp"
+  },
+  {
+    "slug": "urumi",
+    "name": "Urumi",
+    "category": "Whip",
+    "icon": "weapons/urumi.webp"
+  },
+  {
+    "slug": "hoslow-s-petal-whip",
+    "name": "Hoslow's Petal Whip",
+    "category": "Whip",
+    "icon": "weapons/hoslow-s-petal-whip.webp"
+  },
+  {
+    "slug": "magma-whip-candlestick",
+    "name": "Magma Whip Candlestick",
+    "category": "Whip",
+    "icon": "weapons/magma-whip-candlestick.webp"
+  },
+  {
+    "slug": "giant-s-red-braid",
+    "name": "Giant's Red Braid",
+    "category": "Whip",
+    "icon": "weapons/giant-s-red-braid.webp"
+  },
+  {
+    "slug": "revenant-s-cursed-claws",
+    "name": "Revenant's Cursed Claws",
+    "category": "Fist",
+    "icon": "weapons/revenant-s-cursed-claws.webp"
+  },
+  {
+    "slug": "katar",
+    "name": "Katar",
+    "category": "Fist",
+    "icon": "weapons/katar.webp"
+  },
+  {
+    "slug": "caestus",
+    "name": "Caestus",
+    "category": "Fist",
+    "icon": "weapons/caestus.webp"
+  },
+  {
+    "slug": "spiked-caestus",
+    "name": "Spiked Caestus",
+    "category": "Fist",
+    "icon": "weapons/spiked-caestus.webp"
+  },
+  {
+    "slug": "iron-ball",
+    "name": "Iron Ball",
+    "category": "Fist",
+    "icon": "weapons/iron-ball.webp"
+  },
+  {
+    "slug": "star-fist",
+    "name": "Star Fist",
+    "category": "Fist",
+    "icon": "weapons/star-fist.webp"
+  },
+  {
+    "slug": "clinging-bone",
+    "name": "Clinging Bone",
+    "category": "Fist",
+    "icon": "weapons/clinging-bone.webp"
+  },
+  {
+    "slug": "veteran-s-prosthesis",
+    "name": "Veteran's Prosthesis",
+    "category": "Fist",
+    "icon": "weapons/veteran-s-prosthesis.webp"
+  },
+  {
+    "slug": "cipher-pata",
+    "name": "Cipher Pata",
+    "category": "Fist",
+    "icon": "weapons/cipher-pata.webp"
+  },
+  {
+    "slug": "grafted-dragon",
+    "name": "Grafted Dragon",
+    "category": "Fist",
+    "icon": "weapons/grafted-dragon.webp"
+  },
+  {
+    "slug": "hookclaws",
+    "name": "Hookclaws",
+    "category": "Claw",
+    "icon": "weapons/hookclaws.webp"
+  },
+  {
+    "slug": "bloodhound-claws",
+    "name": "Bloodhound Claws",
+    "category": "Claw",
+    "icon": "weapons/bloodhound-claws.webp"
+  },
+  {
+    "slug": "venomous-fang",
+    "name": "Venomous Fang",
+    "category": "Claw",
+    "icon": "weapons/venomous-fang.webp"
+  },
+  {
+    "slug": "raptor-talons",
+    "name": "Raptor Talons",
+    "category": "Claw",
+    "icon": "weapons/raptor-talons.webp"
+  },
+  {
+    "slug": "ironeye-s-bow",
+    "name": "Ironeye's Bow",
+    "category": "Bow",
+    "icon": "weapons/ironeye-s-bow.webp"
+  },
+  {
+    "slug": "shortbow",
+    "name": "Shortbow",
+    "category": "Bow",
+    "icon": "weapons/shortbow.webp"
+  },
+  {
+    "slug": "misbegotten-shortbow",
+    "name": "Misbegotten Shortbow",
+    "category": "Bow",
+    "icon": "weapons/misbegotten-shortbow.webp"
+  },
+  {
+    "slug": "longbow",
+    "name": "Longbow",
+    "category": "Bow",
+    "icon": "weapons/longbow.webp"
+  },
+  {
+    "slug": "composite-bow",
+    "name": "Composite Bow",
+    "category": "Bow",
+    "icon": "weapons/composite-bow.webp"
+  },
+  {
+    "slug": "red-branch-shortbow",
+    "name": "Red Branch Shortbow",
+    "category": "Bow",
+    "icon": "weapons/red-branch-shortbow.webp"
+  },
+  {
+    "slug": "harp-bow",
+    "name": "Harp Bow",
+    "category": "Bow",
+    "icon": "weapons/harp-bow.webp"
+  },
+  {
+    "slug": "albinauric-bow",
+    "name": "Albinauric Bow",
+    "category": "Bow",
+    "icon": "weapons/albinauric-bow.webp"
+  },
+  {
+    "slug": "horn-bow",
+    "name": "Horn Bow",
+    "category": "Bow",
+    "icon": "weapons/horn-bow.webp"
+  },
+  {
+    "slug": "black-bow",
+    "name": "Black Bow",
+    "category": "Bow",
+    "icon": "weapons/black-bow.webp"
+  },
+  {
+    "slug": "pulley-bow",
+    "name": "Pulley Bow",
+    "category": "Bow",
+    "icon": "weapons/pulley-bow.webp"
+  },
+  {
+    "slug": "serpent-bow",
+    "name": "Serpent Bow",
+    "category": "Bow",
+    "icon": "weapons/serpent-bow.webp"
+  },
+  {
+    "slug": "erdtree-bow",
+    "name": "Erdtree Bow",
+    "category": "Bow",
+    "icon": "weapons/erdtree-bow.webp"
+  },
+  {
+    "slug": "greatbow",
+    "name": "Greatbow",
+    "category": "Greatbow",
+    "icon": "weapons/greatbow.webp"
+  },
+  {
+    "slug": "golem-greatbow",
+    "name": "Golem Greatbow",
+    "category": "Greatbow",
+    "icon": "weapons/golem-greatbow.webp"
+  },
+  {
+    "slug": "erdtree-greatbow",
+    "name": "Erdtree Greatbow",
+    "category": "Greatbow",
+    "icon": "weapons/erdtree-greatbow.webp"
+  },
+  {
+    "slug": "lion-greatbow",
+    "name": "Lion Greatbow",
+    "category": "Greatbow",
+    "icon": "weapons/lion-greatbow.webp"
+  },
+  {
+    "slug": "soldier-s-crossbow",
+    "name": "Soldier's Crossbow",
+    "category": "Crossbow",
+    "icon": "weapons/soldier-s-crossbow.webp"
+  },
+  {
+    "slug": "light-crossbow",
+    "name": "Light Crossbow",
+    "category": "Crossbow",
+    "icon": "weapons/light-crossbow.webp"
+  },
+  {
+    "slug": "heavy-crossbow",
+    "name": "Heavy Crossbow",
+    "category": "Crossbow",
+    "icon": "weapons/heavy-crossbow.webp"
+  },
+  {
+    "slug": "arbalest",
+    "name": "Arbalest",
+    "category": "Crossbow",
+    "icon": "weapons/arbalest.webp"
+  },
+  {
+    "slug": "crepus-s-black-key-crossbow",
+    "name": "Crepus's Black-Key Crossbow",
+    "category": "Crossbow",
+    "icon": "weapons/crepus-s-black-key-crossbow.webp"
+  },
+  {
+    "slug": "full-moon-crossbow",
+    "name": "Full Moon Crossbow",
+    "category": "Crossbow",
+    "icon": "weapons/full-moon-crossbow.webp"
+  },
+  {
+    "slug": "pulley-crossbow",
+    "name": "Pulley Crossbow",
+    "category": "Crossbow",
+    "icon": "weapons/pulley-crossbow.webp"
+  },
+  {
+    "slug": "hand-ballista",
+    "name": "Hand Ballista",
+    "category": "Ballista",
+    "icon": "weapons/hand-ballista.webp"
+  },
+  {
+    "slug": "jar-cannon",
+    "name": "Jar Cannon",
+    "category": "Ballista",
+    "icon": "weapons/jar-cannon.webp"
+  },
+  {
+    "slug": "recluse-s-staff",
+    "name": "Recluse's Staff",
+    "category": "Staff",
+    "icon": "weapons/recluse-s-staff.webp"
+  },
+  {
+    "slug": "astrologer-s-staff",
+    "name": "Astrologer's Staff",
+    "category": "Staff",
+    "icon": "weapons/astrologer-s-staff.webp"
+  },
+  {
+    "slug": "glintstone-staff",
+    "name": "Glintstone Staff",
+    "category": "Staff",
+    "icon": "weapons/glintstone-staff.webp"
+  },
+  {
+    "slug": "academy-glintstone-staff",
+    "name": "Academy Glintstone Staff",
+    "category": "Staff",
+    "icon": "weapons/academy-glintstone-staff.webp"
+  },
+  {
+    "slug": "digger-s-staff",
+    "name": "Digger's Staff",
+    "category": "Staff",
+    "icon": "weapons/digger-s-staff.webp"
+  },
+  {
+    "slug": "demi-human-queen-s-staff",
+    "name": "Demi-Human Queen's Staff",
+    "category": "Staff",
+    "icon": "weapons/demi-human-queen-s-staff.webp"
+  },
+  {
+    "slug": "carian-glintstone-staff",
+    "name": "Carian Glintstone Staff",
+    "category": "Staff",
+    "icon": "weapons/carian-glintstone-staff.webp"
+  },
+  {
+    "slug": "carian-glintblade-staff",
+    "name": "Carian Glintblade Staff",
+    "category": "Staff",
+    "icon": "weapons/carian-glintblade-staff.webp"
+  },
+  {
+    "slug": "albinauric-staff",
+    "name": "Albinauric Staff",
+    "category": "Staff",
+    "icon": "weapons/albinauric-staff.webp"
+  },
+  {
+    "slug": "staff-of-loss",
+    "name": "Staff of Loss",
+    "category": "Staff",
+    "icon": "weapons/staff-of-loss.webp"
+  },
+  {
+    "slug": "gelmir-glintstone-staff",
+    "name": "Gelmir Glintstone Staff",
+    "category": "Staff",
+    "icon": "weapons/gelmir-glintstone-staff.webp"
+  },
+  {
+    "slug": "crystal-staff",
+    "name": "Crystal Staff",
+    "category": "Staff",
+    "icon": "weapons/crystal-staff.webp"
+  },
+  {
+    "slug": "rotten-crystal-staff",
+    "name": "Rotten Crystal Staff",
+    "category": "Staff",
+    "icon": "weapons/rotten-crystal-staff.webp"
+  },
+  {
+    "slug": "staff-of-the-guilty",
+    "name": "Staff of the Guilty",
+    "category": "Staff",
+    "icon": "weapons/staff-of-the-guilty.webp"
+  },
+  {
+    "slug": "azur-s-glintstone-staff",
+    "name": "Azur's Glintstone Staff",
+    "category": "Staff",
+    "icon": "weapons/azur-s-glintstone-staff.webp"
+  },
+  {
+    "slug": "lusat-s-glintstone-staff",
+    "name": "Lusat's Glintstone Staff",
+    "category": "Staff",
+    "icon": "weapons/lusat-s-glintstone-staff.webp"
+  },
+  {
+    "slug": "meteorite-staff",
+    "name": "Meteorite Staff",
+    "category": "Staff",
+    "icon": "weapons/meteorite-staff.webp"
+  },
+  {
+    "slug": "prince-of-death-s-staff",
+    "name": "Prince of Death's Staff",
+    "category": "Staff",
+    "icon": "weapons/prince-of-death-s-staff.webp"
+  },
+  {
+    "slug": "carian-regal-scepter",
+    "name": "Carian Regal Scepter",
+    "category": "Staff",
+    "icon": "weapons/carian-regal-scepter.webp"
+  },
+  {
+    "slug": "finger-seal",
+    "name": "Finger Seal",
+    "category": "Sacred Seal",
+    "icon": "weapons/finger-seal.webp"
+  },
+  {
+    "slug": "gravel-stone-seal",
+    "name": "Gravel Stone Seal",
+    "category": "Sacred Seal",
+    "icon": "weapons/gravel-stone-seal.webp"
+  },
+  {
+    "slug": "giant-s-seal",
+    "name": "Giant's Seal",
+    "category": "Sacred Seal",
+    "icon": "weapons/giant-s-seal.webp"
+  },
+  {
+    "slug": "godslayer-s-seal",
+    "name": "Godslayer's Seal",
+    "category": "Sacred Seal",
+    "icon": "weapons/godslayer-s-seal.webp"
+  },
+  {
+    "slug": "clawmark-seal",
+    "name": "Clawmark Seal",
+    "category": "Sacred Seal",
+    "icon": "weapons/clawmark-seal.webp"
+  },
+  {
+    "slug": "erdtree-seal",
+    "name": "Erdtree Seal",
+    "category": "Sacred Seal",
+    "icon": "weapons/erdtree-seal.webp"
+  },
+  {
+    "slug": "golden-order-seal",
+    "name": "Golden Order Seal",
+    "category": "Sacred Seal",
+    "icon": "weapons/golden-order-seal.webp"
+  },
+  {
+    "slug": "frenzied-flame-seal",
+    "name": "Frenzied Flame Seal",
+    "category": "Sacred Seal",
+    "icon": "weapons/frenzied-flame-seal.webp"
+  },
+  {
+    "slug": "dragon-communion-seal",
+    "name": "Dragon Communion Seal",
+    "category": "Sacred Seal",
+    "icon": "weapons/dragon-communion-seal.webp"
+  },
+  {
+    "slug": "torch",
+    "name": "Torch",
+    "category": "Torch",
+    "icon": "weapons/torch.webp"
+  },
+  {
+    "slug": "beast-repellent-torch",
+    "name": "Beast-Repellent Torch",
+    "category": "Torch",
+    "icon": "weapons/beast-repellent-torch.webp"
+  },
+  {
+    "slug": "steel-wire-torch",
+    "name": "Steel-Wire Torch",
+    "category": "Torch",
+    "icon": "weapons/steel-wire-torch.webp"
+  },
+  {
+    "slug": "sentry-s-torch",
+    "name": "Sentry's Torch",
+    "category": "Torch",
+    "icon": "weapons/sentry-s-torch.webp"
+  },
+  {
+    "slug": "ghostflame-torch",
+    "name": "Ghostflame Torch",
+    "category": "Torch",
+    "icon": "weapons/ghostflame-torch.webp"
+  },
+  {
+    "slug": "st-trina-s-torch",
+    "name": "St. Trina's Torch",
+    "category": "Torch",
+    "icon": "weapons/st-trina-s-torch.webp"
+  },
+  {
+    "slug": "wylder-s-small-shield",
+    "name": "Wylder's Small Shield",
+    "category": "Small Shield",
+    "icon": "weapons/wylder-s-small-shield.webp"
+  },
+  {
+    "slug": "rickety-shield",
+    "name": "Rickety Shield",
+    "category": "Small Shield",
+    "icon": "weapons/rickety-shield.webp"
+  },
+  {
+    "slug": "riveted-wooden-shield",
+    "name": "Riveted Wooden Shield",
+    "category": "Small Shield",
+    "icon": "weapons/riveted-wooden-shield.webp"
+  },
+  {
+    "slug": "blue-white-wooden-shield",
+    "name": "Blue-White Wooden Shield",
+    "category": "Small Shield",
+    "icon": "weapons/blue-white-wooden-shield.webp"
+  },
+  {
+    "slug": "scripture-wooden-shield",
+    "name": "Scripture Wooden Shield",
+    "category": "Small Shield",
+    "icon": "weapons/scripture-wooden-shield.webp"
+  },
+  {
+    "slug": "red-thorn-roundshield",
+    "name": "Red Thorn Roundshield",
+    "category": "Small Shield",
+    "icon": "weapons/red-thorn-roundshield.webp"
+  },
+  {
+    "slug": "pillory-shield",
+    "name": "Pillory Shield",
+    "category": "Small Shield",
+    "icon": "weapons/pillory-shield.webp"
+  },
+  {
+    "slug": "buckler",
+    "name": "Buckler",
+    "category": "Small Shield",
+    "icon": "weapons/buckler.webp"
+  },
+  {
+    "slug": "iron-roundshield",
+    "name": "Iron Roundshield",
+    "category": "Small Shield",
+    "icon": "weapons/iron-roundshield.webp"
+  },
+  {
+    "slug": "gilded-iron-shield",
+    "name": "Gilded Iron Shield",
+    "category": "Small Shield",
+    "icon": "weapons/gilded-iron-shield.webp"
+  },
+  {
+    "slug": "man-serpent-s-shield",
+    "name": "Man-Serpent's Shield",
+    "category": "Small Shield",
+    "icon": "weapons/man-serpent-s-shield.webp"
+  },
+  {
+    "slug": "ice-crest-shield",
+    "name": "Ice Crest Shield",
+    "category": "Small Shield",
+    "icon": "weapons/ice-crest-shield.webp"
+  },
+  {
+    "slug": "rift-shield",
+    "name": "Rift Shield",
+    "category": "Small Shield",
+    "icon": "weapons/rift-shield.webp"
+  },
+  {
+    "slug": "perfumer-s-shield",
+    "name": "Perfumer's Shield",
+    "category": "Small Shield",
+    "icon": "weapons/perfumer-s-shield.webp"
+  },
+  {
+    "slug": "shield-of-the-guilty",
+    "name": "Shield of the Guilty",
+    "category": "Small Shield",
+    "icon": "weapons/shield-of-the-guilty.webp"
+  },
+  {
+    "slug": "spiralhorn-shield",
+    "name": "Spiralhorn Shield",
+    "category": "Small Shield",
+    "icon": "weapons/spiralhorn-shield.webp"
+  },
+  {
+    "slug": "smoldering-shield",
+    "name": "Smoldering Shield",
+    "category": "Small Shield",
+    "icon": "weapons/smoldering-shield.webp"
+  },
+  {
+    "slug": "coil-shield",
+    "name": "Coil Shield",
+    "category": "Small Shield",
+    "icon": "weapons/coil-shield.webp"
+  },
+  {
+    "slug": "hawk-crest-wooden-shield",
+    "name": "Hawk Crest Wooden Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/hawk-crest-wooden-shield.webp"
+  },
+  {
+    "slug": "horse-crest-wooden-shield",
+    "name": "Horse Crest Wooden Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/horse-crest-wooden-shield.webp"
+  },
+  {
+    "slug": "candletree-wooden-shield",
+    "name": "Candletree Wooden Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/candletree-wooden-shield.webp"
+  },
+  {
+    "slug": "flame-crest-wooden-shield",
+    "name": "Flame Crest Wooden Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/flame-crest-wooden-shield.webp"
+  },
+  {
+    "slug": "marred-wooden-shield",
+    "name": "Marred Wooden Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/marred-wooden-shield.webp"
+  },
+  {
+    "slug": "round-shield",
+    "name": "Round Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/round-shield.webp"
+  },
+  {
+    "slug": "marred-leather-shield",
+    "name": "Marred Leather Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/marred-leather-shield.webp"
+  },
+  {
+    "slug": "heater-shield",
+    "name": "Heater Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/heater-shield.webp"
+  },
+  {
+    "slug": "blue-crest-heater-shield",
+    "name": "Blue Crest Heater Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/blue-crest-heater-shield.webp"
+  },
+  {
+    "slug": "red-crest-heater-shield",
+    "name": "Red Crest Heater Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/red-crest-heater-shield.webp"
+  },
+  {
+    "slug": "beast-crest-heater-shield",
+    "name": "Beast Crest Heater Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/beast-crest-heater-shield.webp"
+  },
+  {
+    "slug": "inverted-hawk-heater-shield",
+    "name": "Inverted Hawk Heater Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/inverted-hawk-heater-shield.webp"
+  },
+  {
+    "slug": "eclipse-crest-heater-shield",
+    "name": "Eclipse Crest Heater Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/eclipse-crest-heater-shield.webp"
+  },
+  {
+    "slug": "sun-realm-shield",
+    "name": "Sun Realm Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/sun-realm-shield.webp"
+  },
+  {
+    "slug": "large-leather-shield",
+    "name": "Large Leather Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/large-leather-shield.webp"
+  },
+  {
+    "slug": "black-leather-shield",
+    "name": "Black Leather Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/black-leather-shield.webp"
+  },
+  {
+    "slug": "kite-shield",
+    "name": "Kite Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/kite-shield.webp"
+  },
+  {
+    "slug": "blue-gold-kite-shield",
+    "name": "Blue-Gold Kite Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/blue-gold-kite-shield.webp"
+  },
+  {
+    "slug": "scorpion-kite-shield",
+    "name": "Scorpion Kite Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/scorpion-kite-shield.webp"
+  },
+  {
+    "slug": "twinbird-kite-shield",
+    "name": "Twinbird Kite Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/twinbird-kite-shield.webp"
+  },
+  {
+    "slug": "brass-shield",
+    "name": "Brass Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/brass-shield.webp"
+  },
+  {
+    "slug": "banished-knight-s-shield",
+    "name": "Banished Knight's Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/banished-knight-s-shield.webp"
+  },
+  {
+    "slug": "albinauric-shield",
+    "name": "Albinauric Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/albinauric-shield.webp"
+  },
+  {
+    "slug": "beastman-s-jar-shield",
+    "name": "Beastman's Jar-Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/beastman-s-jar-shield.webp"
+  },
+  {
+    "slug": "carian-knight-s-shield",
+    "name": "Carian Knight's Shield",
+    "category": "Medium Shield",
+    "icon": "weapons/carian-knight-s-shield.webp"
+  },
+  {
+    "slug": "silver-mirrorshield",
+    "name": "Silver Mirrorshield",
+    "category": "Medium Shield",
+    "icon": "weapons/silver-mirrorshield.webp"
+  },
+  {
+    "slug": "great-turtle-shell",
+    "name": "Great Turtle Shell",
+    "category": "Medium Shield",
+    "icon": "weapons/great-turtle-shell.webp"
+  },
+  {
+    "slug": "guardian-s-greatshield",
+    "name": "Guardian's Greatshield",
+    "category": "Greatshield",
+    "icon": "weapons/guardian-s-greatshield.webp"
+  },
+  {
+    "slug": "wooden-greatshield",
+    "name": "Wooden Greatshield",
+    "category": "Greatshield",
+    "icon": "weapons/wooden-greatshield.webp"
+  },
+  {
+    "slug": "lordsworn-s-shield",
+    "name": "Lordsworn's Shield",
+    "category": "Greatshield",
+    "icon": "weapons/lordsworn-s-shield.webp"
+  },
+  {
+    "slug": "manor-towershield",
+    "name": "Manor Towershield",
+    "category": "Greatshield",
+    "icon": "weapons/manor-towershield.webp"
+  },
+  {
+    "slug": "crossed-tree-towershield",
+    "name": "Crossed-Tree Towershield",
+    "category": "Greatshield",
+    "icon": "weapons/crossed-tree-towershield.webp"
+  },
+  {
+    "slug": "inverted-hawk-towershield",
+    "name": "Inverted Hawk Towershield",
+    "category": "Greatshield",
+    "icon": "weapons/inverted-hawk-towershield.webp"
+  },
+  {
+    "slug": "dragon-towershield",
+    "name": "Dragon Towershield",
+    "category": "Greatshield",
+    "icon": "weapons/dragon-towershield.webp"
+  },
+  {
+    "slug": "briar-greatshield",
+    "name": "Briar Greatshield",
+    "category": "Greatshield",
+    "icon": "weapons/briar-greatshield.webp"
+  },
+  {
+    "slug": "spiked-palisade-shield",
+    "name": "Spiked Palisade Shield",
+    "category": "Greatshield",
+    "icon": "weapons/spiked-palisade-shield.webp"
+  },
+  {
+    "slug": "icon-shield",
+    "name": "Icon Shield",
+    "category": "Greatshield",
+    "icon": "weapons/icon-shield.webp"
+  },
+  {
+    "slug": "golden-beast-crest-shield",
+    "name": "Golden Beast Crest Shield",
+    "category": "Greatshield",
+    "icon": "weapons/golden-beast-crest-shield.webp"
+  },
+  {
+    "slug": "distinguished-greatshield",
+    "name": "Distinguished Greatshield",
+    "category": "Greatshield",
+    "icon": "weapons/distinguished-greatshield.webp"
+  },
+  {
+    "slug": "gilded-greatshield",
+    "name": "Gilded Greatshield",
+    "category": "Greatshield",
+    "icon": "weapons/gilded-greatshield.webp"
+  },
+  {
+    "slug": "cuckoo-greatshield",
+    "name": "Cuckoo Greatshield",
+    "category": "Greatshield",
+    "icon": "weapons/cuckoo-greatshield.webp"
+  },
+  {
+    "slug": "redmane-greatshield",
+    "name": "Redmane Greatshield",
+    "category": "Greatshield",
+    "icon": "weapons/redmane-greatshield.webp"
+  },
+  {
+    "slug": "golden-greatshield",
+    "name": "Golden Greatshield",
+    "category": "Greatshield",
+    "icon": "weapons/golden-greatshield.webp"
+  },
+  {
+    "slug": "haligtree-crest-greatshield",
+    "name": "Haligtree Crest Greatshield",
+    "category": "Greatshield",
+    "icon": "weapons/haligtree-crest-greatshield.webp"
+  },
+  {
+    "slug": "eclipse-crest-greatshield",
+    "name": "Eclipse Crest Greatshield",
+    "category": "Greatshield",
+    "icon": "weapons/eclipse-crest-greatshield.webp"
+  },
+  {
+    "slug": "crucible-hornshield",
+    "name": "Crucible Hornshield",
+    "category": "Greatshield",
+    "icon": "weapons/crucible-hornshield.webp"
+  },
+  {
+    "slug": "dragonclaw-shield",
+    "name": "Dragonclaw Shield",
+    "category": "Greatshield",
+    "icon": "weapons/dragonclaw-shield.webp"
+  },
+  {
+    "slug": "fingerprint-stone-shield",
+    "name": "Fingerprint Stone Shield",
+    "category": "Greatshield",
+    "icon": "weapons/fingerprint-stone-shield.webp"
+  },
+  {
+    "slug": "ant-s-skull-plate",
+    "name": "Ant's Skull Plate",
+    "category": "Greatshield",
+    "icon": "weapons/ant-s-skull-plate.webp"
+  },
+  {
+    "slug": "erdtree-greatshield",
+    "name": "Erdtree Greatshield",
+    "category": "Greatshield",
+    "icon": "weapons/erdtree-greatshield.webp"
+  },
+  {
+    "slug": "jellyfish-shield",
+    "name": "Jellyfish Shield",
+    "category": "Greatshield",
+    "icon": "weapons/jellyfish-shield.webp"
+  },
+  {
+    "slug": "visage-shield",
+    "name": "Visage Shield",
+    "category": "Greatshield",
+    "icon": "weapons/visage-shield.webp"
+  },
+  {
+    "slug": "one-eyed-shield",
+    "name": "One-Eyed Shield",
+    "category": "Greatshield",
+    "icon": "weapons/one-eyed-shield.webp"
+  }
+]

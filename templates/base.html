@@ -26,13 +26,15 @@
         <nav>
             <a href="{% url 'build-list' %}"{% if url_name == 'build-list' and not request.GET.author %} aria-current="page"{% endif %}>Builds</a>
             <a href="{% url 'relic-list' %}"{% if url_name == 'relic-list' %} aria-current="page"{% endif %}>Relics</a>
+            <a href="{% url 'weapon-list' %}"{% if url_name == 'weapon-list' %} aria-current="page"{% endif %}>Weapons</a>
             {% if user.is_authenticated %}
                 <a href="{% url 'build-list' %}?author={{ user.username|urlencode }}"{% if request.GET.author == user.username %} aria-current="page"{% endif %}>My builds</a>
                 <form class="inline-form" method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="linkish">Log out</button></form>
-                <a class="button button-sm" href="{% url 'build-choose' %}">New build</a>
+                <a class="button button-sm" href="{% url 'builder' %}">Builder</a>
             {% else %}
                 <a href="{% url 'login' %}"{% if url_name == 'login' %} aria-current="page"{% endif %}>Log in</a>
-                <a class="button button-sm" href="{% url 'signup' %}">Sign up</a>
+                <a href="{% url 'signup' %}"{% if url_name == 'signup' %} aria-current="page"{% endif %}>Sign up</a>
+                <a class="button button-sm" href="{% url 'builder' %}">Builder</a>
             {% endif %}
         </nav>
     </header>
@@ -49,7 +51,7 @@
 
     <footer class="site-footer">
         <p>Builds shared by the Nightfarers of the Roundtable Hold.</p>
-        <p>Relic and vessel data from the <a href="https://eldenring.wiki.gg/wiki/Nightreign:Relics" rel="noopener">Elden Ring Nightreign wiki</a> (CC BY-SA).</p>
+        <p>Relic, vessel and weapon data from the <a href="https://eldenring.wiki.gg/wiki/Nightreign:Relics" rel="noopener">Elden Ring Nightreign wiki</a> (CC BY-SA).</p>
         <p>A fan site, not affiliated with FromSoftware or Bandai Namco. Game icons © FromSoftware.</p>
     </footer>
     {% block scripts %}{% endblock %}

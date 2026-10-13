@@ -10,6 +10,7 @@ from builds.models import (
     RelicEffect,
     SlotColour,
     Vessel,
+    Weapon,
 )
 
 
@@ -57,6 +58,7 @@ class RelicFactory(factory.django.DjangoModelFactory):
 
     name = factory.Sequence(lambda n: f"Relic {n}")
     colour = Colour.RED
+    kind = Relic.Kind.UNIQUE
 
 
 class BuildFactory(factory.django.DjangoModelFactory):
@@ -78,3 +80,12 @@ class BuildRelicFactory(factory.django.DjangoModelFactory):
     build = factory.SubFactory(BuildFactory)
     slot = 1
     relic = factory.SubFactory(RelicFactory)
+
+
+class WeaponFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Weapon
+
+    name = factory.Sequence(lambda n: f"Weapon {n}")
+    slug = factory.Sequence(lambda n: f"weapon-{n}")
+    category = "Greatsword"

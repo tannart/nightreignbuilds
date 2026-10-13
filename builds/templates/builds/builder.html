@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{% if build %}Edit {{ build.name }}{% else %}Builder{% endif %} · nightreign.build{% endblock %}
+{% block content %}
+<div class="page-head">
+    <div>
+        <h1>{% if build %}Edit build{% else %}Builder{% endif %}</h1>
+        <p>Pick a Nightfarer, slot in your relics and weapons, then save it or grab a link to share.</p>
+    </div>
+</div>
+
+<form method="post" class="stacked-form builder" novalidate>{% csrf_token %}
+    {% if form.non_field_errors %}<ul class="errorlist nonfield">{% for e in form.non_field_errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+
+    <section class="panel">
+        <h2 class="eyebrow">Nightfarer</h2>
+        <div class="farer-picker">{% for radio in form.nightfarer %}{{ radio }}{% endfor %}</div>
+        {{ form.nightfarer.errors }}
+    </section>
+
+    <section class="panel">
+        <h2 class="eyebrow">Vessel</h2>
+        <div class="vessel-row">
+            <p>
+                <label for="{{ form.vessel.id_for_label }}">{{ form.vessel.label }}</label>
+                {{ form.vessel }}
+                <span class="helptext">Choose one to check relic colours against its slots. White slots take any colour.</span>
+                {{ form.vessel.errors }}
+            </p>
+            <label class="switch" for="{{ form.deep_of_night.id_for_label }}">
+                {{ form.deep_of_night }}
+                <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+                <span><strong>Deep of Night</strong><span class="helptext">{{ form.deep_of_night.help_text }}</span></span>
+            </label>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2 class="eyebrow">Relics</h2>
+        <div class="slot-grid">{% for slot in standard_slot_forms %}{% include "builds/_slot_form.html" %}{% endfor %}</div>
+    </section>
+
+    <section class="panel deep-panel" id="deep-slots"{% if not form.deep_of_night.value %} hidden{% endif %}>
+        <h2 class="eyebrow">Deep of Night</h2>
+        <p class="form-hint">Deep relics roll at random, so describe yours as a custom relic, or pick one you've saved.</p>
+        <div class="slot-grid">{% for slot in deep_slot_forms %}{% include "builds/_slot_form.html" %}{% endfor %}</div>
+    </section>
+
+    <section class="panel">
+        <h2 class="eyebrow">Weapons</h2>
+        <div class="weapon-grid">{% for field in form.weapon_inputs %}<p><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{{ field.errors }}</p>{% endfor %}</div>
+    </section>
+
+    <section class="panel">
+        <h2 class="eyebrow">Details</h2>
+        {% include "builds/_field.html" with field=form.name %}
+        {% include "builds/_field.html" with field=form.description %}
+    </section>
+
+    <div class="action-bar">
+        {% if user.is_authenticated %}
+            <span class="muted">Share links work for anyone, but only saved builds are listed.</span>
+            <button type="submit" name="action" value="share" class="button button-ghost">Get share link</button>
+            <button type="submit" name="action" value="save">{% if build.is_listed %}Save changes{% else %}Save build{% endif %}</button>
+        {% else %}
+            <span class="muted"><a href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}">Log in</a> to save builds to your profile.</span>
+            <button type="submit" name="action" value="share">Get share link</button>
+        {% endif %}
+    </div>
+
+    <datalist id="weapon-names">{% for name in weapon_names %}<option value="{{ name }}">{% endfor %}</datalist>
+    <datalist id="effect-names">{% for name in effect_names %}<option value="{{ name }}">{% endfor %}</datalist>
+</form>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/builder.js' %}"></script>{% endblock %}

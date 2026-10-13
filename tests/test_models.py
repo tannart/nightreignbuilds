@@ -18,6 +18,7 @@ from tests.factories import (
         (Colour.RED, SlotColour.RED, True),
         (Colour.BLUE, SlotColour.RED, False),
         (Colour.GREEN, SlotColour.WHITE, True),
+        (Colour.BLUE, None, True),
     ],
 )
 def test_relic_fits_slot(relic_colour, slot_colour, expected):
@@ -90,3 +91,22 @@ def test_relic_label_shows_effects_for_scene_relics(kind, expected):
     relic = RelicFactory(name="Grand Scene", kind=kind)
     relic.effects.set([RelicEffectFactory(name="Vigor +2")])
     assert relic.label() == expected
+
+
+@pytest.mark.django_db
+def test_builds_get_distinct_random_slugs():
+    slugs = {BuildFactory().slug for _ in range(5)}
+    assert len(slugs) == 5
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    ("deep", "slots"), [(False, (1, 2, 3)), (True, (1, 2, 3, 4, 5, 6))]
+)
+def test_build_slot_numbers_follow_deep_of_night(deep, slots):
+    assert BuildFactory(deep_of_night=deep).slot_numbers == slots
+
+
+@pytest.mark.django_db
+def test_build_without_vessel_has_no_slot_colours():
+    assert BuildFactory(vessel=None).slot_colour(1) is None

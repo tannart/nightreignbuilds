@@ -1,7 +1,14 @@
 import pytest
 from django.core.management import call_command
 
-from builds.models import Nightfarer, Relic, RelicEffect, SlotColour, Vessel
+from builds.models import (
+    Nightfarer,
+    Relic,
+    RelicEffect,
+    SlotColour,
+    Vessel,
+    Weapon,
+)
 
 
 @pytest.mark.django_db
@@ -49,3 +56,17 @@ def test_seeded_relic_icons_exist(settings):
     static = settings.BASE_DIR / "static"
     missing = [r.icon for r in Relic.objects.all() if not (static / r.icon).exists()]
     assert missing == []
+
+
+@pytest.mark.django_db
+def test_seeded_weapon_icons_exist(settings):
+    call_command("seed_game_data")
+    static = settings.BASE_DIR / "static"
+    missing = [w.icon for w in Weapon.objects.all() if not (static / w.icon).exists()]
+    assert missing == []
+
+
+@pytest.mark.django_db
+def test_seed_loads_weapons():
+    call_command("seed_game_data")
+    assert Weapon.objects.get(slug="wylder-s-greatsword").category == "Greatsword"
