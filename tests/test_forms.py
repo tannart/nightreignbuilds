@@ -120,20 +120,53 @@ def test_custom_relic_marks_new_effects_unofficial():
     assert relic.effects.get().official is False
 
 
-@pytest.mark.django_db
-def test_relic_form_limits_effects():
-    effects = RelicEffectFactory.create_batch(4)
-    form = RelicForm(
-        {"name": "Greedy", "colour": Colour.RED, "effects": [e.pk for e in effects]}
-    )
-    assert "effects" in form.errors
+def relic_data(**extra):
+    return {"name": "Found it", "colour": Colour.RED, **extra}
 
 
 @pytest.mark.django_db
 def test_relic_form_rejects_deep_effect_on_normal_relic():
     effect = RelicEffectFactory(deep_only=True)
-    form = RelicForm({"name": "Odd", "colour": Colour.RED, "effects": [effect.pk]})
-    assert "effects" in form.errors
+    form = RelicForm(relic_data(effect_1=effect.pk))
+    assert "effect_1" in form.errors
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    ("is_deep", "with_effect", "error"),
+    [("", True, True), ("on", False, True), ("on", True, False)],
+)
+def test_relic_form_curse_rules(is_deep, with_effect, error):
+    effect = RelicEffectFactory()
+    curse = RelicEffectFactory(is_curse=True)
+    data = relic_data(is_deep=is_deep, curse_1=curse.pk)
+    if with_effect:
+        data["effect_1"] = effect.pk
+    assert ("curse_1" in RelicForm(data).errors) is error
+
+
+@pytest.mark.django_db
+def test_relic_form_rejects_repeated_effect():
+    effect = RelicEffectFactory()
+    form = RelicForm(relic_data(effect_1=effect.pk, effect_2=effect.pk))
+    assert "effect_2" in form.errors
+
+
+@pytest.mark.django_db
+def test_relic_form_saves_curse_with_its_effect(user):
+    effects = RelicEffectFactory.create_batch(2)
+    curse = RelicEffectFactory(is_curse=True)
+    form = RelicForm(
+        relic_data(
+            is_deep="on",
+            effect_1=effects[0].pk,
+            effect_2=effects[1].pk,
+            curse_2=curse.pk,
+        )
+    )
+    form.instance.created_by = user
+    relic = form.save()
+    assert dict(relic.effect_lines()) == {effects[0]: None, effects[1]: curse}
 
 
 def deep_custom(**effects):
@@ -183,4 +216,4 @@ def test_only_deep_slots_take_curses(slot, expected):
 @pytest.mark.django_db
 def test_relic_form_does_not_offer_curses():
     curse = RelicEffectFactory(is_curse=True)
-    assert curse not in RelicForm().fields["effects"].queryset
+    assert curse not in RelicForm().fields["effect_1"].queryset

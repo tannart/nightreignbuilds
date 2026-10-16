@@ -28,31 +28,72 @@ class SignUpForm(UserCreationForm[User]):
 
 
 class RelicForm(forms.ModelForm[Relic]):
-    effects = forms.ModelMultipleChoiceField(
-        queryset=RelicEffect.objects.filter(official=True, is_curse=False),
-        required=False,
-        widget=forms.SelectMultiple(attrs={"size": 12}),
-        help_text=f"Pick up to {Relic.MAX_EFFECTS} effects.",
-    )
+    """Up to three effects, each with the curse it came with if the relic is
+    from the Deep of Night."""
+
+    lines = range(1, Relic.MAX_EFFECTS + 1)
 
     class Meta:
         model = Relic
-        fields = ["name", "colour", "is_deep", "effects"]
+        fields = ["name", "colour", "is_deep"]
 
-    def clean_effects(self) -> Any:
-        effects = self.cleaned_data["effects"]
-        if len(effects) > Relic.MAX_EFFECTS:
-            raise forms.ValidationError(
-                f"A relic can have at most {Relic.MAX_EFFECTS} effects."
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(*args, **kwargs)
+        effects = RelicEffect.objects.filter(official=True)
+        for n in self.lines:
+            self.fields[f"effect_{n}"] = forms.ModelChoiceField(
+                queryset=effects.filter(is_curse=False),
+                required=False,
+                label=f"Effect {n}",
+                empty_label="None",
             )
-        return effects
+            self.fields[f"curse_{n}"] = forms.ModelChoiceField(
+                queryset=effects.filter(is_curse=True),
+                required=False,
+                label=f"Curse {n}",
+                empty_label="No curse",
+            )
+
+    def effect_rows(self) -> list[tuple[forms.BoundField, forms.BoundField]]:
+        return [(self[f"effect_{n}"], self[f"curse_{n}"]) for n in self.lines]
 
     def clean(self) -> dict[str, Any]:
         cleaned = super().clean() or {}
-        effects = cleaned.get("effects") or []
-        if not cleaned.get("is_deep") and any(e.deep_only for e in effects):
-            self.add_error("effects", "Deep-only effects need a Deep of Night relic.")
+        deep = cleaned.get("is_deep")
+        seen: set[RelicEffect] = set()
+        for n in self.lines:
+            effect, curse = cleaned.get(f"effect_{n}"), cleaned.get(f"curse_{n}")
+            if effect and effect.deep_only and not deep:
+                self.add_error(
+                    f"effect_{n}", "Deep-only effects need a Deep of Night relic."
+                )
+            if effect and effect in seen:
+                self.add_error(f"effect_{n}", "This effect is already listed.")
+            if curse and not deep:
+                self.add_error(f"curse_{n}", "Only Deep of Night relics have curses.")
+            elif curse and not effect:
+                self.add_error(
+                    f"curse_{n}", "A curse comes with an effect; pick one above."
+                )
+            if effect:
+                seen.add(effect)
         return cleaned
+
+    def save(self, commit: bool = True) -> Relic:
+        relic = super().save(commit=commit)
+        if commit:
+            pairs = [
+                (effect, self.cleaned_data.get(f"curse_{n}"))
+                for n in self.lines
+                if (effect := self.cleaned_data.get(f"effect_{n}"))
+            ]
+            relic.effects.set([effect for effect, _ in pairs])
+            RelicCurse.objects.bulk_create(
+                RelicCurse(relic=relic, effect=effect, curse=curse)
+                for effect, curse in pairs
+                if curse
+            )
+        return relic
 
 
 class InstanceDataRadio(forms.RadioSelect):

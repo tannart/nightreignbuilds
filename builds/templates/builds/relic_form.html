@@ -4,8 +4,18 @@
 {% block content %}
 <div class="page-head"><div><h1>Add a relic</h1><p>Save a relic you've found so you can reuse it in builds. Only you can see your relics.</p></div></div>
 <form method="post" class="stacked-form">{% csrf_token %}
+    {{ form.non_field_errors }}
     <section class="panel">
-        {% for field in form %}{% include "builds/_field.html" %}{% endfor %}
+        {% include "builds/_field.html" with field=form.name %}
+        {% include "builds/_field.html" with field=form.colour %}
+        {% include "builds/_field.html" with field=form.is_deep %}
+    </section>
+    <section class="panel relic-effects">
+        <h2 class="eyebrow">Effects</h2>
+        {% for effect, curse in form.effect_rows %}
+            {% include "builds/_field.html" with field=effect %}
+            <div class="curse-field">{% include "builds/_field.html" with field=curse %}</div>
+        {% endfor %}
     </section>
     <div class="actions"><button type="submit">Save relic</button><a class="button button-ghost" href="{% url 'relic-list' %}">Cancel</a></div>
 </form>

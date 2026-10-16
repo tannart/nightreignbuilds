@@ -967,6 +967,9 @@ a.card:hover {
 }
 .custom-relic p { margin-bottom: .7rem; }
 .custom-relic .curse-field { margin: -.35rem 0 .85rem 1rem; }
+/* On the Add a relic page, curses only show once the relic is marked deep. */
+.relic-effects .curse-field { margin: -.5rem 0 1rem 1rem; }
+form:has(#id_is_deep:not(:checked)) .relic-effects .curse-field:not(:has(.errorlist)) { display: none; }
 .custom-relic .curse-field input { border-color: color-mix(in oklab, var(--relic-blue) 35%, var(--line)); }
 .custom-relic input:not([type="checkbox"]), .custom-relic select { padding: .5rem .7rem; font-size: .88rem; border-radius: 10px; }
 .custom-row { display: grid; grid-template-columns: minmax(0, 1fr) 120px; gap: .6rem; }
