@@ -5,6 +5,7 @@ from .models import (
     BuildRelic,
     Nightfarer,
     Relic,
+    RelicCurse,
     RelicEffect,
     Vessel,
     Weapon,
@@ -47,8 +48,14 @@ class RelicEffectAdmin(admin.ModelAdmin[RelicEffect]):
     search_fields = ["name"]
 
 
+class RelicCurseInline(admin.TabularInline[RelicCurse, Relic]):
+    model = RelicCurse
+    extra = 0
+
+
 @admin.register(Relic)
 class RelicAdmin(admin.ModelAdmin[Relic]):
+    inlines = [RelicCurseInline]
     list_display = ["name", "kind", "colour", "is_deep", "created_by"]
     list_filter = ["kind", "colour", "is_deep"]
     search_fields = ["name"]

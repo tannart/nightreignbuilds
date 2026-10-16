@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Taking Damage Causes Poison Buildup",
+    "description": "Taking damage inflicts 65 poison buildup."
+  },
+  {
+    "name": "Taking Damage Causes Rot Buildup",
+    "description": "Taking damage inflicts 55 rot buildup."
+  },
+  {
+    "name": "Taking Damage Causes Frost Buildup",
+    "description": "Taking damage inflicts 55 frost buildup."
+  },
+  {
+    "name": "Taking Damage Causes Blood Loss Buildup",
+    "description": "Taking damage inflicts 55 bleed buildup."
+  },
+  {
+    "name": "Taking Damage Causes Madness Buildup",
+    "description": "Taking damage inflicts 50 madness buildup."
+  },
+  {
+    "name": "Taking Damage Causes Sleep Buildup",
+    "description": "Taking damage inflicts 50 sleep buildup."
+  },
+  {
+    "name": "Taking Damage Causes Death Buildup",
+    "description": "Taking damage inflicts 40 deathblight buildup."
+  },
+  {
+    "name": "Reduced Strength and Intelligence",
+    "description": "Decreases strength and intelligence by 3."
+  },
+  {
+    "name": "Reduced Dexterity and Faith",
+    "description": "Decreases dexterity and faith by 3."
+  },
+  {
+    "name": "Reduced Intelligence and Dexterity",
+    "description": "Decreases dexterity and intelligence by 3."
+  },
+  {
+    "name": "Reduced Faith and Strength",
+    "description": "Decreases strength and faith by 3."
+  },
+  {
+    "name": "Reduced Vigor and Arcane",
+    "description": "Decreases vigor and arcane by 3."
+  },
+  {
+    "name": "Reduced Rune Acquisition",
+    "description": "Decreases rune gain by 10%."
+  },
+  {
+    "name": "Reduced Flask HP Restoration",
+    "description": "Reduces HP gained from flasks by 15%."
+  },
+  {
+    "name": "Ultimate Art Charging Impaired",
+    "description": "Decreases ultimate gauge regen while in combat by 15%."
+  },
+  {
+    "name": "All Resistances Down",
+    "description": "Decreases all status resistance by 80."
+  },
+  {
+    "name": "Continuous HP Loss",
+    "description": "Decreases HP by 2/s"
+  },
+  {
+    "name": "Reduced Damage Negation After Evading",
+    "description": "Decreases damage negations by 45% right after rolling."
+  },
+  {
+    "name": "Repeated Evasions Lower Damage Negation",
+    "description": "Decreases damage negations by 35% for 15 seconds on repeat rolls."
+  },
+  {
+    "name": "Reduced Damage Negation for Flask Usages",
+    "description": "Decreases damage negations by 45% while using flasks."
+  },
+  {
+    "name": "Lower Attack When Below Max HP",
+    "description": "Decreases attack power by 8.5% when below Max HP."
+  },
+  {
+    "name": "Poison Buildup When Below Max HP",
+    "description": "Inflicts 3 poison buildup per 0.2s when below Max HP."
+  },
+  {
+    "name": "Rot Buildup When Below Max HP",
+    "description": "Inflicts 2 rot buildup per 0.2s when below Max HP."
+  },
+  {
+    "name": "Near Death Reduces Max HP",
+    "description": "Reduces maximum HP by 25% for 60 seconds after being downed."
+  }
+]

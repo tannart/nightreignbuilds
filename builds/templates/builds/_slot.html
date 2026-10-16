@@ -9,8 +9,8 @@
         <span class="slot-label">{% if colour %}{{ colour }} slot{% elif relic %}{{ relic.get_colour_display }} relic{% else %}Slot{% endif %}</span>
         {% if relic %}
             <h3>{{ relic.name }}</h3>
-            {% with effects=relic.effects.all %}{% if effects %}
-            <ul>{% for effect in effects %}<li{% if effect.is_curse %} class="curse"{% endif %}{% if effect.description %} title="{{ effect.description }}"{% endif %}>{{ effect.name }}</li>{% endfor %}</ul>
+            {% with lines=relic.effect_lines %}{% if lines %}
+            <ul>{% for effect, curse in relic.effect_lines %}<li{% if effect.is_curse %} class="curse"{% endif %}{% if effect.description %} title="{{ effect.description }}"{% endif %}>{{ effect.name }}{% if curse %}<small class="curse-line"{% if curse.description %} title="{{ curse.description }}"{% endif %}>{{ curse.name }}</small>{% endif %}</li>{% endfor %}</ul>
             {% endif %}{% endwith %}
         {% else %}
             <h3>Empty</h3>

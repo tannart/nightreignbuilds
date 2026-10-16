@@ -631,6 +631,13 @@ a.card:hover {
 }
 .slot li.curse { color: #f0a29c; }
 .slot li.curse::before { background: var(--relic-red); }
+/* A deep relic's curse, under the effect it came with — blue, as in game. */
+.curse-line {
+    display: block;
+    margin-top: .1rem;
+    font-size: .8em;
+    color: color-mix(in oklab, var(--relic-blue) 70%, #fff);
+}
 .slot.empty { border-style: dashed; background: transparent; }
 .slot.empty h3 { color: var(--muted); font-weight: 500; }
 .slots.deep .slot {
@@ -959,6 +966,8 @@ a.card:hover {
     border-top: 1px dashed var(--line);
 }
 .custom-relic p { margin-bottom: .7rem; }
+.custom-relic .curse-field { margin: -.35rem 0 .85rem 1rem; }
+.custom-relic .curse-field input { border-color: color-mix(in oklab, var(--relic-blue) 35%, var(--line)); }
 .custom-relic input:not([type="checkbox"]), .custom-relic select { padding: .5rem .7rem; font-size: .88rem; border-radius: 10px; }
 .custom-row { display: grid; grid-template-columns: minmax(0, 1fr) 120px; gap: .6rem; }
 

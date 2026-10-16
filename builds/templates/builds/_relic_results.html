@@ -23,8 +23,8 @@
                 <span class="meta"><span class="gem {{ relic.colour }}"></span>&nbsp; {{ relic.get_colour_display }} · {% if relic.is_deep %}Deep of Night{% elif relic.is_remembrance %}Remembrance{% elif relic.kind == 'custom' %}Yours{% else %}{{ relic.get_kind_display }}{% endif %}</span>
             </div>
         </div>
-        {% with effects=relic.effects.all %}{% if effects %}
-        <ul class="effects">{% for effect in effects %}<li{% if effect.is_curse %} class="curse"{% endif %}>{{ effect.name }}</li>{% endfor %}</ul>
+        {% with lines=relic.effect_lines %}{% if lines %}
+        <ul class="effects">{% for effect, curse in relic.effect_lines %}<li{% if effect.is_curse %} class="curse"{% endif %}>{{ effect.name }}{% if curse %}<small class="curse-line"{% if curse.description %} title="{{ curse.description }}"{% endif %}>{{ curse.name }}</small>{% endif %}</li>{% endfor %}</ul>
         {% else %}<p class="meta">No effects listed.</p>{% endif %}{% endwith %}
         {% if relic.acquisition %}<p class="acquisition">{{ relic.acquisition }}</p>{% endif %}
     </li>

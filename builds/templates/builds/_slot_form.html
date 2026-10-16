@@ -11,7 +11,10 @@
             <p><label for="{{ slot.custom_name.id_for_label }}">{{ slot.custom_name.label }}</label>{{ slot.custom_name }}{{ slot.custom_name.errors }}</p>
             <p><label for="{{ slot.custom_colour.id_for_label }}">{{ slot.custom_colour.label }}</label>{{ slot.custom_colour }}{{ slot.custom_colour.errors }}</p>
         </div>
-        {% for field in slot.effect_fields %}<p><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{{ field.errors }}</p>{% endfor %}
+        {% for field, curse in slot.effect_rows %}
+            <p><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{{ field.errors }}</p>
+            {% if curse %}<p class="curse-field"><label for="{{ curse.id_for_label }}">{{ curse.label }} <span class="helptext">optional</span></label>{{ curse }}{{ curse.errors }}</p>{% endif %}
+        {% endfor %}
         {% if user.is_authenticated %}
             <p class="check"><label for="{{ slot.save_custom.id_for_label }}">{{ slot.save_custom.label }}</label>{{ slot.save_custom }}</p>
         {% endif %}

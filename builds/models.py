@@ -172,9 +172,33 @@ class Relic(models.Model):
     def fits_slot(self, slot_colour: str | None) -> bool:
         return slot_colour in (None, SlotColour.WHITE, self.colour)
 
+    def effect_lines(self) -> list[tuple["RelicEffect", "RelicEffect | None"]]:
+        """Each effect with the curse that came with it, if any."""
+        curses = {c.effect_id: c.curse for c in self.curses.all()}
+        return [(effect, curses.get(effect.pk)) for effect in self.effects.all()]
+
     @property
     def is_remembrance(self) -> bool:
         return self.kind == self.Kind.UNIQUE and "Remembrance" in self.acquisition
+
+
+class RelicCurse(models.Model):
+    """A negative effect on a Deep of Night relic. Each one comes with one of
+    the relic's effects, and the game lists it beneath that effect."""
+
+    relic = models.ForeignKey(Relic, on_delete=models.CASCADE, related_name="curses")
+    effect = models.ForeignKey(RelicEffect, on_delete=models.CASCADE, related_name="+")
+    curse = models.ForeignKey(RelicEffect, on_delete=models.PROTECT, related_name="+")
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["relic", "effect"], name="one_curse_per_effect"
+            )
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.relic}: {self.effect} / {self.curse}"
 
 
 class Weapon(models.Model):

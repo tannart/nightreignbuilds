@@ -65,6 +65,7 @@
 
     <datalist id="weapon-names">{% for name in weapon_names %}<option value="{{ name }}">{% endfor %}</datalist>
     <datalist id="effect-names">{% for name in effect_names %}<option value="{{ name }}">{% endfor %}</datalist>
+    <datalist id="curse-names">{% for name in curse_names %}<option value="{{ name }}">{% endfor %}</datalist>
 </form>
 {% endblock %}
 {% block scripts %}<script src="{% static 'js/builder.js' %}"></script>{% endblock %}

@@ -134,3 +134,53 @@ def test_relic_form_rejects_deep_effect_on_normal_relic():
     effect = RelicEffectFactory(deep_only=True)
     form = RelicForm({"name": "Odd", "colour": Colour.RED, "effects": [effect.pk]})
     assert "effects" in form.errors
+
+
+def deep_custom(**effects):
+    return {"slot4-custom": "on", "slot4-custom_colour": "red", **effects}
+
+
+@pytest.mark.django_db
+def test_custom_deep_relic_pairs_curse_with_its_effect():
+    form = slot_form(
+        deep_custom(
+            **{
+                "slot4-custom_effect_1": "Vigor +3",
+                "slot4-custom_effect_2": "Arcane +1",
+                "slot4-custom_curse_2": "Reduced Rune Acquisition",
+            }
+        ),
+        slot=4,
+    )
+    form.is_valid()
+    lines = form.to_relic(AnonymousUser()).effect_lines()
+    assert sorted((e.name, c and c.name) for e, c in lines) == [
+        ("Arcane +1", "Reduced Rune Acquisition"),
+        ("Vigor +3", None),
+    ]
+
+
+@pytest.mark.django_db
+def test_curse_needs_an_effect():
+    form = slot_form(
+        deep_custom(
+            **{
+                "slot4-custom_effect_1": "Vigor +3",
+                "slot4-custom_curse_2": "Continuous HP Loss",
+            }
+        ),
+        slot=4,
+    )
+    assert "custom_curse_2" in form.errors
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(("slot", "expected"), [(1, False), (4, True)])
+def test_only_deep_slots_take_curses(slot, expected):
+    assert ("custom_curse_1" in slot_form(None, slot=slot).fields) is expected
+
+
+@pytest.mark.django_db
+def test_relic_form_does_not_offer_curses():
+    curse = RelicEffectFactory(is_curse=True)
+    assert curse not in RelicForm().fields["effects"].queryset

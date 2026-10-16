@@ -118,3 +118,10 @@ def test_seeded_nightfarer_icons_exist(settings):
     static = settings.BASE_DIR / "static"
     icons = [n.icon for n in Nightfarer.objects.all()]
     assert [i for i in icons if not (static / i).exists()] == []
+
+
+@pytest.mark.django_db
+def test_seed_adds_deep_relic_curses():
+    call_command("seed_game_data")
+    curse = RelicEffect.objects.get(name="Taking Damage Causes Poison Buildup")
+    assert (curse.is_curse, curse.deep_only) == (True, True)

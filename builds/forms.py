@@ -14,6 +14,7 @@ from .models import (
     Build,
     Colour,
     Relic,
+    RelicCurse,
     RelicEffect,
     Vessel,
     Weapon,
@@ -28,7 +29,7 @@ class SignUpForm(UserCreationForm[User]):
 
 class RelicForm(forms.ModelForm[Relic]):
     effects = forms.ModelMultipleChoiceField(
-        queryset=RelicEffect.objects.filter(official=True),
+        queryset=RelicEffect.objects.filter(official=True, is_curse=False),
         required=False,
         widget=forms.SelectMultiple(attrs={"size": 12}),
         help_text=f"Pick up to {Relic.MAX_EFFECTS} effects.",
@@ -233,6 +234,10 @@ class SlotForm(forms.Form):
     custom_effect_1 = forms.CharField(required=False, max_length=200, label="Effect 1")
     custom_effect_2 = forms.CharField(required=False, max_length=200, label="Effect 2")
     custom_effect_3 = forms.CharField(required=False, max_length=200, label="Effect 3")
+    # Deep relics only: the negative effect, if any, that came with each effect.
+    custom_curse_1 = forms.CharField(required=False, max_length=200, label="Curse 1")
+    custom_curse_2 = forms.CharField(required=False, max_length=200, label="Curse 2")
+    custom_curse_3 = forms.CharField(required=False, max_length=200, label="Curse 3")
     save_custom = forms.BooleanField(
         required=False, initial=True, label="Save to my relics"
     )
@@ -256,18 +261,35 @@ class SlotForm(forms.Form):
             self.fields[f"custom_effect_{n}"].widget.attrs.update(
                 {"list": "effect-names", "placeholder": "Start typing an effect…"}
             )
+            if self.is_deep:
+                self.fields[f"custom_curse_{n}"].widget.attrs.update(
+                    {"list": "curse-names", "placeholder": "Curse, if any"}
+                )
+            else:
+                del self.fields[f"custom_curse_{n}"]
 
-    def effect_fields(self) -> list[forms.BoundField]:
-        return [self[f"custom_effect_{n}"] for n in (1, 2, 3)]
+    def effect_rows(self) -> list[tuple[forms.BoundField, forms.BoundField | None]]:
+        return [
+            (
+                self[f"custom_effect_{n}"],
+                self[f"custom_curse_{n}"] if self.is_deep else None,
+            )
+            for n in (1, 2, 3)
+        ]
 
     def clean(self) -> dict[str, Any]:
         cleaned = super().clean() or {}
         if cleaned.get("custom"):
-            cleaned["effects"] = [
-                effect
-                for n in (1, 2, 3)
-                if (effect := cleaned.get(f"custom_effect_{n}", "").strip())
-            ]
+            cleaned["effects"] = []
+            for n in (1, 2, 3):
+                effect = cleaned.get(f"custom_effect_{n}", "").strip()
+                curse = cleaned.get(f"custom_curse_{n}", "").strip()
+                if effect:
+                    cleaned["effects"].append((effect, curse))
+                elif curse:
+                    self.add_error(
+                        f"custom_curse_{n}", "A curse comes with an effect; add one."
+                    )
             if not cleaned.get("custom_colour"):
                 self.add_error("custom_colour", "Pick the relic's colour.")
             if not cleaned["effects"]:
@@ -305,12 +327,22 @@ class SlotForm(forms.Form):
             kind=Relic.Kind.CUSTOM,
             created_by=user if keep else None,
         )
-        relic.effects.set(
-            [
-                RelicEffect.objects.get_or_create(
-                    name=name, defaults={"official": False}
+        effects: list[RelicEffect] = []
+        curses: dict[RelicEffect, RelicEffect] = {}
+        for name, curse in self.cleaned_data["effects"]:
+            effect = RelicEffect.objects.get_or_create(
+                name=name, defaults={"official": False}
+            )[0]
+            if effect in effects:
+                continue
+            effects.append(effect)
+            if curse:
+                curses[effect] = RelicEffect.objects.get_or_create(
+                    name=curse, defaults={"official": False, "is_curse": True}
                 )[0]
-                for name in self.cleaned_data["effects"]
-            ]
+        relic.effects.set(effects)
+        RelicCurse.objects.bulk_create(
+            RelicCurse(relic=relic, effect=effect, curse=curse)
+            for effect, curse in curses.items()
         )
         return relic

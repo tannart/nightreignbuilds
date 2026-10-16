@@ -84,13 +84,17 @@ class Command(BaseCommand):
             )
         self.seed_relics()
         self.seed_effects()
+        self.seed_curses()
         self.seed_weapons()
         self.stdout.write(
             self.style.SUCCESS(
                 f"{Nightfarer.objects.count()} nightfarers, "
                 f"{Vessel.objects.count()} vessels, "
                 f"{Relic.objects.exclude(slug=None).count()} catalogued relics, "
-                f"{RelicEffect.objects.filter(official=True).count()} effects, "
+                f"{RelicEffect.objects.filter(official=True, is_curse=False).count()}"
+                " effects, "
+                f"{RelicEffect.objects.filter(official=True, is_curse=True).count()}"
+                " curses, "
                 f"{Weapon.objects.count()} weapons"
             )
         )
@@ -120,6 +124,20 @@ class Command(BaseCommand):
         cache = {e.name: e for e in RelicEffect.objects.all()}
         for name in json.loads((DATA_DIR / "effects.json").read_text()):
             self.effect(name, nightfarers, cache)
+
+    def seed_curses(self) -> None:
+        """The negative effects Deep of Night relics can roll, each paired
+        with one of the relic's effects. From relics.pro's compendium."""
+        for entry in json.loads((DATA_DIR / "curses.json").read_text()):
+            RelicEffect.objects.update_or_create(
+                name=entry["name"],
+                defaults={
+                    "description": entry["description"],
+                    "is_curse": True,
+                    "deep_only": True,
+                    "official": True,
+                },
+            )
 
     def seed_weapons(self) -> None:
         for entry in json.loads((DATA_DIR / "weapons.json").read_text()):

@@ -77,7 +77,7 @@ class BuildDetailView(generic.DetailView[Build]):
         relics = {
             s.slot: s.relic
             for s in build.slots.select_related("relic").prefetch_related(
-                "relic__effects"
+                "relic__effects", "relic__curses__curse"
             )
         }
         context["standard_slots"] = [
@@ -194,9 +194,12 @@ class BuilderView(View):
                 "build": form.instance if form.instance.pk else None,
                 "nightfarers": Nightfarer.objects.all(),
                 "weapon_names": Weapon.objects.values_list("name", flat=True),
-                "effect_names": RelicEffect.objects.filter(official=True).values_list(
-                    "name", flat=True
-                ),
+                "effect_names": RelicEffect.objects.filter(
+                    official=True, is_curse=False
+                ).values_list("name", flat=True),
+                "curse_names": RelicEffect.objects.filter(
+                    official=True, is_curse=True
+                ).values_list("name", flat=True),
             },
         )
 
@@ -317,7 +320,7 @@ class RelicListView(LiveSearchMixin, generic.ListView[Relic]):
         visible = ~Q(kind=Relic.Kind.CUSTOM)
         if self.request.user.is_authenticated:
             visible |= Q(created_by=self.request.user)
-        qs = Relic.objects.filter(visible).prefetch_related("effects")
+        qs = Relic.objects.filter(visible).prefetch_related("effects", "curses__curse")
         if colour := self.request.GET.get("colour"):
             qs = qs.filter(colour=colour)
         if kind := self.request.GET.get("kind"):

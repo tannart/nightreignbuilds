@@ -7,6 +7,7 @@ from builds.models import (
     Colour,
     Nightfarer,
     Relic,
+    RelicCurse,
     RelicEffect,
     SlotColour,
     Vessel,
@@ -59,6 +60,15 @@ class RelicFactory(factory.django.DjangoModelFactory):
     name = factory.Sequence(lambda n: f"Relic {n}")
     colour = Colour.RED
     kind = Relic.Kind.UNIQUE
+
+
+class RelicCurseFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = RelicCurse
+
+    relic = factory.SubFactory(RelicFactory, is_deep=True)
+    effect = factory.SubFactory(RelicEffectFactory)
+    curse = factory.SubFactory(RelicEffectFactory, is_curse=True)
 
 
 class BuildFactory(factory.django.DjangoModelFactory):

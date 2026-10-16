@@ -5,6 +5,7 @@ from builds.models import Build, Relic
 from tests.factories import (
     BuildFactory,
     BuildRelicFactory,
+    RelicCurseFactory,
     RelicEffectFactory,
     RelicFactory,
     UserFactory,
@@ -294,3 +295,13 @@ def test_build_search_skips_share_links(client):
 def test_builder_shows_vessel_art(client, icon, expected):
     VesselFactory(icon=icon)
     assert expected in client.get(reverse("builder")).text
+
+
+@pytest.mark.django_db
+def test_build_page_shows_curse_under_its_effect(client):
+    curse = RelicCurseFactory(curse__name="Continuous HP Loss")
+    curse.relic.effects.set([curse.effect])
+    build = BuildFactory(deep_of_night=True, vessel=None)
+    BuildRelicFactory(build=build, slot=4, relic=curse.relic)
+    response = client.get(f"/b/{build.slug}/")
+    assert f'{curse.effect.name}<small class="curse-line"' in response.text
