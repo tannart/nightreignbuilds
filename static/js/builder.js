@@ -2,26 +2,29 @@
 // make the form pleasant: filter vessels to the chosen Nightfarer, colour
 // the slots, hide relics that won't fit, and show/hide optional parts.
 (function () {
-    const vessel = document.getElementById("id_vessel");
+    const vessels = document.querySelectorAll('input[name="vessel"]');
     const deep = document.getElementById("id_deep_of_night");
     const deepPanel = document.getElementById("deep-slots");
     const farers = document.querySelectorAll('input[name="nightfarer"]');
 
     function slotColours() {
-        const option = vessel && vessel.selectedOptions[0];
-        return option && option.dataset.slots ? option.dataset.slots.split(",") : [];
+        const chosen = document.querySelector('input[name="vessel"]:checked');
+        return chosen && chosen.dataset.slots ? chosen.dataset.slots.split(",") : [];
     }
 
     function filterVessels() {
-        if (!vessel) return;
         const chosen = document.querySelector('input[name="nightfarer"]:checked');
         const id = chosen ? chosen.value : null;
-        for (const option of vessel.options) {
-            if (!option.value) continue;
-            const usable = !id || !option.dataset.nightfarer || option.dataset.nightfarer === id;
-            option.hidden = !usable;
-            option.disabled = !usable;
-            if (!usable && option.selected) vessel.value = "";
+        for (const radio of vessels) {
+            if (!radio.value) continue;
+            // Until a Nightfarer is picked, only the grails anyone can use are shown.
+            const usable = !radio.dataset.nightfarer || radio.dataset.nightfarer === id;
+            radio.closest(".vessel-option").hidden = !usable;
+            radio.disabled = !usable;
+            if (!usable && radio.checked) {
+                const any = document.querySelector('input[name="vessel"][value=""]');
+                if (any) any.checked = true;
+            }
         }
         colourSlots();
     }
@@ -77,7 +80,7 @@
     }
 
     farers.forEach((radio) => radio.addEventListener("change", filterVessels));
-    if (vessel) vessel.addEventListener("change", colourSlots);
+    vessels.forEach((radio) => radio.addEventListener("change", colourSlots));
     if (deep && deepPanel) {
         deep.addEventListener("change", () => { deepPanel.hidden = !deep.checked; });
     }
@@ -85,7 +88,7 @@
         box.addEventListener("change", () => toggleCustom(box));
         toggleCustom(box);
     });
-    if (vessel) filterVessels();
+    if (vessels.length) filterVessels();
 
     // "Copy link" on a shared build.
     document.querySelectorAll("[data-copy]").forEach((button) => {

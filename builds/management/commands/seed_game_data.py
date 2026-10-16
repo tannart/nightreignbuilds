@@ -39,8 +39,7 @@ COLOUR_CODES = {
 
 
 def vessel_icon(slug: str) -> str:
-    """The wiki has no icons for the Soot-Covered, Sealed, Decrepit and
-    Forgotten vessels, so only some vessels get one."""
+    """Vessels without an icon file in static/vessels/ get none."""
     icon = f"vessels/{slug}.webp"
     return icon if (settings.BASE_DIR / "static" / icon).exists() else ""
 

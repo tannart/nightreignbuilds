@@ -284,3 +284,13 @@ def test_build_search_skips_share_links(client):
     BuildFactory(name="Secret Bleed", is_listed=False)
     response = client.get(reverse("build-list"), {"q": "bleed"})
     assert list(response.context["build_list"]) == []
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    "icon, expected",
+    [("vessels/wylders-urn.webp", "vessels/wylders-urn"), ("", "vessel-icon blank")],
+)
+def test_builder_shows_vessel_art(client, icon, expected):
+    VesselFactory(icon=icon)
+    assert expected in client.get(reverse("builder")).text

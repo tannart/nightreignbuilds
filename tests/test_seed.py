@@ -104,7 +104,7 @@ def test_seeded_vessel_icons_exist(settings):
         ("wylders-goblet", "vessels/wylders-goblet.webp"),
         ("duchess-chalice", "vessels/duchess-chalice.webp"),
         ("scadutree-grail", "vessels/scadutree-grail.webp"),
-        ("sealed-wylders-urn", ""),
+        ("sealed-wylders-urn", "vessels/sealed-wylders-urn.webp"),
     ],
 )
 def test_seed_sets_vessel_icon(slug, icon):

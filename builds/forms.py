@@ -54,9 +54,9 @@ class RelicForm(forms.ModelForm[Relic]):
         return cleaned
 
 
-class InstanceDataSelect(forms.Select):
-    """A select whose options carry data-* attributes taken from the model
-    instance, so the builder can colour slots without another request."""
+class InstanceDataRadio(forms.RadioSelect):
+    """Radios that carry data-* attributes taken from the model instance, so
+    the builder can colour slots without another request."""
 
     def __init__(
         self, *args: Any, data: Callable[[Any], dict[str, str]], **kwargs: Any
@@ -82,11 +82,12 @@ def vessel_data(vessel: Vessel) -> dict[str, str]:
     }
 
 
-class VesselChoiceField(forms.ModelChoiceField[Vessel]):
-    widget = InstanceDataSelect(data=vessel_data)
+class VesselRadio(InstanceDataRadio):
+    option_template_name = "builds/widgets/vessel_option.html"
 
-    def label_from_instance(self, obj: Vessel) -> str:
-        return f"{obj.name} ({obj.slot_summary()})"
+
+class VesselChoiceField(forms.ModelChoiceField[Vessel]):
+    widget = VesselRadio(data=vessel_data)
 
 
 class NightfarerRadio(forms.RadioSelect):
@@ -119,7 +120,7 @@ class BuilderForm(forms.ModelForm[Build]):
         nightfarer.empty_label = None
         vessel = self.fields["vessel"]
         assert isinstance(vessel, forms.ModelChoiceField)
-        vessel.empty_label = "Any vessel (no colour checks)"
+        vessel.empty_label = "Any vessel"
 
         current = list(self.instance.weapons.all()) if self.instance.pk else []
         for n, field in enumerate(self.weapon_fields):

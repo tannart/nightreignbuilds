@@ -1,0 +1,6 @@
+{% load static %}{% with vessel=widget.value.instance %}<label class="vessel-option"{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %}>
+    <input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>
+    {% if vessel.icon %}<img class="vessel-icon" src="{% static vessel.icon %}" alt="" width="64" height="64" loading="lazy">{% else %}<span class="vessel-icon blank" aria-hidden="true"></span>{% endif %}
+    <span class="vessel-name">{{ widget.label }}</span>
+    {% if vessel %}{% include "builds/_gems.html" with deep=True %}{% else %}<span class="helptext">No colour checks</span>{% endif %}
+</label>{% endwith %}

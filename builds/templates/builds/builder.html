@@ -20,19 +20,14 @@
 
     <section class="panel">
         <h2 class="eyebrow">Vessel</h2>
-        <div class="vessel-row">
-            <p>
-                <label for="{{ form.vessel.id_for_label }}">{{ form.vessel.label }}</label>
-                {{ form.vessel }}
-                <span class="helptext">Choose one to check relic colours against its slots. White slots take any colour.</span>
-                {{ form.vessel.errors }}
-            </p>
-            <label class="switch" for="{{ form.deep_of_night.id_for_label }}">
-                {{ form.deep_of_night }}
-                <span class="track" aria-hidden="true"><span class="thumb"></span></span>
-                <span><strong>Deep of Night</strong><span class="helptext">{{ form.deep_of_night.help_text }}</span></span>
-            </label>
-        </div>
+        <p class="form-hint">Choose one to check relic colours against its slots. White slots take any colour.</p>
+        <div class="vessel-picker" role="radiogroup" aria-label="{{ form.vessel.label }}">{% for radio in form.vessel %}{{ radio }}{% endfor %}</div>
+        {{ form.vessel.errors }}
+        <label class="switch" for="{{ form.deep_of_night.id_for_label }}">
+            {{ form.deep_of_night }}
+            <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+            <span><strong>Deep of Night</strong><span class="helptext">{{ form.deep_of_night.help_text }}</span></span>
+        </label>
     </section>
 
     <section class="panel">

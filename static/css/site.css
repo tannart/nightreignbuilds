@@ -524,31 +524,42 @@ a.card:hover {
 
 /* --- relic gems --------------------------------------------------------- */
 
-/* A relic slot, drawn as a faceted gem in its colour. */
+/* A relic slot, shown as the glowing pedestal from the in-game vessel screen.
+   Deep slots use the darker deep pedestals; the game has none for yellow or
+   white, so those keep the standard art. */
 .gem {
     --c: var(--relic-white);
     display: inline-block;
-    width: 14px;
-    height: 14px;
-    transform: rotate(45deg);
-    border-radius: 3px;
-    background:
-        linear-gradient(135deg, rgba(255, 255, 255, .7), transparent 45%),
-        radial-gradient(circle at 60% 60%, var(--c), color-mix(in oklab, var(--c) 40%, #000));
-    box-shadow: 0 0 10px -1px var(--c);
+    width: 22px;
+    height: 22px;
+    background: center / contain no-repeat;
     vertical-align: middle;
     flex: none;
 }
-.gem.lg { width: 26px; height: 26px; border-radius: 5px; }
-.gem.empty { background: transparent; border: 1.5px dashed var(--c); box-shadow: none; opacity: .7; }
-.gem.red { --c: var(--relic-red); }
-.gem.blue { --c: var(--relic-blue); }
-.gem.yellow { --c: var(--relic-yellow); }
-.gem.green { --c: var(--relic-green); }
-.gem.white { --c: var(--relic-white); }
+.gem.lg { width: 40px; height: 40px; }
+.gem.red { --c: var(--relic-red); background-image: url("../slots/red.webp"); }
+.gem.blue { --c: var(--relic-blue); background-image: url("../slots/blue.webp"); }
+.gem.yellow { --c: var(--relic-yellow); background-image: url("../slots/yellow.webp"); }
+.gem.green { --c: var(--relic-green); background-image: url("../slots/green.webp"); }
+.gem.white { --c: var(--relic-white); background-image: url("../slots/white.webp"); }
+.gem.deep.red, .deep .gem.red { background-image: url("../slots/deep-red.webp"); }
+.gem.deep.blue, .deep .gem.blue { background-image: url("../slots/deep-blue.webp"); }
+.gem.deep.green, .deep .gem.green { background-image: url("../slots/deep-green.webp"); }
+/* A slot with nothing to check against: an outline in the slot's colour. */
+.gem.empty {
+    width: 14px;
+    height: 14px;
+    margin: 4px;
+    transform: rotate(45deg);
+    border-radius: 3px;
+    border: 1.5px dashed var(--c);
+    background-image: none;
+    opacity: .7;
+}
+.gem.lg.empty { width: 26px; height: 26px; margin: 7px; }
 
-.gems { display: inline-flex; gap: .55rem; align-items: center; padding: 0 3px; }
-.gems .sep { width: 1px; height: 14px; background: var(--line); margin: 0 .15rem; }
+.gems { display: inline-flex; gap: .15rem; align-items: center; padding: 0 3px; }
+.gems .sep { width: 1px; height: 14px; background: var(--line); margin: 0 .3rem; }
 
 /* --- build detail ------------------------------------------------------- */
 
@@ -844,7 +855,43 @@ a.card:hover {
 .farer-option:has(input:checked) .portrait { box-shadow: 0 0 20px -4px var(--bolt-hi); }
 .farer-option:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-.vessel-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.25rem; align-items: start; }
+/* Vessels, as cards with their art and slot gems. Ones the chosen Nightfarer
+   can't use are hidden by builder.js. */
+.vessel-picker {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: .75rem;
+}
+.vessel-option {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .55rem;
+    padding: 1rem .6rem .9rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: rgba(5, 6, 15, .4);
+    text-align: center;
+    cursor: pointer;
+    transition: border-color .18s ease, background .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.vessel-option[hidden] { display: none; }
+.stacked-form .vessel-option { margin: 0; color: var(--ink); font-size: .85rem; }
+.vessel-option:hover { border-color: color-mix(in oklab, var(--bolt-hi) 50%, transparent); transform: translateY(-2px); }
+.vessel-option input { position: absolute; opacity: 0; pointer-events: none; }
+.vessel-option .vessel-name { font-family: var(--display); letter-spacing: .04em; line-height: 1.25; }
+.vessel-option .helptext { margin: 0; font-size: .75rem; }
+.vessel-option .gem { width: 18px; height: 18px; }
+.vessel-option .gems .sep { margin: 0 .15rem; }
+.vessel-icon.blank { display: block; }
+.vessel-option:has(input:checked) {
+    border-color: var(--bolt-hi);
+    background: color-mix(in oklab, var(--bolt) 18%, transparent);
+    box-shadow: 0 0 26px -10px var(--bolt-hi);
+}
+.vessel-option:has(input:checked) .vessel-icon { box-shadow: 0 0 20px -4px var(--bolt-hi); }
+.vessel-option:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* The Deep of Night switch. */
 .stacked-form label.switch {
@@ -989,8 +1036,6 @@ a.card:hover {
 }
 
 @media (max-width: 640px) {
-    .vessel-row { grid-template-columns: 1fr; }
-    .stacked-form label.switch { margin-top: 0; }
     .action-bar { border-radius: var(--radius); }
     .action-bar .muted { flex-basis: 100%; padding: 0; }
     .action-bar button { flex: 1; justify-content: center; }
