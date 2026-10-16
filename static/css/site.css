@@ -81,24 +81,40 @@ body {
     100% { transform: translate3d(-2%, 4%, 0)  scale(1.04); }
 }
 
-/* Falling rain, as on the cover. Two layers at different speeds. */
+/* Falling rain, as on the cover. Two layers at different speeds, each moved
+   with a transform (not background-position) so the GPU animates it without
+   repainting the screen every frame. Each layer overhangs the viewport by the
+   distance it travels, and one loop moves it exactly one tile down. */
 .rain {
     position: fixed;
     inset: 0;
     z-index: -2;
     pointer-events: none;
+    overflow: hidden;
     opacity: .14;
-    background-image:
-        repeating-linear-gradient(105deg, transparent 0 46px, rgba(191, 190, 220, .5) 46px 47px, transparent 47px 120px),
-        repeating-linear-gradient(102deg, transparent 0 80px, rgba(124, 152, 205, .45) 80px 81px, transparent 81px 190px);
-    background-size: 100% 260px, 100% 340px;
-    animation: rain 1.4s linear infinite;
     mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
 }
-
-@keyframes rain {
-    to { background-position: -60px 260px, -70px 340px; }
+.rain::before,
+.rain::after {
+    content: "";
+    position: absolute;
+    top: -340px;
+    right: -70px;
+    bottom: 0;
+    left: 0;
+    will-change: transform;
 }
+.rain::before {
+    background: repeating-linear-gradient(105deg, transparent 0 46px, rgba(191, 190, 220, .5) 46px 47px, transparent 47px 120px) 0 0 / 100% 260px;
+    animation: rain-near 1.4s linear infinite;
+}
+.rain::after {
+    background: repeating-linear-gradient(102deg, transparent 0 80px, rgba(124, 152, 205, .45) 80px 81px, transparent 81px 190px) 0 0 / 100% 340px;
+    animation: rain-far 1.4s linear infinite;
+}
+
+@keyframes rain-near { to { transform: translate3d(-60px, 260px, 0); } }
+@keyframes rain-far  { to { transform: translate3d(-70px, 340px, 0); } }
 
 /* Film grain over the gradients — stops the big washes from banding. */
 .grain {
@@ -142,15 +158,9 @@ body {
 
 .brand-glow {
     background: linear-gradient(92deg, var(--bolt-hi), var(--lightning) 40%, var(--violet) 70%, var(--bolt-hi));
-    background-size: 220% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: shimmer 8s linear infinite;
-}
-
-@keyframes shimmer {
-    to { background-position: 220% 0; }
 }
 
 /* The Night's Tide: a ring that slowly closes, like the circle in a run. */
@@ -174,7 +184,8 @@ body {
 }
 
 @keyframes spin { to { transform: rotate(360deg); } }
-@keyframes breathe { to { inset: 30%; } }
+/* Scale rather than inset: 40% / 56% of the ring, without relayout. */
+@keyframes breathe { to { transform: scale(.71); } }
 
 nav {
     display: flex;
