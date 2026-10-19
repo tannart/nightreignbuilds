@@ -322,10 +322,16 @@ class SlotForm(forms.Form):
         cleaned = super().clean() or {}
         if cleaned.get("custom"):
             cleaned["effects"] = []
+            seen: set[str] = set()
             for n in (1, 2, 3):
                 effect = cleaned.get(f"custom_effect_{n}", "").strip()
                 curse = cleaned.get(f"custom_curse_{n}", "").strip()
-                if effect:
+                if effect.casefold() in seen:
+                    self.add_error(
+                        f"custom_effect_{n}", "This effect is already listed."
+                    )
+                elif effect:
+                    seen.add(effect.casefold())
                     cleaned["effects"].append((effect, curse))
                 elif curse:
                     self.add_error(

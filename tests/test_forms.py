@@ -63,6 +63,20 @@ def test_custom_relic_needs_colour_and_effect(data, field):
 
 
 @pytest.mark.django_db
+@pytest.mark.parametrize("repeat", ["Vigor +3", " vigor +3 "])
+def test_custom_relic_rejects_repeated_effect(repeat):
+    form = slot_form(
+        {
+            "slot1-custom": "on",
+            "slot1-custom_colour": "red",
+            "slot1-custom_effect_1": "Vigor +3",
+            "slot1-custom_effect_2": repeat,
+        }
+    )
+    assert "custom_effect_2" in form.errors
+
+
+@pytest.mark.django_db
 def test_slot_form_resolves_catalogue_relic():
     relic = RelicFactory()
     form = slot_form({"slot1-relic": str(relic.pk)})
